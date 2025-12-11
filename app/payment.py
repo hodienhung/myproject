@@ -5,8 +5,10 @@ import urllib
 
 from app.models import CartItem, Order
 from app import db
+from app.routes import booking
 from .vnpay import vnpay
 from .utils import get_client_ip
+from .telegram import send_telegram_message  # ✅ Import Telegram
 
 payment_bp = Blueprint("payment", __name__)
 
@@ -23,7 +25,7 @@ def payment():
         method = request.form.get("method")
         order_id = request.form.get("order_id")
 
-        # Ép kiểu an toàn: nhận chuỗi, chuyển float rồi int
+        # Ép kiểu an toàn
         raw_amount = request.form.get("amount", "0")
         amount = int(float(raw_amount))
 
@@ -55,7 +57,7 @@ def payment():
             vnp.requestData['vnp_IpAddr'] = ipaddr
             vnp.requestData['vnp_ReturnUrl'] = current_app.config.get("VNP_RETURN_URL")
 
-            # Debug để kiểm tra dữ liệu gửi đi
+            # Debug
             print("VNPAY requestData:", vnp.requestData)
 
             vnpay_payment_url = vnp.get_payment_url(
@@ -69,6 +71,8 @@ def payment():
         order_id = "DH" + datetime.now().strftime("%Y%m%d%H%M%S")
         total_amount, cart_items = get_cart_total()
         return render_template("checkout.html", order_id=order_id, amount=total_amount, title="Thanh toán")
+
+# --- Nhận kết quả từ VNPay ---
 @payment_bp.route("/payment_return")
 def payment_return():
     input_data = request.args.to_dict()
@@ -94,6 +98,17 @@ def payment_return():
         if is_valid:
             if vnp_ResponseCode == "00":
                 result = "Thành công"
+
+                # ✅ Gửi Telegram thông báo thanh toán thành công
+                msg = (
+                     f"💰 Thanh toán VNPay thành công!\n"
+                    f"Tên: {booking.parent_name}\n"
+                    f"SĐT: {booking.phone}\n"
+                    f"Gmail: {booking.email}\n"
+                    f"Địa chỉ: {booking.address}\n"
+                    f"Số tiền: {amount} VND\n"
+)
+                send_telegram_message(msg)
             else:
                 result = "Lỗi"
         else:
@@ -115,4 +130,3 @@ def payment_return():
             title="Kết quả thanh toán",
             result="Không có dữ liệu"
         )
-
