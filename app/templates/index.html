@@ -137,95 +137,96 @@
         <div class="container">
             <h2>📅 Đặt lịch chăm sóc</h2>
 
-            <form class="booking-form" action="#" method="post">
+<form class="booking-form" action="{{ url_for('routes.booking') }}" method="post">
 
-                <div class="form-row">
-                    <div>
-                        <label>👩 Tên phụ huynh</label>
-                        <input type="text" required>
-                    </div>
+    <div class="form-row">
+        <div>
+            <label>👩 Tên phụ huynh</label>
+            <input type="text" name="name" required>
+        </div>
 
-                    <div>
-                        <label>📧 Email</label>
-                        <input type="email" required>
-                    </div>
-                </div>
+        <div>
+            <label>📧 Email</label>
+            <input type="email" name="email" required>
+        </div>
+    </div>
 
-                <div class="form-row">
-                    <div>
-                        <label>📱 Số điện thoại</label>
-                        <input type="tel" required>
-                    </div>
+    <div class="form-row">
+        <div>
+            <label>📱 Số điện thoại</label>
+            <input type="tel" name="phone" required>
+        </div>
 
-                    <div>
-                        <label>🧒 Tên trẻ</label>
-                        <input type="text" required>
-                    </div>
-                </div>
+        <div>
+            <label>🧒 Tên trẻ</label>
+            <input type="text" name="child_name" required>
+        </div>
+    </div>
 
-                <div class="form-row">
-                    <div>
-                        <label>🎂 Tuổi của trẻ</label>
-                        <input type="number" min="1" max="12" required>
-                    </div>
+    <div class="form-row">
+        <div>
+            <label>🎂 Tuổi của trẻ</label>
+            <input type="number" name="age" min="1" max="12" required>
+        </div>
 
-                    <div>
-                        <label>💼 Loại dịch vụ</label>
-                        <select id="serviceSelect" required>
-                            <option value="">-- Chọn dịch vụ --</option>
-                            <option value="tam-be">🛁 Tắm bé sơ sinh</option>
-                            <option value="vo-long-dom">😮‍💨 Vỗ long đờm</option>
-                            <option value="cham-soc-me-be">🤱 Chăm sóc mẹ & bé</option>
-                            <option value="goi-sua">🍼 Gọi sữa – Thông tắc sữa</option>
-                            <option value="massage-bau">🤰 Massage bầu</option>
-                            <option value="giam-eo">💃 Giảm eo sau sinh</option>
-                            <option value="massage-vai-gay">💆‍♀️ Massage vai gáy – đầu</option>
-                            <option value="combo-tuy-chon">🎀 Combo – Chọn nhiều dịch vụ</option>
-                        </select>
-                    </div>
-                </div>
+        <div>
+            <label>💼 Loại dịch vụ</label>
+            <select id="serviceSelect" name="service" required>
+                <option value="">-- Chọn dịch vụ --</option>
+                <option value="tam-be">🛁 Tắm bé sơ sinh</option>
+                <option value="vo-long-dom">😮‍💨 Vỗ long đờm</option>
+                <option value="cham-soc-me-be">🤱 Chăm sóc mẹ & bé</option>
+                <option value="goi-sua">🍼 Gọi sữa – Thông tắc sữa</option>
+                <option value="massage-bau">🤰 Massage bầu</option>
+                <option value="giam-eo">💃 Giảm eo sau sinh</option>
+                <option value="massage-vai-gay">💆‍♀️ Massage vai gáy – đầu</option>
+                <option value="combo-tuy-chon">🎀 Combo – Chọn nhiều dịch vụ</option>
+            </select>
+        </div>
+    </div>
 
-                <div id="comboOptions" style="display:none; margin-top:12px;">
-                    <label class="combo-item"><input type="checkbox" value="tam-be"> 🛁 Tắm bé</label>
-                    <label class="combo-item"><input type="checkbox" value="cham-soc-me-be"> 🤱 Chăm sóc mẹ & bé</label>
-                    <label class="combo-item"><input type="checkbox" value="goi-sua"> 🍼 Gọi sữa</label>
-                    <label class="combo-item"><input type="checkbox" value="vo-long-dom"> 😮‍💨 Vỗ long đờm</label>
-                    <label class="combo-item"><input type="checkbox" value="massage-bau"> 🤰 Massage bầu</label>
-                    <label class="combo-item"><input type="checkbox" value="giam-eo"> 💃 Giảm eo</label>
-                    <label class="combo-item"><input type="checkbox" value="massage-vai-gay"> 💆‍♀️ Massage vai gáy</label>
-                </div>
+    <div id="comboOptions" style="display:none; margin-top:12px;">
+        <label class="combo-item"><input type="checkbox" name="combo[]" value="tam-be"> 🛁 Tắm bé</label>
+        <label class="combo-item"><input type="checkbox" name="combo[]" value="cham-soc-me-be"> 🤱 Chăm sóc mẹ & bé</label>
+        <label class="combo-item"><input type="checkbox" name="combo[]" value="goi-sua"> 🍼 Gọi sữa</label>
+        <label class="combo-item"><input type="checkbox" name="combo[]" value="vo-long-dom"> 😮‍💨 Vỗ long đờm</label>
+        <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-bau"> 🤰 Massage bầu</label>
+        <label class="combo-item"><input type="checkbox" name="combo[]" value="giam-eo"> 💃 Giảm eo</label>
+        <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-vai-gay"> 💆‍♀️ Massage vai gáy</label>
+    </div>
 
-                <div class="form-row">
-                    <div>
-                        <label>📅 Ngày bắt đầu</label>
-                        <input type="date" required>
-                    </div>
+    <div class="form-row">
+        <div>
+            <label>📅 Ngày bắt đầu</label>
+            <input type="date" name="start_date" required>
+        </div>
 
-                    <div>
-                        <label>📅 Ngày kết thúc</label>
-                        <input type="date" required>
-                    </div>
-                </div>
+        <div>
+            <label>📅 Ngày kết thúc</label>
+            <input type="date" name="end_date" required>
+        </div>
+    </div>
 
-                <label>📝 Ghi chú thêm</label>
-                <textarea rows="4"></textarea>
+    <label>📝 Ghi chú thêm</label>
+    <textarea name="note" rows="4"></textarea>
 
-                <!-- DEPOSIT -->
-                <div class="form-row">
-                    <div>
-                        <label>💰 Mức cọc</label>
-                        <input type="text" value="200.000 VNĐ" disabled class="deposit-fixed">
-                    </div>
+    <!-- DEPOSIT -->
+    <div class="form-row">
+        <div>
+            <label>💰 Mức cọc</label>
+            <input type="text" value="200.000 VNĐ" disabled class="deposit-fixed">
+        </div>
 
-                    <div>
-                        <label>💵 Số tiền cọc (VNĐ)</label>
-                        <input type="number" value="200000" disabled class="deposit-fixed">
-                    </div>
-                </div>
+        <div>
+            <label>💵 Số tiền cọc (VNĐ)</label>
+            <input type="number" value="200000" disabled class="deposit-fixed">
+        </div>
+    </div>
 
-                <button type="submit" class="btn">✨ Gửi yêu cầu</button>
+    <button type="submit" class="btn">✨ Gửi yêu cầu</button>
 
-            </form>
+</form>
+
         </div>
     </section>
 

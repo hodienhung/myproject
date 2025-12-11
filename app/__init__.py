@@ -1,22 +1,23 @@
 from flask import Flask
 from .models import db
-from .route import routes
+from .routes import routes
+from config import Config
 
 def create_app():
     app = Flask(__name__)
 
-    # Cấu hình database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///kidscare.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # ✅ Load config
+    app.config.from_object(Config)
 
-    # Khởi tạo DB
+    # ✅ Khởi tạo DB
     db.init_app(app)
 
-    # Đăng ký Blueprint
+    # ✅ Đăng ký Blueprint
     app.register_blueprint(routes)
 
-    # Tạo bảng
+    # ✅ Không dùng create_all() với PostgreSQL
+    # Nếu block rỗng, phải dùng pass
     with app.app_context():
-        db.create_all()
+        pass
 
     return app
