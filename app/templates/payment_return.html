@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 25px;
+        }
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .status svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #eee;
+        }
+        td:first-child {
+            font-weight: bold;
+            color: #555;
+            width: 40%;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .footer a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+
+        {% if result == "Thanh toán thành công" %}
+            <div class="status success">
+                <!-- SVG checkmark -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+                {{ result }}
+            </div>
+        {% elif result == "Thanh toán thất bại" %}
+            <div class="status error">
+                <!-- SVG cross -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                {{ result }}
+            </div>
+        {% else %}
+            <div class="status">{{ result }}</div>
+        {% endif %}
+
+        {% if order_id %}
+        <table>
+            <tr>
+                <td>Mã đơn hàng:</td>
+                <td>{{ order_id }}</td>
+            </tr>
+            <tr>
+                <td>Số tiền:</td>
+                <td>{{ amount }} VND</td>
+            </tr>
+            <tr>
+                <td>Nội dung:</td>
+                <td>{{ order_desc }}</td>
+            </tr>
+            <tr>
+                <td>Mã giao dịch VNPAY:</td>
+                <td>{{ vnp_TransactionNo }}</td>
+            </tr>
+            <tr>
+                <td>Mã phản hồi:</td>
+                <td>{{ vnp_ResponseCode }}</td>
+            </tr>
+            {% if msg %}
+            <tr>
+                <td>Thông báo:</td>
+                <td>{{ msg }}</td>
+            </tr>
+            {% endif %}
+        </table>
+        {% endif %}
+
+        <div class="footer">
+            <a href="/">⬅ Quay lại trang chủ</a>
+        </div>
+    </div>
+</body>
+</html>

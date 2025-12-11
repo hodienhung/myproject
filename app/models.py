@@ -1,11 +1,29 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date, datetime
 
 db = SQLAlchemy()
 
 class Booking(db.Model):
+    __tablename__ = "bookings"
+
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
+
+    parent_name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
     phone = db.Column(db.String(20), nullable=False)
-    service = db.Column(db.String(120), nullable=False)
-    combo = db.Column(db.String(300))
-    note = db.Column(db.Text)
+
+    child_name = db.Column(db.String(100), nullable=False)
+    child_age = db.Column(db.Integer)
+
+    service_type = db.Column(db.String(100), nullable=False)
+    services_selected = db.Column(db.Text)
+
+    start_date = db.Column(db.Date, nullable=False)
+    end_date = db.Column(db.Date, nullable=False)
+
+    notes = db.Column(db.Text)
+
+    deposit_amount = db.Column(db.Integer, default=200000)
+    deposit_checked = db.Column(db.Boolean, default=False)
+
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
