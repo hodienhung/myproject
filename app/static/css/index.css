@@ -1,0 +1,376 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    background-color: #fff9fb;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HEADER */
+header {
+    background-color: #ffd8e8;
+    padding: 1rem 0;
+    color: #444;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-bottom: 4px solid #ffbcd4;
+    position: relative;
+}
+
+header::after {
+    content: "🎈";
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    font-size: 2rem;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff6fae;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-list a {
+    color: #444;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.nav-list a:hover {
+    background-color: #ffe4f1;
+}
+
+/* HERO FIX – CHỮ KHÔNG BỊ CHÌM */
+.hero {
+    position: relative;
+    background-image: url('https://via.placeholder.com/1200x450/fce6ff/ffffff?text=KidsCare+Vietnam');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0;
+    text-align: center;
+    color: #fff;
+}
+
+/* Lớp phủ giúp chữ nổi bật */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(255, 182, 193, 0.55),
+        rgba(255, 140, 180, 0.55)
+    );
+    backdrop-filter: blur(2px);
+}
+
+
+/* Đảm bảo nội dung nằm trên overlay */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Chữ đậm hơn để dễ đọc */
+.hero-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #fffdfd;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+
+/* BUTTON */
+/* BUTTON – CUTE PASTEL */
+.btn {
+    background-color: #ff8fb8;          /* Hồng pastel đẹp hơn */
+    padding: 1rem 2.2rem;               /* Nút to hơn, dễ bấm */
+    color: #fff;
+    border-radius: 14px;                /* Bo góc mềm hơn */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    display: inline-block;              /* ✅ Giữ nút đúng vị trí */
+    text-align: center;
+
+    transition: 0.25s ease;
+    box-shadow: 0 6px 12px rgba(255,140,180,0.35); /* Bóng mềm */
+}
+
+.btn:hover {
+    background-color: #ff78ac;
+    transform: translateY(-3px) scale(1.05);       /* Nhảy nhẹ */
+    box-shadow: 0 10px 18px rgba(255,120,160,0.4);
+}
+
+
+/* SECTION */
+.section {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    border-radius: 18px;
+    border: 2px dashed #ffd2e8;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section h2 {
+    text-align: center;
+    color: #ff6fae;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+/* CUTE TEXT (NO 3D) */
+#about .text-center {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ff8fc8;
+    background-color: #fff0f7;
+    padding: 10px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    border: 2px solid #ffcbe4;
+    box-shadow: 0 4px 10px rgba(255,150,180,0.15);
+}
+
+/* SERVICE CARDS */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.service-card {
+    background-color: #fff7fb;
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 2px solid #ffd4eb;
+    transition: 0.3s;
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(255, 160, 200, 0.2);
+}
+
+.service-card::after {
+    content: "⭐";
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    font-size: 1.4rem;
+    opacity: 0.6;
+}
+
+.service-card h3 {
+    color: #ff85c2;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+/* FORM */
+.booking-form {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.booking-form label {
+    font-weight: 600;
+    color: #ff6fae;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    margin-top: 0.4rem;
+    padding: 0.8rem;
+    border: 2px solid #ffd6eb;
+    border-radius: 12px;
+    background-color: #fffafd;
+    transition: 0.2s;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: #ff9bcf;
+    background-color: #fff2f9;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-row div {
+    flex: 1;
+}
+
+.booking-form button {
+    margin-top: 1.5rem;
+}
+
+/* FOOTER */
+footer {
+    background-color: #ffcde1;
+    color: #444;
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 4px solid #ffb0ca;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+footer::after {
+    content: "🧸";
+    position: absolute;
+    left: 25px;
+    top: -10px;
+    font-size: 2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    #about .text-center {
+        font-size: 1.2rem;
+        padding: 8px 14px;
+    }
+}
+.deposit-fixed {
+    background-color: #fff0f7;
+    border: 2px solid #ffcbe4;
+    border-radius: 12px;
+    padding: 0.8rem;
+    font-weight: 600;
+    color: #ff6fae;
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+/* ========================================================= */
+/* 🎓 KHÓA HỌC – CUTE STYLE */
+/* ========================================================= */
+
+.course-box {
+    background: #fff7fc;
+    border: 2px solid #ffc9e7;
+    border-radius: 18px;
+    padding: 1.8rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(255, 150, 200, 0.15);
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* Icon nền góc */
+.course-box::after {
+    content: "📘";
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.6rem;
+    opacity: 0.7;
+}
+
+.course-box h3 {
+    font-size: 1.6rem;
+    color: #ff74b8;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.course-box p {
+    color: #555;
+    font-size: 1.05rem;
+    margin-bottom: 1.4rem;
+}
+
+/* hover hiệu ứng nhấc lên */
+.course-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(255, 150, 200, 0.28);
+}
+
+/* Nút trong khóa học */
+.course-box .btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    border-radius: 14px;
+    padding: 0.8rem 1.6rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .course-box {
+        padding: 1.4rem;
+    }
+
+    .course-box h3 {
+        font-size: 1.3rem;
+    }
+
+    .course-box p {
+        font-size: 1rem;
+    }
+}
+
