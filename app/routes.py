@@ -6,6 +6,7 @@ from .telegram import send_telegram_message
 
 routes = Blueprint('routes', __name__)
 
+
 # ==========================
 # TRANG CHỦ
 # ==========================
@@ -15,57 +16,94 @@ def index():
 
 
 # ==========================
+# HÀM PARSE DATE/DATETIME
+# ==========================
+def parse_datetime(dt_str):
+    """Parse auto: YYYY-MM-DD, YYYY-MM-DD HH:MM, YYYY-MM-DDTHH:MM"""
+    if not dt_str:
+        return None
+
+    patterns = [
+        "%Y-%m-%d %H:%M",
+        "%Y-%m-%dT%H:%M",
+        "%Y-%m-%d"
+    ]
+
+    for p in patterns:
+        try:
+            return datetime.strptime(dt_str, p)
+        except ValueError:
+            pass
+
+    raise ValueError(f"Format thời gian không hợp lệ: {dt_str}")
+
+
+# ==========================
 # XỬ LÝ ĐẶT LỊCH + GỬI TELEGRAM
 # ==========================
 @routes.route('/booking', methods=['POST'])
 def booking():
-    parent_name = request.form.get('name')
-    email = request.form.get('email')
-    phone = request.form.get('phone')
-    address = request.form.get('address')
-    child_name = request.form.get('child_name')
-    child_age = int(request.form.get('age', 0))
-    service_type = request.form.get('service')
-    combo_list = request.form.getlist('combo[]')
-    services_selected = ", ".join(combo_list) if combo_list else None
-    start_date = datetime.strptime(request.form.get('start_date'), "%Y-%m-%d").date()
-    end_date = datetime.strptime(request.form.get('end_date'), "%Y-%m-%d").date()
-    notes = request.form.get('note')
-    deposit_paid = int(float(request.form.get('deposit_paid_amount', 0)))
+    try:
+        parent_name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        address = request.form.get('address')
+        child_name = request.form.get('child_name')
+        child_age = int(request.form.get('age', 0))
 
-    # Lưu booking vào database
-    new_booking = Booking(
-        parent_name=parent_name,
-        email=email,
-        phone=phone,
-        address=address,
-        child_name=child_name,
-        child_age=child_age,
-        service_type=service_type,
-        services_selected=services_selected,
-        start_date=start_date,
-        end_date=end_date,
-        notes=notes,
-        deposit_amount=deposit_paid,
-        deposit_checked=deposit_paid > 0
-    )
+        service_type = request.form.get('service')
+        combo_list = request.form.getlist('combo[]')
+        services_selected = ", ".join(combo_list) if combo_list else None
 
-    db.session.add(new_booking)
-    db.session.commit()
+        start_dt_str = request.form.get('start_datetime')
+        end_dt_str = request.form.get('end_datetime')
 
-    # Gửi Telegram nếu đã cọc trực tiếp
-    if deposit_paid > 0:
-        msg = (
-            f"✅ New Booking!\n"
-            f"Tên: {parent_name}\n"
-            f"SĐT: {phone}\n"
-            f"Gmail: {email}\n"
-            f"Địa chỉ: {address}\n"
-            f"Số tiền cọc: {deposit_paid} VND"
+        if not start_dt_str or not end_dt_str:
+            return "Thiếu thời gian bắt đầu hoặc kết thúc", 400
+
+        # Auto parse (ngày hoặc ngày + giờ)
+        start_datetime = parse_datetime(start_dt_str)
+        end_datetime = parse_datetime(end_dt_str)
+
+        notes = request.form.get('note')
+        deposit_paid = int(float(request.form.get('deposit_paid_amount', 0)))
+
+        new_booking = Booking(
+            parent_name=parent_name,
+            email=email,
+            phone=phone,
+            address=address,
+            child_name=child_name,
+            child_age=child_age,
+            service_type=service_type,
+            services_selected=services_selected,
+            start_date=start_datetime,
+            end_date=end_datetime,
+            notes=notes,
+            deposit_amount=deposit_paid,
+            deposit_checked=deposit_paid > 0
         )
-        send_telegram_message(msg)
 
-    return redirect(url_for('routes.payment', booking_id=new_booking.id))
+        db.session.add(new_booking)
+        db.session.commit()
+
+        # Gửi Telegram nếu đã cọc thủ công
+        if deposit_paid > 0:
+            msg = (
+                f"✅ New Booking!\n"
+                f"Tên: {parent_name}\n"
+                f"SĐT: {phone}\n"
+                f"Gmail: {email}\n"
+                f"Địa chỉ: {address}\n"
+                f"Thời gian: {start_dt_str} → {end_dt_str}\n"
+                f"Số tiền cọc: {deposit_paid} VND"
+            )
+            send_telegram_message(msg)
+
+        return redirect(url_for('routes.payment', booking_id=new_booking.id))
+
+    except Exception as e:
+        return f"Lỗi: {e}", 500
 
 
 # ==========================
@@ -89,7 +127,7 @@ def vnpay_payment(booking_id):
         "vnp_Version": "2.1.0",
         "vnp_Command": "pay",
         "vnp_TmnCode": current_app.config['VNP_TMN_CODE'],
-        "vnp_Amount": 200000 * 100,  # cố định 200k  # Sử dụng số tiền thực tế
+        "vnp_Amount": 200000 * 100,
         "vnp_CurrCode": "VND",
         "vnp_TxnRef": str(booking.id),
         "vnp_OrderInfo": f"Thanh toan don hang {booking.id}",
@@ -105,12 +143,11 @@ def vnpay_payment(booking_id):
         current_app.config['VNP_HASH_SECRET']
     )
 
-    print("🔗 VNPay URL:", payment_url)
     return redirect(payment_url)
 
 
 # ==========================
-# NHẬN KẾT QUẢ TRẢ VỀ TỪ VNPay
+# NHẬN KẾT QUẢ TỪ VNPay
 # ==========================
 @routes.route("/vnpay_return")
 def vnpay_return():
@@ -122,7 +159,6 @@ def vnpay_return():
         booking.deposit_checked = True
         db.session.commit()
 
-        # Gửi Telegram khi thanh toán VNPay thành công
         msg = (
             f"💰 Thanh toán VNPay thành công!\n"
             f"Tên: {booking.parent_name}\n"
