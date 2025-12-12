@@ -9,19 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/snow.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/snow.css') }}">
+
     <!--JS-->
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/snow.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/snow.js') }}" defer></script>
 
 </head>
 <body>
     <canvas id="snowCanvas"></canvas>
+
     <!-- HEADER -->
     <header class="header">
         <div class="container header-flex">
             <h1 class="logo">🧸 HienPureMom</h1>
+
+            <!-- HAMBURGER -->
+            <div id="hamburger" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <nav>
                 <ul class="nav-list">
                     <li><a href="#home">🏠 Trang chủ</a></li>
@@ -55,200 +65,159 @@
     </section>
 
     <!-- SERVICES -->
-<section id="services" class="section">
-    <div class="container">
-        <h2>🎠 Dịch vụ của chúng tôi</h2>
+    <section id="services" class="section">
+        <div class="container">
+            <h2>🎠 Dịch vụ của chúng tôi</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>🛁 Tắm bé sơ sinh</h3>
+                    <p>Dịch vụ tắm bé an toàn, nhẹ nhàng, đúng kỹ thuật dành cho trẻ sơ sinh.</p>
+                </div>
+                <div class="service-card">
+                    <h3>😮‍💨 Vỗ long đờm</h3>
+                    <p>Hỗ trợ làm thông đường thở, giảm đờm và giúp bé dễ chịu hơn.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🤱 Chăm sóc mẹ & bé</h3>
+                    <p>Dịch vụ toàn diện giúp mẹ hồi phục và bé phát triển khỏe mạnh.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🍼 Gọi sữa – Thông tắc sữa</h3>
+                    <p>Chuyên viên hỗ trợ thông tắc, kích sữa hiệu quả và an toàn.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🤰 Massage bầu</h3>
+                    <p>Giúp mẹ bầu thư giãn, giảm đau mỏi và ngủ ngon hơn.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💃 Giảm eo sau sinh</h3>
+                    <p>Liệu trình hỗ trợ săn chắc vòng eo và phục hồi vóc dáng mẹ sau sinh.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💆‍♀️ Massage vai gáy – đầu</h3>
+                    <p>Giảm đau mỏi, thư giãn và giúp mẹ phục hồi sức khỏe.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎓 Khóa học online</h3>
+                    <p>Các khóa học chăm sóc bé & mẹ dành cho phụ huynh bận rộn.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🏫 Khóa học trực tiếp</h3>
+                    <p>Học trực tiếp cùng chuyên gia để nâng cao kỹ năng chăm sóc bé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="service-grid">
+    <!-- COURSES -->
+    <section id="courses" class="section">
+        <div class="container">
+            <h2>🎓 Khóa học HienPureMom</h2>
+            <p class="text-center">Các khóa học dành cho phụ huynh và học viên muốn nâng cao kỹ năng chăm sóc mẹ & bé.</p>
 
-            <div class="service-card">
-                <h3>🛁 Tắm bé sơ sinh</h3>
-                <p>Dịch vụ tắm bé an toàn, nhẹ nhàng, đúng kỹ thuật dành cho trẻ sơ sinh.</p>
+            <div class="course-box">
+                <h3>📘 Khóa học chăm sóc trẻ sơ sinh</h3>
+                <p>Học kỹ năng tắm bé, massage, xử lý sốt, ho, đờm và nhiều kỹ thuật quan trọng khác.</p>
+                <a href="courses.html" class="btn">📚 Xem chi tiết khóa học</a>
             </div>
 
-            <div class="service-card">
-                <h3>😮‍💨 Vỗ long đờm</h3>
-                <p>Hỗ trợ làm thông đường thở, giảm đờm và giúp bé dễ chịu hơn.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>🤱 Chăm sóc mẹ & bé</h3>
-                <p>Dịch vụ toàn diện giúp mẹ hồi phục và bé phát triển khỏe mạnh.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>🍼 Gọi sữa – Thông tắc sữa</h3>
-                <p>Chuyên viên hỗ trợ thông tắc, kích sữa hiệu quả và an toàn.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>🤰 Massage bầu</h3>
-                <p>Giúp mẹ bầu thư giãn, giảm đau mỏi và ngủ ngon hơn.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>💃 Giảm eo sau sinh</h3>
-                <p>Liệu trình hỗ trợ săn chắc vòng eo và phục hồi vóc dáng mẹ sau sinh.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>💆‍♀️ Massage vai gáy – đầu</h3>
-                <p>Giảm đau mỏi, thư giãn và giúp mẹ phục hồi sức khỏe.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>🎓 Khóa học online</h3>
-                <p>Các khóa học chăm sóc bé & mẹ dành cho phụ huynh bận rộn.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>🏫 Khóa học trực tiếp</h3>
-                <p>Học trực tiếp cùng chuyên gia để nâng cao kỹ năng chăm sóc bé.</p>
+            <div class="course-box">
+                <h3>🎥 Khóa học online cho phụ huynh</h3>
+                <p>Học mọi lúc mọi nơi với video hướng dẫn chi tiết từ chuyên gia.</p>
+                <a href="courses.html" class="btn">🌐 Xem tất cả khóa online</a>
             </div>
 
         </div>
-    </div>
-</section>
-
-
-    <!-- COURSES SECTION (NEW) -->
-<section id="courses" class="section">
-    <div class="container">
-        <h2>🎓 Khóa học HienPureMom</h2>
-        <p class="text-center">Các khóa học dành cho phụ huynh và học viên muốn nâng cao kỹ năng chăm sóc mẹ & bé.</p>
-
-        <div class="course-box">
-            <h3>📘 Khóa học chăm sóc trẻ sơ sinh</h3>
-            <p>Học kỹ năng tắm bé, massage, xử lý sốt, ho, đờm và nhiều kỹ thuật quan trọng khác.</p>
-            <a href="courses.html" class="btn">📚 Xem chi tiết khóa học</a>
-        </div>
-
-        <div class="course-box">
-            <h3>🎥 Khóa học online cho phụ huynh</h3>
-            <p>Học mọi lúc mọi nơi với video hướng dẫn chi tiết từ chuyên gia.</p>
-            <a href="courses.html" class="btn">🌐 Xem tất cả khóa online</a>
-        </div>
-
-    </div>
-</section>
-
+    </section>
 
     <!-- BOOKING -->
     <section id="book" class="section">
         <div class="container">
             <h2>📅 Đặt lịch chăm sóc</h2>
+            <form class="booking-form" action="{{ url_for('routes.booking') }}" method="post">
+                <div class="form-row">
+                    <div>
+                        <label>👩 Tên phụ huynh</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div>
+                        <label>📧 Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label>📱 Số điện thoại</label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                    <div>
+                        <label>🧒 Tên trẻ</label>
+                        <input type="text" name="child_name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label>🏠 Địa chỉ</label>
+                        <input type="text" name="address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label>🎂 Tuổi của trẻ</label>
+                        <input type="number" name="age" min="1" max="12" required>
+                    </div>
+                    <div>
+                        <label>💼 Loại dịch vụ</label>
+                        <select id="serviceSelect" name="service" required>
+                            <option value="">-- Chọn dịch vụ --</option>
+                            <option value="tam-be">🛁 Tắm bé sơ sinh</option>
+                            <option value="vo-long-dom">😮‍💨 Vỗ long đờm</option>
+                            <option value="cham-soc-me-be">🤱 Chăm sóc mẹ & bé</option>
+                            <option value="goi-sua">🍼 Gọi sữa – Thông tắc sữa</option>
+                            <option value="massage-bau">🤰 Massage bầu</option>
+                            <option value="giam-eo">💃 Giảm eo sau sinh</option>
+                            <option value="massage-vai-gay">💆‍♀️ Massage vai gáy – đầu</option>
+                            <option value="combo-tuy-chon">🎀 Combo – Chọn nhiều dịch vụ</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="comboOptions" style="display:none; margin-top:12px;">
+                    <label class="combo-item"><input type="checkbox" name="combo[]" value="tam-be"> 🛁 Tắm bé</label>
+                    <label class="combo-item"><input type="checkbox" name="combo[]" value="cham-soc-me-be"> 🤱 Chăm sóc mẹ & bé</label>
+                    <label class="combo-item"><input type="checkbox" name="combo[]" value="goi-sua"> 🍼 Gọi sữa</label>
+                    <label class="combo-item"><input type="checkbox" name="combo[]" value="vo-long-dom"> 😮‍💨 Vỗ long đờm</label>
+                    <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-bau"> 🤰 Massage bầu</label>
+                    <label class="combo-item"><input type="checkbox" name="combo[]" value="giam-eo"> 💃 Giảm eo</label>
+                    <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-vai-gay"> 💆‍♀️ Massage vai gáy</label>
+                </div>
 
-<form class="booking-form" action="{{ url_for('routes.booking') }}" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>📅⏰ Thời gian bắt đầu</label>
+                        <input type="text" id="start_datetime" name="start_datetime" placeholder="2025-12-15 14:30" maxlength="16" required>
+                    </div>
+                    <div class="form-group">
+                        <label>📅⏰ Thời gian kết thúc</label>
+                        <input type="text" id="end_datetime" name="end_datetime" placeholder="2025-12-15 16:00" maxlength="16" required>
+                    </div>
+                </div>
 
-    <div class="form-row">
-        <div>
-            <label>👩 Tên phụ huynh</label>
-            <input type="text" name="name" required>
-        </div>
+                <label>📝 Ghi chú thêm</label>
+                <textarea name="note" rows="4"></textarea>
 
-        <div>
-            <label>📧 Email</label>
-            <input type="email" name="email" required>
-        </div>
-    </div>
+                <div class="form-row">
+                    <div>
+                        <label>💰 Mức cọc</label>
+                        <input type="text" value="200.000 VNĐ" disabled class="deposit-fixed">
+                    </div>
+                    <div>
+                        <label>💵 Số tiền cọc (VNĐ)</label>
+                        <input type="number" value="200000" disabled class="deposit-fixed">
+                    </div>
+                </div>
 
-    <div class="form-row">
-        <div>
-            <label>📱 Số điện thoại</label>
-            <input type="tel" name="phone" required>
-        </div>
-
-        <div>
-            <label>🧒 Tên trẻ</label>
-            <input type="text" name="child_name" required>
-        </div>
-    </div>
-    <div class="form-row">
-<div>
-    <label>🏠 Địa chỉ</label>
-    <input type="text" name="address" required>
-</div>
-
-</div>
-
-    <div class="form-row">
-        <div>
-            <label>🎂 Tuổi của trẻ</label>
-            <input type="number" name="age" min="1" max="12" required>
-        </div>
-
-        <div>
-            <label>💼 Loại dịch vụ</label>
-            <select id="serviceSelect" name="service" required>
-                <option value="">-- Chọn dịch vụ --</option>
-                <option value="tam-be">🛁 Tắm bé sơ sinh</option>
-                <option value="vo-long-dom">😮‍💨 Vỗ long đờm</option>
-                <option value="cham-soc-me-be">🤱 Chăm sóc mẹ & bé</option>
-                <option value="goi-sua">🍼 Gọi sữa – Thông tắc sữa</option>
-                <option value="massage-bau">🤰 Massage bầu</option>
-                <option value="giam-eo">💃 Giảm eo sau sinh</option>
-                <option value="massage-vai-gay">💆‍♀️ Massage vai gáy – đầu</option>
-                <option value="combo-tuy-chon">🎀 Combo – Chọn nhiều dịch vụ</option>
-            </select>
-        </div>
-    </div>
-
-    <div id="comboOptions" style="display:none; margin-top:12px;">
-        <label class="combo-item"><input type="checkbox" name="combo[]" value="tam-be"> 🛁 Tắm bé</label>
-        <label class="combo-item"><input type="checkbox" name="combo[]" value="cham-soc-me-be"> 🤱 Chăm sóc mẹ & bé</label>
-        <label class="combo-item"><input type="checkbox" name="combo[]" value="goi-sua"> 🍼 Gọi sữa</label>
-        <label class="combo-item"><input type="checkbox" name="combo[]" value="vo-long-dom"> 😮‍💨 Vỗ long đờm</label>
-        <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-bau"> 🤰 Massage bầu</label>
-        <label class="combo-item"><input type="checkbox" name="combo[]" value="giam-eo"> 💃 Giảm eo</label>
-        <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-vai-gay"> 💆‍♀️ Massage vai gáy</label>
-    </div>
-
-    <div class="form-row">
-
-    <div class="form-group">
-        <label>📅⏰ Thời gian bắt đầu</label>
-        <input type="text"
-               id="start_datetime"
-               name="start_datetime"
-               placeholder="2025-12-15 14:30"
-               maxlength="16"
-               required>
-    </div>
-
-    <div class="form-group">
-        <label>📅⏰ Thời gian kết thúc</label>
-        <input type="text"
-               id="end_datetime"
-               name="end_datetime"
-               placeholder="2025-12-15 16:00"
-               maxlength="16"
-               required>
-    </div>
-
-</div>
-
-
-
-    <label>📝 Ghi chú thêm</label>
-    <textarea name="note" rows="4"></textarea>
-
-    <!-- DEPOSIT -->
-    <div class="form-row">
-        <div>
-            <label>💰 Mức cọc</label>
-            <input type="text" value="200.000 VNĐ" disabled class="deposit-fixed">
-        </div>
-
-        <div>
-            <label>💵 Số tiền cọc (VNĐ)</label>
-            <input type="number" value="200000" disabled class="deposit-fixed">
-        </div>
-    </div>
-
-    <button type="submit" class="btn">✨ Gửi yêu cầu</button>
-
-</form>
-
+                <button type="submit" class="btn">✨ Gửi yêu cầu</button>
+            </form>
         </div>
     </section>
 
@@ -257,8 +226,8 @@
         <div class="container text-center">
             <h2>☎️ Liên hệ</h2>
             <p>📧 Email: <b>Hienspa93@gmail.com</b></p>
-            <p>📞 Điện thoại: <b>(123) 456-7890</b></p>
-            <p>📍 Địa chỉ: <b>123 Care Lane, Thành phố XYZ</b></p>
+            <p>📞 Điện thoại: <b>0853 467 231</b></p>
+            <p>📍 Địa chỉ: <b>Thôn 5, xã Quỳnh Thắng,tỉnh Nghệ An/b></p>
         </div>
     </section>
 
@@ -268,11 +237,12 @@
             <p>🧸 &copy; 2025 HienPureMom. Yêu thương bé từ những điều nhỏ nhất.</p>
         </div>
     </footer>
-    <!-- POPUP THÔNG BÁO -->
-<div id="popup" class="popup-overlay">
-    <div class="popup-box">
 
-        <h3>📢 Thông báo</h3>
+    <!-- POPUP THÔNG BÁO -->
+    <div id="popup" class="popup-overlay">
+        <div class="popup-box">
+            <div class="popup-content">
+                <h3>📢 Thông báo</h3>
 
         <div class="popup-content">
 
@@ -385,12 +355,10 @@
             <p><b>Hotline:</b> 0853 467 231</p>
         </div>
 
-        <div id="closePopup" class="popup-close">✕</div>
-
-
+            </div>
+            <div id="closePopup" class="popup-close">✕</div>
+        </div>
     </div>
-</div>
-
 
 </body>
 </html>
