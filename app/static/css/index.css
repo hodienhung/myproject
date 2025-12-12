@@ -7,9 +7,16 @@
 
 body {
     font-family: "Poppins", "Segoe UI", sans-serif;
-    background-color: #fff9fb;
-    color: #444;
     line-height: 1.6;
+    background: #c4e0b3;
+    color: #1a1a1a;
+}
+
+/* LỚP NỀN */
+.section, .card, .popup-box {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(120, 120, 120, 0.3);
+    backdrop-filter: blur(5px);
 }
 
 /* Container */
@@ -19,22 +26,15 @@ body {
     padding: 0 20px;
 }
 
-/* HEADER */
-header {
-    background-color: #ffd8e8;
+/* ✅ HEADER */
+.header {
+    background: #a8c995;
     padding: 1rem 0;
-    color: #444;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border-bottom: 4px solid #ffbcd4;
-    position: relative;
-}
-
-header::after {
-    content: "🎈";
-    position: absolute;
-    right: 25px;
-    top: 10px;
-    font-size: 2rem;
+    border-bottom: 4px solid #7fa86c;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 .header-flex {
@@ -45,128 +45,136 @@ header::after {
 
 .logo {
     font-size: 2rem;
-    font-weight: 700;
-    color: #ff6fae;
+    font-weight: 800;
+    color: #4f6f3e;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 
+/* NAV LIST */
 .nav-list {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1.2rem;
+}
+
+.nav-list li {
+    position: relative;
 }
 
 .nav-list a {
-    color: #444;
-    text-decoration: none;
+    color: #1a1a1a;
     font-weight: 600;
-    padding: 0.4rem 0.8rem;
+    text-decoration: none;
+    padding: 0.5rem 0.9rem;
     border-radius: 10px;
-    transition: 0.3s;
+    border: 2px solid #7fa86c;
+    background: rgba(255, 255, 255, 0.4);
+    transition: 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .nav-list a:hover {
-    background-color: #ffe4f1;
+    background: #c4e0b3;
+    border-color: #4f6f3e;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
 }
 
-/* HERO FIX – CHỮ KHÔNG BỊ CHÌM */
+.nav-list a.active {
+    background: #7fa86c;
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* HERO */
 .hero {
     position: relative;
-    background-image: url('https://via.placeholder.com/1200x450/fce6ff/ffffff?text=KidsCare+Vietnam');
+    background-image: url('https://via.placeholder.com/1200x450/c4e0b3/000000?text=KidsCare+Vietnam');
     background-size: cover;
     background-position: center;
     padding: 6rem 0;
     text-align: center;
-    color: #fff;
+    color: #000;
 }
 
-/* Lớp phủ giúp chữ nổi bật */
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        rgba(255, 182, 193, 0.55),
-        rgba(255, 140, 180, 0.55)
-    );
-    backdrop-filter: blur(2px);
+    background: rgba(196, 224, 179, 0.6);
+    backdrop-filter: blur(4px);
 }
 
-
-/* Đảm bảo nội dung nằm trên overlay */
 .hero-content {
     position: relative;
     z-index: 2;
 }
 
-/* Chữ đậm hơn để dễ đọc */
 .hero-content h2 {
     font-size: 3rem;
     font-weight: 800;
-    color: #ffffff;
-    text-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    color: #4f6f3e;
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    color: #fffdfd;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    color: #2a2a2a;
 }
 
-
 /* BUTTON */
-/* BUTTON – CUTE PASTEL */
 .btn {
-    background-color: #ff8fb8;          /* Hồng pastel đẹp hơn */
-    padding: 1rem 2.2rem;               /* Nút to hơn, dễ bấm */
+    background: linear-gradient(135deg, #8fbf73, #6f9f55);
+    padding: 1rem 2.2rem;
     color: #fff;
-    border-radius: 14px;                /* Bo góc mềm hơn */
+    border-radius: 14px;
     text-decoration: none;
     font-weight: 700;
     font-size: 1.05rem;
     letter-spacing: 0.5px;
-    display: inline-block;              /* ✅ Giữ nút đúng vị trí */
+    display: inline-block;
     text-align: center;
-
     transition: 0.25s ease;
-    box-shadow: 0 6px 12px rgba(255,140,180,0.35); /* Bóng mềm */
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
 
 .btn:hover {
-    background-color: #ff78ac;
-    transform: translateY(-3px) scale(1.05);       /* Nhảy nhẹ */
-    box-shadow: 0 10px 18px rgba(255,120,160,0.4);
+    background: linear-gradient(135deg, #a8d48a, #7fbf63);
+    transform: translateY(-3px) scale(1.05);
 }
-
 
 /* SECTION */
 .section {
-    background-color: #ffffff;
+    background-color: rgba(255,255,255,0.7);
     padding: 3rem 2rem;
     margin: 2rem 0;
     border-radius: 18px;
-    border: 2px dashed #ffd2e8;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 2px dashed #7fa86c;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 .section h2 {
     text-align: center;
-    color: #ff6fae;
+    color: #4f6f3e;
     margin-bottom: 2rem;
     font-size: 2.2rem;
     font-weight: 700;
 }
 
-/* CUTE TEXT (NO 3D) */
+/* CUTE TEXT */
 #about .text-center {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #ff8fc8;
-    background-color: #fff0f7;
+    color: #4f6f3e;
+    background-color: #e8f5dd;
     padding: 10px 18px;
     border-radius: 12px;
     display: inline-block;
-    border: 2px solid #ffcbe4;
-    box-shadow: 0 4px 10px rgba(255,150,180,0.15);
+    border: 2px solid #7fa86c;
 }
 
 /* SERVICE CARDS */
@@ -177,36 +185,37 @@ header::after {
 }
 
 .service-card {
-    background-color: #fff7fb;
+    background-color: #f3fbe9;
     padding: 1.5rem;
     border-radius: 16px;
     text-align: center;
-    border: 2px solid #ffd4eb;
+    border: 2px solid #7fa86c;
     transition: 0.3s;
     position: relative;
 }
 
 .service-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 6px 16px rgba(255, 160, 200, 0.2);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
 .service-card::after {
-    content: "⭐";
+    content: "🌟";
     position: absolute;
     right: 12px;
     top: 12px;
     font-size: 1.4rem;
     opacity: 0.6;
+    color: #4f6f3e;
 }
 
 .service-card h3 {
-    color: #ff85c2;
+    color: #4f6f3e;
     margin-bottom: 0.8rem;
     font-size: 1.3rem;
 }
 
-/* FORM */
+/* ✅ BOOKING FORM (LỊCH CHĂM SÓC) */
 .booking-form {
     max-width: 750px;
     margin: 0 auto;
@@ -214,7 +223,7 @@ header::after {
 
 .booking-form label {
     font-weight: 600;
-    color: #ff6fae;
+    color: #4f6f3e;
 }
 
 .booking-form input,
@@ -223,17 +232,17 @@ header::after {
     width: 100%;
     margin-top: 0.4rem;
     padding: 0.8rem;
-    border: 2px solid #ffd6eb;
+    border: 2px solid #7fa86c;
     border-radius: 12px;
-    background-color: #fffafd;
-    transition: 0.2s;
+    background-color: #f3fbe9;
+    color: #1a1a1a;
 }
 
 .booking-form input:focus,
 .booking-form select:focus,
 .booking-form textarea:focus {
-    border-color: #ff9bcf;
-    background-color: #fff2f9;
+    border-color: #4f6f3e;
+    background-color: #e8f5dd;
 }
 
 .form-row {
@@ -246,28 +255,94 @@ header::after {
     flex: 1;
 }
 
-.booking-form button {
-    margin-top: 1.5rem;
+/* ✅ COMBO OPTIONS */
+#comboOptions {
+    background: #f3fbe9;
+    border: 2px solid #7fa86c;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 12px;
+}
+
+#comboOptions .combo-item {
+    display: block;
+    margin: 6px 0;
+    font-weight: 600;
+    color: #4f6f3e;
+}
+
+#comboOptions input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+/* ✅ COURSES – KHÓA HỌC */
+.course-box {
+    background: #f3fbe9;
+    border: 2px solid #7fa86c;
+    border-radius: 18px;
+    padding: 1.8rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+    position: relative;
+}
+
+.course-box::after {
+    content: "📘";
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.6rem;
+    opacity: 0.7;
+    color: #4f6f3e;
+}
+
+.course-box h3 {
+    font-size: 1.6rem;
+    color: #4f6f3e;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.course-box p {
+    color: #1a1a1a;
+    font-size: 1.05rem;
+    margin-bottom: 1.4rem;
+}
+
+.course-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+.course-box .btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    border-radius: 14px;
+    padding: 0.8rem 1.6rem;
 }
 
 /* FOOTER */
 footer {
-    background-color: #ffcde1;
-    color: #444;
+    background-color: #a8c995;
+    color: #1a1a1a;
     padding: 1.5rem 0;
     text-align: center;
     margin-top: 2rem;
-    border-top: 4px solid #ffb0ca;
+    border-top: 4px solid #7fa86c;
     font-size: 0.95rem;
     position: relative;
 }
 
 footer::after {
-    content: "🧸";
+    content: "✨";
     position: absolute;
     left: 25px;
     top: -10px;
     font-size: 2rem;
+    color: #4f6f3e;
 }
 
 /* RESPONSIVE */
@@ -280,6 +355,12 @@ footer::after {
     .nav-list {
         flex-direction: column;
         gap: 0.7rem;
+        text-align: center;
+    }
+
+    .nav-list a {
+        width: 100%;
+        justify-content: center;
     }
 
     .hero-content h2 {
@@ -295,82 +376,81 @@ footer::after {
         padding: 8px 14px;
     }
 }
-.deposit-fixed {
-    background-color: #fff0f7;
-    border: 2px solid #ffcbe4;
-    border-radius: 12px;
-    padding: 0.8rem;
-    font-weight: 600;
-    color: #ff6fae;
-    cursor: not-allowed;
-    opacity: 0.9;
-}
-/* ========================================================= */
-/* 🎓 KHÓA HỌC – CUTE STYLE */
-/* ========================================================= */
 
-.course-box {
-    background: #fff7fc;
-    border: 2px solid #ffc9e7;
-    border-radius: 18px;
-    padding: 1.8rem;
-    margin: 1.5rem 0;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(255, 150, 200, 0.15);
-    transition: 0.3s ease;
+/* POPUP */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(7px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.popup-box {
+    width: 90%;
+    max-width: 700px;
+    max-height: 85%;
+    overflow-y: auto;
+    background: #f3fbe9;
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid #7fa86c;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+    animation: popupZoom 0.35s ease;
     position: relative;
 }
 
-/* Icon nền góc */
-.course-box::after {
-    content: "📘";
+.popup-close {
     position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 1.6rem;
-    opacity: 0.7;
+    top: 15px;
+    right: 15px;
+    background: #7fa86c;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
-.course-box h3 {
-    font-size: 1.6rem;
-    color: #ff74b8;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
+.popup-close:hover {
+    transform: scale(1.1);
+    background: #6c945c;
 }
 
-.course-box p {
-    color: #555;
-    font-size: 1.05rem;
-    margin-bottom: 1.4rem;
+/* BUBBLES */
+.bubble-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
 }
 
-/* hover hiệu ứng nhấc lên */
-.course-box:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 18px rgba(255, 150, 200, 0.28);
+.bubble {
+    position: absolute;
+    bottom: -40px;
+    background: rgba(127,168,108,0.4);
+    border-radius: 50%;
+    animation: bubbleUp linear infinite;
+    opacity: 0.8;
+    filter: blur(1px);
 }
 
-/* Nút trong khóa học */
-.course-box .btn {
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    border-radius: 14px;
-    padding: 0.8rem 1.6rem;
+@keyframes bubbleUp {
+    0% { transform: translateY(0) scale(1); opacity: 0.9; }
+    100% { transform: translateY(-120%) scale(1.7); opacity: 0; }
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .course-box {
-        padding: 1.4rem;
-    }
-
-    .course-box h3 {
-        font-size: 1.3rem;
-    }
-
-    .course-box p {
-        font-size: 1rem;
-    }
-}
-

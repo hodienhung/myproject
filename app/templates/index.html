@@ -10,21 +10,22 @@
 
     <!-- CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/snow.css') }}">
     <!--JS-->
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/snow.js') }}"></script>
 
 </head>
-
 <body>
-
+    <canvas id="snowCanvas"></canvas>
     <!-- HEADER -->
     <header class="header">
         <div class="container header-flex">
-            <h1 class="logo">🧸 KidsCare</h1>
+            <h1 class="logo">🧸 HienPureMom</h1>
             <nav>
                 <ul class="nav-list">
                     <li><a href="#home">🏠 Trang chủ</a></li>
-                    <li><a href="#about">🌈 Giới thiệu</a></li>
+                    <li><a href="#about" id="gioiThieuBtn">🌈 Giới thiệu</a></li>
                     <li><a href="#services">🎨 Dịch vụ</a></li>
                     <li><a href="#courses">🎓 Khóa học</a></li>
                     <li><a href="#book">📅 Đặt lịch</a></li>
@@ -38,7 +39,7 @@
     <section id="home" class="hero">
         <div class="container hero-content">
             <h2>💖 Chăm sóc trẻ em an toàn & tận tâm</h2>
-            <p>KidsCare mang đến dịch vụ chăm sóc trẻ chuyên nghiệp, giúp phụ huynh yên tâm mỗi ngày.</p>
+            <p>HienPureMom mang đến dịch vụ chăm sóc trẻ chuyên nghiệp, giúp phụ huynh yên tâm mỗi ngày.</p>
             <a href="#book" class="btn">✨ Đặt lịch ngay</a>
         </div>
     </section>
@@ -46,7 +47,7 @@
     <!-- ABOUT -->
     <section id="about" class="section">
         <div class="container">
-            <h2>🌟 Về KidsCare</h2>
+            <h2>🌟 Về HienPureMom</h2>
             <p class="text-center">
                 Một môi trường chăm sóc chuẩn mực, nhẹ nhàng và trọn vẹn yêu thương — nơi từng khoảnh khắc của bé được gìn giữ với sự tinh tế và sự an tâm tối đa.
             </p>
@@ -113,7 +114,7 @@
     <!-- COURSES SECTION (NEW) -->
 <section id="courses" class="section">
     <div class="container">
-        <h2>🎓 Khóa học KidsCare</h2>
+        <h2>🎓 Khóa học HienPureMom</h2>
         <p class="text-center">Các khóa học dành cho phụ huynh và học viên muốn nâng cao kỹ năng chăm sóc mẹ & bé.</p>
 
         <div class="course-box">
@@ -203,16 +204,30 @@
     </div>
 
     <div class="form-row">
-        <div>
-            <label>📅 Ngày bắt đầu</label>
-            <input type="date" name="start_date" required>
-        </div>
 
-        <div>
-            <label>📅 Ngày kết thúc</label>
-            <input type="date" name="end_date" required>
-        </div>
+    <div class="form-group">
+        <label>📅⏰ Thời gian bắt đầu</label>
+        <input type="text"
+               id="start_datetime"
+               name="start_datetime"
+               placeholder="2025-12-15 14:30"
+               maxlength="16"
+               required>
     </div>
+
+    <div class="form-group">
+        <label>📅⏰ Thời gian kết thúc</label>
+        <input type="text"
+               id="end_datetime"
+               name="end_datetime"
+               placeholder="2025-12-15 16:00"
+               maxlength="16"
+               required>
+    </div>
+
+</div>
+
+
 
     <label>📝 Ghi chú thêm</label>
     <textarea name="note" rows="4"></textarea>
@@ -241,7 +256,7 @@
     <section id="contact" class="section">
         <div class="container text-center">
             <h2>☎️ Liên hệ</h2>
-            <p>📧 Email: <b>info@kidscare.com</b></p>
+            <p>📧 Email: <b>Hienspa93@gmail.com</b></p>
             <p>📞 Điện thoại: <b>(123) 456-7890</b></p>
             <p>📍 Địa chỉ: <b>123 Care Lane, Thành phố XYZ</b></p>
         </div>
@@ -250,9 +265,132 @@
     <!-- FOOTER -->
     <footer>
         <div class="container text-center">
-            <p>🧸 &copy; 2025 KidsCare. Yêu thương bé từ những điều nhỏ nhất.</p>
+            <p>🧸 &copy; 2025 HienPureMom. Yêu thương bé từ những điều nhỏ nhất.</p>
         </div>
     </footer>
+    <!-- POPUP THÔNG BÁO -->
+<div id="popup" class="popup-overlay">
+    <div class="popup-box">
+
+        <h3>📢 Thông báo</h3>
+
+        <div class="popup-content">
+
+            <h4>🌸 Giới thiệu về Hồ Thị Hiền – Founder Hiền PureMom<br>
+            (Tiền thân: Bin Home Care & Spa)</h4>
+
+            <p>
+                Xin chào bạn, tôi là <b>Hồ Thị Hiền</b>, sinh năm 1993, quê tại Quỳnh Thắng – Nghệ An.
+                Tôi đến với nghề chăm sóc mẹ & bé sau sinh bằng tất cả sự trân trọng và mong muốn đồng hành
+                cùng phụ nữ trong hành trình làm mẹ thiêng liêng nhất cuộc đời.
+            </p>
+
+            <h4>💗 Gần 10 năm phụng sự – Hành trình của tình yêu nghề</h4>
+
+            <ul>
+                <li>Chăm sóc, nâng niu hàng trăm em bé sơ sinh.</li>
+                <li>Đồng hành cùng nhiều mẹ sau sinh giúp họ hồi phục – thư giãn – lấy lại tự tin.</li>
+                <li>Đào tạo nhiều học viên yêu nghề, giúp họ vững vàng và có thu nhập ổn định.</li>
+            </ul>
+
+            <p>
+                Tôi biết ơn những người thầy, người chị đã nâng đỡ mình từ những ngày đầu khó khăn nhất.
+                Nhờ họ mà tôi tìm lại được niềm tin, học được sự tử tế trong nghề và có thể giúp đỡ nhiều mẹ,
+                nhiều bé và nhiều học viên như hôm nay.
+            </p>
+
+            <h4>🎓 Nền tảng chuyên môn vững chắc</h4>
+
+            <ul>
+                <li>Chứng chỉ nghề cấp Quốc gia</li>
+                <li>Chứng chỉ sư phạm hệ Cao đẳng – Trường CĐ Nghề Công Nghiệp Hà Nội</li>
+                <li>Chứng chỉ Trung tâm Nghiên cứu Phục hồi Chức năng</li>
+            </ul>
+
+            <p>
+                Kiến thức chuyên môn kết hợp với kinh nghiệm thực tế nhiều năm giúp tôi tự tin
+                chăm sóc mẹ – bé và đào tạo học viên một cách bài bản, khoa học.
+            </p>
+
+            <h4>🌿 Hiền PureMom – Thương hiệu bảo hộ chính thức</h4>
+
+            <p>
+                “Pure” – Tinh khiết – Sạch sẽ – An toàn.  
+                Đây là cam kết của tôi trong từng dịch vụ dành cho mẹ và bé.
+            </p>
+
+            <h4>🌸 Sứ mệnh của tôi</h4>
+
+            <ul>
+                <li>Cung cấp dịch vụ chăm sóc mẹ & bé an toàn – khoa học – nhân văn.</li>
+                <li>Xây dựng môi trường đào tạo đúng chuẩn và truyền cảm hứng.</li>
+                <li>Lan tỏa giá trị tử tế đến nhiều gia đình Việt.</li>
+            </ul>
+
+            <hr>
+
+            <h3>💗 DỊCH VỤ TẠI HIỀN PUREMOM</h3>
+
+            <h4>1. Chăm sóc mẹ sau sinh</h4>
+            <ul>
+                <li>Massage hồi phục toàn thân</li>
+                <li>Chăm sóc da mặt sau sinh</li>
+                <li>Trị liệu đau mỏi vai gáy – lưng – cổ</li>
+                <li>Xông hơi – thải độc – ngủ ngon – giảm stress</li>
+                <li>Giảm eo – săn bụng – tan mỡ an toàn</li>
+                <li>Gọi sữa – thông tắc tia sữa</li>
+                <li>Xử lý viêm vú – áp xe vú</li>
+                <li>Hướng dẫn chăm con khoa học</li>
+            </ul>
+
+            <h4>2. Chăm sóc bé yêu</h4>
+            <ul>
+                <li>Tắm bé sơ sinh chuẩn khoa học</li>
+                <li>Massage giúp bé ngủ sâu – tiêu hoá tốt</li>
+                <li>Vệ sinh rốn – mũi – tai – mắt</li>
+                <li>Hướng dẫn xử lý: đầy hơi, khó ngủ, quấy khóc, lạnh bụng…</li>
+            </ul>
+
+            <h4>3. Đào tạo nghề chăm sóc mẹ & bé</h4>
+
+            <ul>
+                <li>Đào tạo chăm sóc mẹ sau sinh</li>
+                <li>Đào tạo tắm – massage – vệ sinh cho bé</li>
+                <li>Đào tạo mở spa tại nhà</li>
+                <li>Thực hành trên mẫu thật liên tục</li>
+                <li>Kèm 1:1 đến khi tự tin</li>
+                <li>Hỗ trợ mở spa – định giá – setup dịch vụ</li>
+                <li>Cấp chứng nhận hoàn thành khóa học</li>
+            </ul>
+
+            <h4>🌼 Vì sao mẹ & học viên chọn Hiền PureMom?</h4>
+
+            <ul>
+                <li>Gần 10 năm kinh nghiệm thực chiến</li>
+                <li>Phác đồ chăm sóc khoa học – an toàn – cá nhân hoá</li>
+                <li>Không chạy theo phong trào – chỉ theo chuyên môn & đạo đức</li>
+                <li>Học viên được cầm tay chỉ việc</li>
+                <li>Uy tín thật – kết quả thật – giá trị thật</li>
+            </ul>
+
+            <h4>💕 Lời kết từ Hiền</h4>
+
+            <p>
+                “Chăm sóc mẹ và bé là một nghề của trái tim.  
+                Tôi mong được đồng hành cùng các mẹ, và truyền nghề cho những ai thực sự có tâm,
+                để lan tỏa hạnh phúc đến nhiều gia đình hơn nữa.”
+            </p>
+
+            <h3>📞 Liên hệ</h3>
+            <p><b>Hotline:</b> 0853 467 231</p>
+        </div>
+
+        <div id="closePopup" class="popup-close">✕</div>
+
+
+    </div>
+</div>
+
 
 </body>
 </html>
