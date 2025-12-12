@@ -3,21 +3,19 @@ from flask_login import login_required, current_user
 from datetime import datetime
 import urllib
 
-from app.models import CartItem, Order
+from app.models import CartItem, Order, Booking  # import Booking trực tiếp
 from app import db
-from app.routes.booking import Booking   # nếu model booking ở đây
 from .vnpay import vnpay
 from .utils import get_client_ip
 from .telegram import send_telegram_message
 
 payment_bp = Blueprint("payment", __name__)
 
-# Hàm tính tổng tiền giỏ hàng
+# ------------------ HÀM TÍNH TỔNG TIỀN GIỎ HÀNG ------------------
 def get_cart_total():
     cart_items = CartItem.query.filter_by(user_id=current_user.id).all()
     total_amount = sum(item.product.price * item.quantity for item in cart_items)
     return total_amount, cart_items
-
 
 # ------------------ THANH TOÁN ------------------
 @payment_bp.route("/payment", methods=["GET", "POST"])
@@ -103,30 +101,36 @@ def payment_return():
         booking_id = order_id.replace("DH", "")[:14]   # hoặc cách bạn đang sinh ID
         booking = Booking.query.filter_by(id=booking_id).first()
 
+        # Nếu booking tồn tại thì format ngày giờ
         if booking:
-            # Format ngày giờ
-            start_dt = datetime.strptime(booking.start_datetime, "%Y-%m-%d %H:%M")
-            end_dt = datetime.strptime(booking.end_datetime, "%Y-%m-%d %H:%M")
+            try:
+                start_dt = datetime.strptime(booking.start_datetime, "%Y-%m-%d %H:%M")
+                end_dt = datetime.strptime(booking.end_datetime, "%Y-%m-%d %H:%M")
 
-            start_str = start_dt.strftime("%d/%m/%Y %H:%M")
-            end_str = end_dt.strftime("%d/%m/%Y %H:%M")
-
+                start_str = start_dt.strftime("%d/%m/%Y %H:%M")
+                end_str = end_dt.strftime("%d/%m/%Y %H:%M")
+            except:
+                start_str = end_str = "Không xác định"
+        else:
+            start_str = end_str = "Không có booking"
+        
+        # Kết quả thanh toán
         if is_valid:
             if vnp_ResponseCode == "00":
                 result = "Thành công"
 
-                # ------ Gửi TELEGRAM đầy đủ ------
-                msg = (
-                    f"💰 Thanh toán VNPay thành công!\n\n"
-                    f"👤 Phụ huynh: {booking.parent_name}\n"
-                    f"📞 SĐT: {booking.phone}\n"
-                    f"📧 Gmail: {booking.email}\n"
-                    f"🏠 Địa chỉ: {booking.address}\n\n"
-                    f"🗓 Ngày bắt đầu: {start_str}\n"
-                    f"🗓 Ngày kết thúc: {end_str}\n"
-                    f"💵 Số tiền: {amount:,} VND\n"
-                )
-                send_telegram_message(msg)
+                if booking:
+                    msg = (
+                        f"💰 Thanh toán VNPay thành công!\n\n"
+                        f"👤 Phụ huynh: {booking.parent_name}\n"
+                        f"📞 SĐT: {booking.phone}\n"
+                        f"📧 Gmail: {booking.email}\n"
+                        f"🏠 Địa chỉ: {booking.address}\n\n"
+                        f"🗓 Ngày bắt đầu: {start_str}\n"
+                        f"🗓 Ngày kết thúc: {end_str}\n"
+                        f"💵 Số tiền: {amount:,} VND\n"
+                    )
+                    send_telegram_message(msg)
             else:
                 result = "Lỗi"
         else:
