@@ -3,8 +3,10 @@ from .models import db, Booking
 from datetime import datetime
 from .vnpay import vnpay
 from .telegram import send_telegram_message
+from zoneinfo import ZoneInfo 
 now = datetime.now()
-formatted_time = now.strftime("%d/%m/%Y %H:%M:%S")  # định dạng: ngày/tháng/năm giờ:phút:giây
+now_vn = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh"))
+formatted_time = now_vn.strftime("%d/%m/%Y %H:%M:%S")  # định dạng: ngày/tháng/năm giờ:phút:giây
 routes = Blueprint('routes', __name__)
 
 
