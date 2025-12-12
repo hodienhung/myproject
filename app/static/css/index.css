@@ -8,14 +8,14 @@
 body {
     font-family: "Poppins", "Segoe UI", sans-serif;
     line-height: 1.6;
-    background: #c4e0b3;
-    color: #1a1a1a;
+    background: #FFF8EE;
+    color: #4A4A4A;
 }
 
 /* LỚP NỀN */
 .section, .card, .popup-box {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(120, 120, 120, 0.3);
+    background: rgba(255, 248, 238, 0.7);
+    border: 1px solid rgba(232, 214, 185, 0.6);
     backdrop-filter: blur(5px);
 }
 
@@ -28,10 +28,10 @@ body {
 
 /* ✅ HEADER */
 .header {
-    background: #a8c995;
+    background: #E8D6B9;
     padding: 1rem 0;
-    border-bottom: 4px solid #7fa86c;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    border-bottom: 4px solid #D1BE9F;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 999;
@@ -46,11 +46,11 @@ body {
 .logo {
     font-size: 2rem;
     font-weight: 800;
-    color: #4f6f3e;
+    color: #4A4A4A;
     display: flex;
     align-items: center;
     gap: 8px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* NAV LIST */
@@ -65,13 +65,13 @@ body {
 }
 
 .nav-list a {
-    color: #1a1a1a;
+    color: #4A4A4A;
     font-weight: 600;
     text-decoration: none;
     padding: 0.5rem 0.9rem;
     border-radius: 10px;
-    border: 2px solid #7fa86c;
-    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid #E8D6B9;
+    background: rgba(255, 248, 238, 0.6);
     transition: 0.25s ease;
     display: flex;
     align-items: center;
@@ -79,16 +79,16 @@ body {
 }
 
 .nav-list a:hover {
-    background: #c4e0b3;
-    border-color: #4f6f3e;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    background: #FFF8EE;
+    border-color: #C9B79A;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     transform: translateY(-2px);
 }
 
 .nav-list a.active {
-    background: #7fa86c;
-    color: #fff;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    background: #E8D6B9;
+    color: #4A4A4A;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
 /* HAMBURGER */
@@ -102,7 +102,7 @@ body {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: #1a1a1a;
+    background: #4A4A4A;
     border-radius: 3px;
     transition: 0.3s;
 }
@@ -120,19 +120,19 @@ body {
 /* HERO */
 .hero {
     position: relative;
-    background-image: url('https://via.placeholder.com/1200x450/c4e0b3/000000?text=KidsCare+Vietnam');
+    background-image: url('https://via.placeholder.com/1200x450/FFF8EE/4A4A4A?text=KidsCare+Vietnam');
     background-size: cover;
     background-position: center;
     padding: 6rem 0;
     text-align: center;
-    color: #000;
+    color: #4A4A4A;
 }
 
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(196, 224, 179, 0.6);
+    background: rgba(255, 248, 238, 0.6);
     backdrop-filter: blur(4px);
 }
 
@@ -144,19 +144,19 @@ body {
 .hero-content h2 {
     font-size: 3rem;
     font-weight: 800;
-    color: #4f6f3e;
+    color: #4A4A4A;
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    color: #2a2a2a;
+    color: #7A7A7A;
 }
 
 /* BUTTON */
 .btn {
-    background: linear-gradient(135deg, #8fbf73, #6f9f55);
+    background: linear-gradient(135deg, #E8D6B9, #D1BE9F);
     padding: 1rem 2.2rem;
-    color: #fff;
+    color: #4A4A4A;
     border-radius: 14px;
     text-decoration: none;
     font-weight: 700;
@@ -165,27 +165,27 @@ body {
     display: inline-block;
     text-align: center;
     transition: 0.25s ease;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
 .btn:hover {
-    background: linear-gradient(135deg, #a8d48a, #7fbf63);
+    background: linear-gradient(135deg, #F3E6D2, #E8D6B9);
     transform: translateY(-3px) scale(1.05);
 }
 
 /* SECTION */
 .section {
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,248,238,0.8);
     padding: 3rem 2rem;
     margin: 2rem 0;
     border-radius: 18px;
-    border: 2px dashed #7fa86c;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border: 2px dashed #E8D6B9;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
 .section h2 {
     text-align: center;
-    color: #4f6f3e;
+    color: #4A4A4A;
     margin-bottom: 2rem;
     font-size: 2.2rem;
     font-weight: 700;
@@ -195,12 +195,12 @@ body {
 #about .text-center {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4f6f3e;
-    background-color: #e8f5dd;
+    color: #4A4A4A;
+    background-color: #FFF3E0;
     padding: 10px 18px;
     border-radius: 12px;
     display: inline-block;
-    border: 2px solid #7fa86c;
+    border: 2px solid #E8D6B9;
 }
 
 /* SERVICE CARDS */
@@ -211,18 +211,18 @@ body {
 }
 
 .service-card {
-    background-color: #f3fbe9;
+    background-color: #FFF3E0;
     padding: 1.5rem;
     border-radius: 16px;
     text-align: center;
-    border: 2px solid #7fa86c;
+    border: 2px solid #E8D6B9;
     transition: 0.3s;
     position: relative;
 }
 
 .service-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .service-card::after {
@@ -232,11 +232,11 @@ body {
     top: 12px;
     font-size: 1.4rem;
     opacity: 0.6;
-    color: #4f6f3e;
+    color: #C9B79A;
 }
 
 .service-card h3 {
-    color: #4f6f3e;
+    color: #4A4A4A;
     margin-bottom: 0.8rem;
     font-size: 1.3rem;
 }
@@ -249,7 +249,7 @@ body {
 
 .booking-form label {
     font-weight: 600;
-    color: #4f6f3e;
+    color: #4A4A4A;
 }
 
 .booking-form input,
@@ -258,17 +258,17 @@ body {
     width: 100%;
     margin-top: 0.4rem;
     padding: 0.8rem;
-    border: 2px solid #7fa86c;
+    border: 2px solid #E8D6B9;
     border-radius: 12px;
-    background-color: #f3fbe9;
-    color: #1a1a1a;
+    background-color: #FFF3E0;
+    color: #4A4A4A;
 }
 
 .booking-form input:focus,
 .booking-form select:focus,
 .booking-form textarea:focus {
-    border-color: #4f6f3e;
-    background-color: #e8f5dd;
+    border-color: #C9B79A;
+    background-color: #FFF8EE;
 }
 
 .form-row {
@@ -283,8 +283,8 @@ body {
 
 /* COMBO OPTIONS */
 #comboOptions {
-    background: #f3fbe9;
-    border: 2px solid #7fa86c;
+    background: #FFF3E0;
+    border: 2px solid #E8D6B9;
     padding: 12px;
     border-radius: 12px;
     margin-top: 12px;
@@ -294,7 +294,7 @@ body {
     display: block;
     margin: 6px 0;
     font-weight: 600;
-    color: #4f6f3e;
+    color: #4A4A4A;
 }
 
 #comboOptions input[type="checkbox"] {
@@ -303,8 +303,8 @@ body {
 
 /* COURSES */
 .course-box {
-    background: #f3fbe9;
-    border: 2px solid #7fa86c;
+    background: #FFF3E0;
+    border: 2px solid #E8D6B9;
     border-radius: 18px;
     padding: 1.8rem;
     margin: 1.5rem 0;
@@ -321,18 +321,18 @@ body {
     right: 16px;
     font-size: 1.6rem;
     opacity: 0.7;
-    color: #4f6f3e;
+    color: #C9B79A;
 }
 
 .course-box h3 {
     font-size: 1.6rem;
-    color: #4f6f3e;
+    color: #4A4A4A;
     font-weight: 700;
     margin-bottom: 0.8rem;
 }
 
 .course-box p {
-    color: #1a1a1a;
+    color: #7A7A7A;
     font-size: 1.05rem;
     margin-bottom: 1.4rem;
 }
@@ -352,12 +352,12 @@ body {
 
 /* FOOTER */
 footer {
-    background-color: #a8c995;
-    color: #1a1a1a;
+    background-color: #E8D6B9;
+    color: #4A4A4A;
     padding: 1.5rem 0;
     text-align: center;
     margin-top: 2rem;
-    border-top: 4px solid #7fa86c;
+    border-top: 4px solid #D1BE9F;
     font-size: 0.95rem;
     position: relative;
 }
@@ -368,7 +368,7 @@ footer::after {
     left: 25px;
     top: -10px;
     font-size: 2rem;
-    color: #4f6f3e;
+    color: #C9B79A;
 }
 
 /* POPUP */
@@ -392,10 +392,10 @@ footer::after {
     max-width: 700px;
     max-height: 85%;
     overflow-y: auto;
-    background: #f3fbe9;
+    background: #FFF3E0;
     padding: 25px;
     border-radius: 20px;
-    border: 2px solid #7fa86c;
+    border: 2px solid #E8D6B9;
     box-shadow: 0 10px 35px rgba(0,0,0,0.2);
     animation: popupZoom 0.35s ease;
     position: relative;
@@ -405,8 +405,8 @@ footer::after {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: #7fa86c;
-    color: #fff;
+    background: #E8D6B9;
+    color: #4A4A4A;
     width: 35px;
     height: 35px;
     font-size: 22px;
@@ -420,7 +420,7 @@ footer::after {
 
 .popup-close:hover {
     transform: scale(1.1);
-    background: #6c945c;
+    background: #D1BE9F;
 }
 
 /* BUBBLES */
@@ -437,7 +437,7 @@ footer::after {
 .bubble {
     position: absolute;
     bottom: -40px;
-    background: rgba(127,168,108,0.4);
+    background: rgba(232,214,185,0.4);
     border-radius: 50%;
     animation: bubbleUp linear infinite;
     opacity: 0.8;
