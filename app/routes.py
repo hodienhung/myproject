@@ -3,7 +3,8 @@ from .models import db, Booking
 from datetime import datetime
 from .vnpay import vnpay
 from .telegram import send_telegram_message
-
+now = datetime.now()
+formatted_time = now.strftime("%d/%m/%Y %H:%M:%S")  # định dạng: ngày/tháng/năm giờ:phút:giây
 routes = Blueprint('routes', __name__)
 
 
@@ -159,13 +160,16 @@ def vnpay_return():
         booking.deposit_checked = True
         db.session.commit()
 
+
+
         msg = (
             f"💰 Thanh toán VNPay thành công!\n"
             f"Tên: {booking.parent_name}\n"
             f"SĐT: {booking.phone}\n"
             f"Gmail: {booking.email}\n"
             f"Địa chỉ: {booking.address}\n"
-            f"Số tiền: {booking.deposit_amount} VND"
+            f"Số tiền: {booking.deposit_amount} VND\n"
+        f"Ngày giờ: {formatted_time}"
         )
         send_telegram_message(msg)
 
