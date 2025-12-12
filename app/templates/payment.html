@@ -85,18 +85,19 @@
         <p><b>Mã đặt lịch:</b> {{ booking.id }}</p>
         <p><b>Phụ huynh:</b> {{ booking.parent_name }}</p>
         <p><b>Dịch vụ:</b> {{ booking.service_type }}</p>
-        <p><b>Ngày bắt đầu:</b> {{ booking.start_date }}</p>
-        <p><b>Ngày kết thúc:</b> {{ booking.end_date }}</p>
+
+        <!-- ⭐ Thêm giờ vào đây ⭐ -->
+        <p><b>Ngày bắt đầu:</b> {{ booking.start_date }} {{ booking.start_time }}</p>
+        <p><b>Ngày kết thúc:</b> {{ booking.end_date }} {{ booking.end_time }}</p>
     </div>
 
     <div class="amount-box">
         Số tiền cần thanh toán: <br> <b>200.000 VNĐ</b>
     </div>
 
-<form action="{{ url_for('routes.vnpay_payment', booking_id=booking.id) }}" method="post">
-    <button type="submit" class="pay-btn">✅ Thanh toán VNPay</button>
-</form>
-
+    <form action="{{ url_for('routes.vnpay_payment', booking_id=booking.id) }}" method="post">
+        <button type="submit" class="pay-btn">✅ Thanh toán VNPay</button>
+    </form>
 
 </div>
 
