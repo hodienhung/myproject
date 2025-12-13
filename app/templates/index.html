@@ -1,364 +1,406 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mom & baby Care - Dịch vụ chăm sóc mẹ và bé sau sinh toàn diện</title>
 
-    <!-- GOOGLE FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/snow.css') }}">
-
-    <!--JS-->
-    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
-    <script src="{{ url_for('static', filename='js/snow.js') }}" defer></script>
-
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MomCare - Dịch vụ mẹ và bé</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee7c2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
-<body>
-    <canvas id="snowCanvas"></canvas>
+<body class="bg-background-light dark:bg-background-dark text-[#181411] font-display overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#f4f2f0]">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1440px] mx-auto">
+<div class="flex items-center gap-2 text-[#181411]">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-3xl">child_care</span>
+</div>
+<h2 class="text-[#181411] text-xl font-bold leading-tight tracking-[-0.015em]">MomCare</h2>
+</div>
+<div class="hidden lg:flex items-center gap-8">
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#">Trang chủ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="allllll.html">Dịch vụ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.contact_page') }}">Liên hệ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#why-us">Về chúng tôi</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#testimonials">Đánh giá</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all">
+<a href="{{ url_for('routes.advisory_page') }}">
+  <span class="truncate">Đặt lịch tư vấn</span>
+</a>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container header-flex">
-            <h1 class="logo">🧸 HienPureMom</h1>
-
-            <!-- HAMBURGER -->
-            <div id="hamburger" class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <nav>
-                <ul class="nav-list">
-                    <li><a href="#home">🏠 Trang chủ</a></li>
-                    <li><a href="#about" id="gioiThieuBtn">🌈 Giới thiệu</a></li>
-                    <li><a href="#services">🎨 Dịch vụ</a></li>
-                    <li><a href="#courses">🎓 Khóa học</a></li>
-                    <li><a href="#book">📅 Đặt lịch</a></li>
-                    <li><a href="#contact">☎️ Liên hệ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h2>💖 Chăm sóc trẻ em an toàn & tận tâm</h2>
-            <p>HienPureMom mang đến dịch vụ chăm sóc trẻ chuyên nghiệp, giúp phụ huynh yên tâm mỗi ngày.</p>
-            <a href="#book" class="btn">✨ Đặt lịch ngay</a>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2>🌟 Về HienPureMom</h2>
-            <p class="text-center">
-                Một môi trường chăm sóc chuẩn mực, nhẹ nhàng và trọn vẹn yêu thương — nơi từng khoảnh khắc của bé được gìn giữ với sự tinh tế và sự an tâm tối đa.
-            </p>
-        </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section">
-        <div class="container">
-            <h2>🎠 Dịch vụ của chúng tôi</h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3>🛁 Tắm bé sơ sinh</h3>
-                    <p>Dịch vụ tắm bé an toàn, nhẹ nhàng, đúng kỹ thuật dành cho trẻ sơ sinh.</p>
-                </div>
-                <div class="service-card">
-                    <h3>😮‍💨 Vỗ long đờm</h3>
-                    <p>Hỗ trợ làm thông đường thở, giảm đờm và giúp bé dễ chịu hơn.</p>
-                </div>
-                <div class="service-card">
-                    <h3>🤱 Chăm sóc mẹ & bé</h3>
-                    <p>Dịch vụ toàn diện giúp mẹ hồi phục và bé phát triển khỏe mạnh.</p>
-                </div>
-                <div class="service-card">
-                    <h3>🍼 Gọi sữa – Thông tắc sữa</h3>
-                    <p>Chuyên viên hỗ trợ thông tắc, kích sữa hiệu quả và an toàn.</p>
-                </div>
-                <div class="service-card">
-                    <h3>🤰 Massage bầu</h3>
-                    <p>Giúp mẹ bầu thư giãn, giảm đau mỏi và ngủ ngon hơn.</p>
-                </div>
-                <div class="service-card">
-                    <h3>💃 Giảm eo sau sinh</h3>
-                    <p>Liệu trình hỗ trợ săn chắc vòng eo và phục hồi vóc dáng mẹ sau sinh.</p>
-                </div>
-                <div class="service-card">
-                    <h3>💆‍♀️ Massage vai gáy – đầu</h3>
-                    <p>Giảm đau mỏi, thư giãn và giúp mẹ phục hồi sức khỏe.</p>
-                </div>
-                <div class="service-card">
-                    <h3>🎓 Khóa học online</h3>
-                    <p>Các khóa học chăm sóc bé & mẹ dành cho phụ huynh bận rộn.</p>
-                </div>
-                <div class="service-card">
-                    <h3>🏫 Khóa học trực tiếp</h3>
-                    <p>Học trực tiếp cùng chuyên gia để nâng cao kỹ năng chăm sóc bé.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COURSES -->
-    <section id="courses" class="section">
-        <div class="container">
-            <h2>🎓 Khóa học HienPureMom</h2>
-            <p class="text-center">Các khóa học dành cho phụ huynh và học viên muốn nâng cao kỹ năng chăm sóc mẹ & bé.</p>
-
-            <div class="course-box">
-                <h3>📘 Khóa học chăm sóc trẻ sơ sinh</h3>
-                <p>Học kỹ năng tắm bé, massage, xử lý sốt, ho, đờm và nhiều kỹ thuật quan trọng khác.</p>
-                <a href="courses.html" class="btn">📚 Xem chi tiết khóa học</a>
-            </div>
-
-            <div class="course-box">
-                <h3>🎥 Khóa học online cho phụ huynh</h3>
-                <p>Học mọi lúc mọi nơi với video hướng dẫn chi tiết từ chuyên gia.</p>
-                <a href="courses.html" class="btn">🌐 Xem tất cả khóa online</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- BOOKING -->
-    <section id="book" class="section">
-        <div class="container">
-            <h2>📅 Đặt lịch chăm sóc</h2>
-            <form class="booking-form" action="{{ url_for('routes.booking') }}" method="post">
-                <div class="form-row">
-                    <div>
-                        <label>👩 Tên phụ huynh</label>
-                        <input type="text" name="name" required>
-                    </div>
-                    <div>
-                        <label>📧 Email</label>
-                        <input type="email" name="email" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div>
-                        <label>📱 Số điện thoại</label>
-                        <input type="tel" name="phone" required>
-                    </div>
-                    <div>
-                        <label>🧒 Tên trẻ</label>
-                        <input type="text" name="child_name" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div>
-                        <label>🏠 Địa chỉ</label>
-                        <input type="text" name="address" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div>
-                        <label>🎂 Tuổi của trẻ</label>
-                        <input type="number" name="age" min="1" max="12" required>
-                    </div>
-                    <div>
-                        <label>💼 Loại dịch vụ</label>
-                        <select id="serviceSelect" name="service" required>
-                            <option value="">-- Chọn dịch vụ --</option>
-                            <option value="tam-be">🛁 Tắm bé sơ sinh</option>
-                            <option value="vo-long-dom">😮‍💨 Vỗ long đờm</option>
-                            <option value="cham-soc-me-be">🤱 Chăm sóc mẹ & bé</option>
-                            <option value="goi-sua">🍼 Gọi sữa – Thông tắc sữa</option>
-                            <option value="massage-bau">🤰 Massage bầu</option>
-                            <option value="giam-eo">💃 Giảm eo sau sinh</option>
-                            <option value="massage-vai-gay">💆‍♀️ Massage vai gáy – đầu</option>
-                            <option value="combo-tuy-chon">🎀 Combo – Chọn nhiều dịch vụ</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="comboOptions" style="display:none; margin-top:12px;">
-                    <label class="combo-item"><input type="checkbox" name="combo[]" value="tam-be"> 🛁 Tắm bé</label>
-                    <label class="combo-item"><input type="checkbox" name="combo[]" value="cham-soc-me-be"> 🤱 Chăm sóc mẹ & bé</label>
-                    <label class="combo-item"><input type="checkbox" name="combo[]" value="goi-sua"> 🍼 Gọi sữa</label>
-                    <label class="combo-item"><input type="checkbox" name="combo[]" value="vo-long-dom"> 😮‍💨 Vỗ long đờm</label>
-                    <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-bau"> 🤰 Massage bầu</label>
-                    <label class="combo-item"><input type="checkbox" name="combo[]" value="giam-eo"> 💃 Giảm eo</label>
-                    <label class="combo-item"><input type="checkbox" name="combo[]" value="massage-vai-gay"> 💆‍♀️ Massage vai gáy</label>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>📅⏰ Thời gian bắt đầu</label>
-                        <input type="text" id="start_datetime" name="start_datetime" placeholder="2025-12-15 14:30" maxlength="16" required>
-                    </div>
-                    <div class="form-group">
-                        <label>📅⏰ Thời gian kết thúc</label>
-                        <input type="text" id="end_datetime" name="end_datetime" placeholder="2025-12-15 16:00" maxlength="16" required>
-                    </div>
-                </div>
-
-                <label>📝 Ghi chú thêm</label>
-                <textarea name="note" rows="4"></textarea>
-
-                <div class="form-row">
-                    <div>
-                        <label>💰 Mức cọc</label>
-                        <input type="text" value="200.000 VNĐ" disabled class="deposit-fixed">
-                    </div>
-                    <div>
-                        <label>💵 Số tiền cọc (VNĐ)</label>
-                        <input type="number" value="200000" disabled class="deposit-fixed">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn">✨ Gửi yêu cầu</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-        <div class="container text-center">
-            <h2>☎️ Liên hệ</h2>
-            <p>📧 Email: <b>Hienspa93@gmail.com</b></p>
-            <p>📞 Điện thoại: <b>0853 467 231</b></p>
-            <p>📍 Địa chỉ: <b>Thôn 5, xã Quỳnh Thắng,tỉnh Nghệ An</b></p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container text-center">
-            <p>🧸 &copy; 2025 HienPureMom. Yêu thương bé từ những điều nhỏ nhất.</p>
-        </div>
-    </footer>
-
-    <!-- POPUP THÔNG BÁO -->
-    <div id="popup" class="popup-overlay">
-        <div class="popup-box">
-            <div class="popup-content">
-                <h3>📢 Thông báo</h3>
-
-        <div class="popup-content">
-
-            <h4>🌸 Giới thiệu về Hồ Thị Hiền – Founder Hiền PureMom<br>
-            (Tiền thân: Bin Home Care & Spa)</h4>
-
-            <p>
-                Xin chào bạn, tôi là <b>Hồ Thị Hiền</b>, sinh năm 1993, quê tại Quỳnh Thắng – Nghệ An.
-                Tôi đến với nghề chăm sóc mẹ & bé sau sinh bằng tất cả sự trân trọng và mong muốn đồng hành
-                cùng phụ nữ trong hành trình làm mẹ thiêng liêng nhất cuộc đời.
-            </p>
-
-            <h4>💗 Gần 10 năm phụng sự – Hành trình của tình yêu nghề</h4>
-
-            <ul>
-                <li>Chăm sóc, nâng niu hàng trăm em bé sơ sinh.</li>
-                <li>Đồng hành cùng nhiều mẹ sau sinh giúp họ hồi phục – thư giãn – lấy lại tự tin.</li>
-                <li>Đào tạo nhiều học viên yêu nghề, giúp họ vững vàng và có thu nhập ổn định.</li>
-            </ul>
-
-            <p>
-                Tôi biết ơn những người thầy, người chị đã nâng đỡ mình từ những ngày đầu khó khăn nhất.
-                Nhờ họ mà tôi tìm lại được niềm tin, học được sự tử tế trong nghề và có thể giúp đỡ nhiều mẹ,
-                nhiều bé và nhiều học viên như hôm nay.
-            </p>
-
-            <h4>🎓 Nền tảng chuyên môn vững chắc</h4>
-
-            <ul>
-                <li>Chứng chỉ nghề cấp Quốc gia</li>
-                <li>Chứng chỉ sư phạm hệ Cao đẳng – Trường CĐ Nghề Công Nghiệp Hà Nội</li>
-                <li>Chứng chỉ Trung tâm Nghiên cứu Phục hồi Chức năng</li>
-            </ul>
-
-            <p>
-                Kiến thức chuyên môn kết hợp với kinh nghiệm thực tế nhiều năm giúp tôi tự tin
-                chăm sóc mẹ – bé và đào tạo học viên một cách bài bản, khoa học.
-            </p>
-
-            <h4>🌿 Hiền PureMom – Thương hiệu bảo hộ chính thức</h4>
-
-            <p>
-                “Pure” – Tinh khiết – Sạch sẽ – An toàn.  
-                Đây là cam kết của tôi trong từng dịch vụ dành cho mẹ và bé.
-            </p>
-
-            <h4>🌸 Sứ mệnh của tôi</h4>
-
-            <ul>
-                <li>Cung cấp dịch vụ chăm sóc mẹ & bé an toàn – khoa học – nhân văn.</li>
-                <li>Xây dựng môi trường đào tạo đúng chuẩn và truyền cảm hứng.</li>
-                <li>Lan tỏa giá trị tử tế đến nhiều gia đình Việt.</li>
-            </ul>
-
-            <hr>
-
-            <h3>💗 DỊCH VỤ TẠI HIỀN PUREMOM</h3>
-
-            <h4>1. Chăm sóc mẹ sau sinh</h4>
-            <ul>
-                <li>Massage hồi phục toàn thân</li>
-                <li>Chăm sóc da mặt sau sinh</li>
-                <li>Trị liệu đau mỏi vai gáy – lưng – cổ</li>
-                <li>Xông hơi – thải độc – ngủ ngon – giảm stress</li>
-                <li>Giảm eo – săn bụng – tan mỡ an toàn</li>
-                <li>Gọi sữa – thông tắc tia sữa</li>
-                <li>Xử lý viêm vú – áp xe vú</li>
-                <li>Hướng dẫn chăm con khoa học</li>
-            </ul>
-
-            <h4>2. Chăm sóc bé yêu</h4>
-            <ul>
-                <li>Tắm bé sơ sinh chuẩn khoa học</li>
-                <li>Massage giúp bé ngủ sâu – tiêu hoá tốt</li>
-                <li>Vệ sinh rốn – mũi – tai – mắt</li>
-                <li>Hướng dẫn xử lý: đầy hơi, khó ngủ, quấy khóc, lạnh bụng…</li>
-            </ul>
-
-            <h4>3. Đào tạo nghề chăm sóc mẹ & bé</h4>
-
-            <ul>
-                <li>Đào tạo chăm sóc mẹ sau sinh</li>
-                <li>Đào tạo tắm – massage – vệ sinh cho bé</li>
-                <li>Đào tạo mở spa tại nhà</li>
-                <li>Thực hành trên mẫu thật liên tục</li>
-                <li>Kèm 1:1 đến khi tự tin</li>
-                <li>Hỗ trợ mở spa – định giá – setup dịch vụ</li>
-                <li>Cấp chứng nhận hoàn thành khóa học</li>
-            </ul>
-
-            <h4>🌼 Vì sao mẹ & học viên chọn Hiền PureMom?</h4>
-
-            <ul>
-                <li>Gần 10 năm kinh nghiệm thực chiến</li>
-                <li>Phác đồ chăm sóc khoa học – an toàn – cá nhân hoá</li>
-                <li>Không chạy theo phong trào – chỉ theo chuyên môn & đạo đức</li>
-                <li>Học viên được cầm tay chỉ việc</li>
-                <li>Uy tín thật – kết quả thật – giá trị thật</li>
-            </ul>
-
-            <h4>💕 Lời kết từ Hiền</h4>
-
-            <p>
-                “Chăm sóc mẹ và bé là một nghề của trái tim.  
-                Tôi mong được đồng hành cùng các mẹ, và truyền nghề cho những ai thực sự có tâm,
-                để lan tỏa hạnh phúc đến nhiều gia đình hơn nữa.”
-            </p>
-
-            <h3>📞 Liên hệ</h3>
-            <p><b>Hotline:</b> 0853 467 231</p>
-        </div>
-
-            </div>
-            <div id="closePopup" class="popup-close">✕</div>
-        </div>
-    </div>
-
-</body>
-</html>
+</button>
+<button class="lg:hidden p-2 text-[#181411]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative w-full">
+<div class="px-4 md:px-10 lg:px-40 py-10 flex justify-center">
+<div class="flex flex-col max-w-[1200px] flex-1 w-full">
+<div class="@container">
+<div class="flex min-h-[560px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl md:rounded-[2rem] items-start justify-end px-6 pb-12 md:px-12 md:pb-20 relative overflow-hidden" data-alt="Happy asian mother holding her newborn baby with soft warm lighting" style='background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQy-u6Z0J5m-JoZKLpMxltLBOn6enyKjv95YcKE2QWSurSGDFBM_uOYaM1pmmKc5VI2Ds3RnBIq2lEPEO3V6MNLhkskYoYnIPDM29M4zffUJLbNLNi28YL5UoNvXcLSWn_yMF7QvCJdqd0XSpuRzW3aK76zLX6mEB2ki1KqDfA7auQkYvyJAnK1KMUMuboEFb0jKMtdea0T6CdaCKOc-7EeyrSlLhDhmqVNa5lYigcFgUOInFOn3sUKEG_2NIKqGnQK2o7yTAamaU");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60"></div>
+<div class="relative flex flex-col gap-4 text-left max-w-2xl">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white text-xs font-bold w-fit">
+<span class="material-symbols-outlined text-sm">verified</span>
+                                Chăm sóc chuẩn y khoa
+                            </span>
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl drop-shadow-sm">
+                                Chăm sóc toàn diện cho <span class="text-primary-100">Mẹ &amp; Bé yêu</span>
+</h1>
+<h2 class="text-white/90 text-base font-medium leading-relaxed md:text-lg max-w-lg drop-shadow-sm">
+                                Giải pháp chăm sóc sức khỏe và tinh thần tốt nhất cho mẹ bầu, mẹ sau sinh và trẻ sơ sinh với đội ngũ y tá chuyên nghiệp.
+                            </h2>
+<div class="flex flex-wrap gap-4 pt-2">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-8 bg-primary text-white text-base font-bold hover:bg-primary/90 hover:scale-105 transition-all shadow-lg shadow-primary/30">
+<a href="{{ url_for('routes.booking_page') }}"><span class="truncate">Đặt lịch ngay</span></a>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-8 bg-white text-primary text-base font-bold hover:bg-gray-50 transition-all">
+<span class="truncate">Xem bảng giá</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Stats -->
+<section class="w-full bg-white border-y border-[#f4f2f0]">
+<div class="max-w-[1200px] mx-auto px-4 md:px-10 py-12">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center text-center gap-2">
+<h3 class="text-4xl font-black text-primary">5000+</h3>
+<p class="text-sm text-gray-500 font-medium">Mẹ tin dùng</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2">
+<h3 class="text-4xl font-black text-primary">100+</h3>
+<p class="text-sm text-gray-500 font-medium">Y tá chuyên nghiệp</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2">
+<h3 class="text-4xl font-black text-primary">10+</h3>
+<p class="text-sm text-gray-500 font-medium">Năm kinh nghiệm</p>
+</div>
+<div class="flex flex-col items-center text-center gap-2">
+<h3 class="text-4xl font-black text-primary">100%</h3>
+<p class="text-sm text-gray-500 font-medium">Hài lòng</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="relative w-full py-16 bg-background-light dark:bg-background-dark" id="services">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 md:px-10">
+<div class="flex flex-col gap-10 @container">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="flex flex-col gap-3">
+<span class="text-primary font-bold tracking-wider uppercase text-sm">Dịch vụ của chúng tôi</span>
+<h2 class="text-[#181411] tracking-tight text-3xl md:text-4xl font-bold leading-tight max-w-[720px]">
+                                    Gói chăm sóc chuyên sâu
+                                </h2>
+<p class="text-gray-600 text-base font-normal leading-normal max-w-[600px]">
+                                    Chúng tôi cung cấp các liệu trình được thiết kế riêng biệt phù hợp với từng giai đoạn thai kỳ và phục hồi sau sinh.
+                                </p>
+</div>
+<button class="hidden md:flex cursor-pointer items-center justify-center rounded-xl h-10 px-5 border border-gray-200 bg-white text-[#181411] text-sm font-bold hover:bg-gray-50 transition-colors">
+<span class="truncate">Xem tất cả dịch vụ</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group flex flex-col gap-4 bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-xl overflow-hidden relative" data-alt="Pregnant woman doing yoga relaxingly" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuyHm1URC5buoTLyuNGGjOk3a_iztckVN9wS3-caMo0nSgpGYn0scNQlBnJAmUvjNkrrv8wbiXyF_VWiF_WCSgBdyBYi6fhlnzEj1ECujEEu7B3rvA2L3SKMVKUhWCB8gWrofFtBd9lZkAI-OR_bdiwzZx5TeZOlkBhq7iDTv4vBTsNjQ2T1LvwafYAIm3_0mCfkbqOuMV2krnQUF6BcNnewC15xYkur3BlZsHDvw3016Na_KeNEKjlzeJjOIn1VUpfl4Y9ue5sB8");'>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+</div>
+<div class="flex flex-col gap-2 px-2 pb-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">spa</span>
+<span class="text-xs font-bold uppercase">Thư giãn</span>
+</div>
+<p class="text-[#181411] text-xl font-bold leading-normal group-hover:text-primary transition-colors">Chăm sóc bầu</p>
+<p class="text-gray-500 text-sm font-normal leading-relaxed line-clamp-2">Giúp mẹ thư giãn, giảm đau nhức lưng hông, cổ vai gáy và chuẩn bị sức khỏe tốt nhất cho kỳ sinh nở.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col gap-4 bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-xl overflow-hidden relative" data-alt="Mother drinking tea while baby sleeps" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5f51LCYCbxdsB26Y3eO8lkq-fvbEYiCROChu2gcaNV8zWJbu2ewhbjzRllxBg4GJzRm_VuPYhnK7AWskeMtR0mvXlFyWfKv5sgrjJt2oR1Y0iS_CURMLXpzBlTnIWlbqQV6SK1ghvNrWmyeDnmKe7GFid4ue0z1dW7FrvyNvZ8RrP8dgcbCSo90WG0vKIttnNiv27FguwYsk1oQvE9ZHDU3CrHGzWognB7Mgadd7CbSvMx3-pP4ssHMCmV637tTD6e6gTNllg2F0");'>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+</div>
+<div class="flex flex-col gap-2 px-2 pb-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">healing</span>
+<span class="text-xs font-bold uppercase">Phục hồi</span>
+</div>
+<p class="text-[#181411] text-xl font-bold leading-normal group-hover:text-primary transition-colors">Chăm sóc sau sinh</p>
+<p class="text-gray-500 text-sm font-normal leading-relaxed line-clamp-2">Hỗ trợ phục hồi sức khỏe, vóc dáng, làm đẹp da và cân bằng tinh thần cho mẹ sau vượt cạn.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col gap-4 bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-xl overflow-hidden relative" data-alt="Baby getting a bath in a small tub" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDF6So-GDqNQKNfhlBCUbS8-AlYcYF5yBffRV_4Z1V_b-vTeLEnsZSsRa019zA8SZx9tXpjp-nPZtBHdiHDOP2iBhXQIGHoFh_Q2i8c6v0w71-MIBPBvGniY7gMWmEcI-4YeDJtcYLQpM62jlpueueqNV1fT2X4OnrvSJ212euaU9DATZHLXqH3BtO_xe_ZWTFmt9AGDEpJx-YDXrvzcchDPJVLRY3M1fL3lVperiHKE3m6Dg8m2x5QEP4-K_b9PZU5ktndJnRLAMQ");'>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+</div>
+<div class="flex flex-col gap-2 px-2 pb-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">bathtub</span>
+<span class="text-xs font-bold uppercase">Sạch sẽ</span>
+</div>
+<p class="text-[#181411] text-xl font-bold leading-normal group-hover:text-primary transition-colors">Tắm bé &amp; Massage</p>
+<p class="text-gray-500 text-sm font-normal leading-relaxed line-clamp-2">Kỹ thuật tắm và massage chuẩn y khoa giúp bé ăn ngon, ngủ sâu giấc, kích thích phát triển giác quan.</p>
+</div>
+</div>
+</div>
+<button class="md:hidden w-full flex cursor-pointer items-center justify-center rounded-xl h-12 px-5 border border-gray-200 bg-white text-[#181411] text-sm font-bold hover:bg-gray-50 transition-colors">
+<span class="truncate">Xem tất cả dịch vụ</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-16 bg-white overflow-hidden" id="why-us">
+<div class="max-w-[1200px] mx-auto px-4 md:px-10">
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<div class="w-full lg:w-1/2 relative order-2 lg:order-1">
+<div class="relative rounded-3xl overflow-hidden aspect-[4/5] md:aspect-square lg:aspect-[4/5] shadow-2xl">
+<div class="absolute inset-0 bg-center bg-cover" data-alt="Nurse holding a baby smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzFbcxXgYn3frRbdIKS6choC_FsvHQfWN_SwgiHb1xFwoDjjDFgikPdcyvPx9Fizi_tv3R4Yi_NBq7uoBLHovVWq_kWQqQPIIPhjIc-F4CKNbEI12qbHrOltrFEC7BvrtlAfazoJ9_XqNfeawSglwKLv7osDFv8RZ4OLA0UiAL8JMnqJRpeiEGwbNx5kVr_lAoF-NxxmyHlLdEKJc6xLRNuOkK9BJeWu1WXTGJbVDGanO1dPw9deVP9wwfLOl01wqNE0b2qZNSyl0");'>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl -z-10"></div>
+<div class="absolute top-10 -right-10 w-40 h-40 bg-orange-200/40 rounded-full blur-3xl -z-10"></div>
+</div>
+<div class="w-full lg:w-1/2 flex flex-col gap-8 order-1 lg:order-2">
+<div class="flex flex-col gap-4">
+<span class="text-primary font-bold tracking-wider uppercase text-sm">Tại sao chọn MomCare?</span>
+<h2 class="text-4xl font-black text-[#181411] leading-tight">Yên tâm trao gửi niềm tin</h2>
+<p class="text-gray-600 leading-relaxed">
+                            Chúng tôi hiểu rằng, sức khỏe của mẹ và bé là điều quan trọng nhất. MomCare cam kết mang đến dịch vụ tận tâm và chuyên nghiệp nhất.
+                        </p>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex gap-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">medical_services</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-lg font-bold text-[#181411]">Quy trình chuẩn Y khoa</h4>
+<p class="text-sm text-gray-500">Mọi liệu trình đều được xây dựng và giám sát bởi các bác sĩ sản nhi hàng đầu.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">diversity_1</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-lg font-bold text-[#181411]">Đội ngũ 100% điều dưỡng, nữ hộ sinh</h4>
+<p class="text-sm text-gray-500">Nhân viên được đào tạo bài bản, có chứng chỉ hành nghề và kinh nghiệm chăm sóc thực tế.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl">home_health</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-lg font-bold text-[#181411]">Chăm sóc tận nhà tiện lợi</h4>
+<p class="text-sm text-gray-500">Mẹ không cần đi xa, chúng tôi mang dịch vụ spa 5 sao đến ngay tại phòng ngủ của mẹ.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-20 bg-orange-50/50" id="testimonials">
+<div class="max-w-[1200px] mx-auto px-4 md:px-10 flex flex-col items-center gap-12">
+<div class="text-center max-w-2xl flex flex-col gap-3">
+<span class="text-primary font-bold tracking-wider uppercase text-sm">Đánh giá từ khách hàng</span>
+<h2 class="text-3xl md:text-4xl font-bold text-[#181411]">Mẹ nói gì về MomCare?</h2>
+<p class="text-gray-600">Sự hài lòng của mẹ và bé là động lực lớn nhất của chúng tôi.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+<!-- Testimonial 1 -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-orange-100 flex flex-col gap-6">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+</div>
+<p class="text-[#181411] italic leading-relaxed">"Các cô y tá rất nhẹ nhàng và yêu trẻ. Bé nhà mình trộm vía ngủ rất ngoan sau khi được cô tắm và massage. Mình cũng đỡ đau lưng hẳn."</p>
+<div class="flex items-center gap-4 mt-auto">
+<div class="size-12 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of a smiling mother" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXCV1pnKYhmyIaUCW7EwMfcHtHNEAWJksczDP6OmAgEz9EnGE9t2-NrpUOzBhQa7ahpd-DfRHItuLakGbdNDVBRN0AWwSskTgACYFkM_kAKtW7sMEbg8Oxoj6kiw_eg1lbSV2WZafs4lj_Q1L7CB2TyDJmQOuXNYZ5db8Pn2g1vIoyq2qsPzhLX33ER1akDTwgrD7d_9ZzxVzQ_LY5GcANbzMAzuHPqWxJRVxtcxzJ39aFIeBtbz7FMBlmptRtsZxYVpBuq-s5iCI");'></div>
+<div>
+<p class="font-bold text-sm">Mẹ Lan Anh</p>
+<p class="text-xs text-gray-500">Quận 7, TP.HCM</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-orange-100 flex flex-col gap-6">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+</div>
+<p class="text-[#181411] italic leading-relaxed">"Dịch vụ chăm sóc sau sinh rất tuyệt vời. Mình bị tắc tia sữa, may nhờ có MomCare hỗ trợ kịp thời. Cảm ơn đội ngũ rất nhiều!"</p>
+<div class="flex items-center gap-4 mt-auto">
+<div class="size-12 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of a happy customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA58pIB8GcxuyqgAGxk0mKmQkW0QyQhy7UxxkryGiQN2yn9KTV_JmfjlmsXAIBxR5ZVMm3gdxoeXP5kXYGHsJZX5PavhZJlYAJ8aCXmfBlrC8Q0KD7_wQNZck96SXpahTtUR0t7sU1zN4zsRIn2qTRyicvFpx60cx_xVAoYL-_5c67CgGtbbELomGMNTWQUnu8FPlsTj1Ha5pKxMgWteulrub4A1-GMD3pz4V8iNKRNbC2XaWokXF_mOS0gILkcBKszDbEnQkNqF2Y");'></div>
+<div>
+<p class="font-bold text-sm">Mẹ Thu Hà</p>
+<p class="text-xs text-gray-500">Cầu Giấy, Hà Nội</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-orange-100 flex flex-col gap-6">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+</div>
+<p class="text-[#181411] italic leading-relaxed">"Mình dùng gói combo bầu và sau sinh. Giá cả hợp lý so với chất lượng phục vụ. Các bạn CSKH cũng rất nhiệt tình."</p>
+<div class="flex items-center gap-4 mt-auto">
+<div class="size-12 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of a customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDPo-67crOsbe79xrVc-7R4_6o-InOOciuB0Kav_W-l-CApsFvHd0ROTNmVxIX0BnO36tZPTtM4kX1jY0UcNT_F2O8gtECjGQlLtGDa0m3QVmeewzf1mKcmEEJgkYf3WWuGjz94ngMYj8B21u-0Lai9U3BOCWaaEOBN48GRPCuRnRZy6FAmA6oj2qeH4ANh5cnE5vJxBgM1X6wFT1Non2g8J5TisYtuBhkW0BpwG_kU-EBEOSiDtCx6GYsnKk8DMJCQ4WuA4j8xhH8");'></div>
+<div>
+<p class="font-bold text-sm">Mẹ Minh Trang</p>
+<p class="text-xs text-gray-500">Thủ Đức, TP.HCM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="py-10 px-4 md:px-10 max-w-[1200px] mx-auto">
+<div class="bg-primary rounded-3xl p-8 md:p-16 text-center text-white flex flex-col items-center gap-6 relative overflow-hidden">
+<!-- Background pattern -->
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(circle, #ffffff 10%, transparent 10%); background-size: 20px 20px;"></div>
+<h2 class="text-3xl md:text-5xl font-black z-10">Mẹ đã sẵn sàng cho hành trình tuyệt vời này?</h2>
+<p class="text-white/90 text-lg max-w-2xl z-10">Để lại thông tin để được chuyên gia của chúng tôi tư vấn liệu trình phù hợp nhất cho Mẹ và Bé.</p>
+<div class="flex flex-col sm:flex-row gap-4 w-full max-w-md z-10">
+<input class="flex-1 h-12 rounded-xl px-4 text-[#181411] border-none focus:ring-2 focus:ring-white/50 outline-none" placeholder="Số điện thoại của mẹ..." type="text"/>
+<button class="h-12 px-8 bg-[#181411] text-white font-bold rounded-xl hover:bg-black transition-colors">Gửi ngay</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white border-t border-[#f4f2f0] pt-16 pb-8">
+<div class="max-w-[1200px] mx-auto px-4 md:px-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-[#181411]">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.84 0-16-7.16-16-16S15.16 8 24 8s16 7.16 16 16-7.16 16-16 16zm-2-26h4v12h-4zm0 16h4v4h-4z"></path></svg> <!-- Placeholder for logo icon if needed simpler -->
+</div>
+<h2 class="text-xl font-bold">MomCare</h2>
+</div>
+<p class="text-sm text-gray-500 leading-relaxed">
+                        Hệ thống chăm sóc sức khỏe Mẹ và Bé hàng đầu, mang đến sự an tâm và hạnh phúc cho mọi gia đình Việt.
+                    </p>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-primary" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-gray-400 hover:text-primary" href="#"><span class="material-symbols-outlined">call</span></a>
+<a class="text-gray-400 hover:text-primary" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-bold text-[#181411]">Dịch vụ</h4>
+<ul class="flex flex-col gap-2 text-sm text-gray-500">
+<li><a class="hover:text-primary" href="#">Chăm sóc bầu</a></li>
+<li><a class="hover:text-primary" href="#">Chăm sóc sau sinh</a></li>
+<li><a class="hover:text-primary" href="#">Tắm bé &amp; Massage</a></li>
+<li><a class="hover:text-primary" href="#">Thông tắc tia sữa</a></li>
+</ul>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-bold text-[#181411]">Công ty</h4>
+<ul class="flex flex-col gap-2 text-sm text-gray-500">
+<li><a class="hover:text-primary" href="#">Về chúng tôi</a></li>
+<li><a class="hover:text-primary" href="#">Đội ngũ chuyên gia</a></li>
+<li><a class="hover:text-primary" href="#">Tin tức &amp; Blog</a></li>
+<li><a class="hover:text-primary" href="{{ url_for('routes.contact_page') }}">Liên hệ</a></li>
+</ul>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-bold text-[#181411]">Liên hệ</h4>
+<ul class="flex flex-col gap-3 text-sm text-gray-500">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">location_on</span>
+<span>123 Đường Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">phone</span>
+<span>1900 1234 56</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">schedule</span>
+<span>08:00 - 20:00 (Thứ 2 - CN)</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-[#f4f2f0] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-400">© 2023 MomCare. All rights reserved.</p>
+<div class="flex gap-6 text-sm text-gray-400">
+<a class="hover:text-primary" href="#">Điều khoản sử dụng</a>
+<a class="hover:text-primary" href="#">Chính sách bảo mật</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Floating Action Button -->
+<a class="fixed bottom-6 right-6 z-50 bg-primary text-white p-4 rounded-full shadow-xl hover:bg-orange-600 transition-all hover:scale-110 flex items-center justify-center group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:hidden">chat</span>
+<span class="hidden group-hover:block font-bold text-sm whitespace-nowrap px-2">Chat ngay</span>
+</a>
+</body></html>

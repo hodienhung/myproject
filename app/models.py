@@ -8,23 +8,36 @@ class Booking(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    parent_name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
+    parent_name = db.Column(db.String(100), nullable=False)  # Tên mẹ/khách hàng
+    email = db.Column(db.String(120))                        # Email tùy chọn
     phone = db.Column(db.String(20), nullable=False)
-    address = db.Column(db.String(200), nullable=False)  # Đảm bảo NOT NULL
-
-    child_name = db.Column(db.String(100), nullable=False)
-    child_age = db.Column(db.Integer)
+    address = db.Column(db.String(200))                      # Địa chỉ nếu có
 
     service_type = db.Column(db.String(100), nullable=False)
-    services_selected = db.Column(db.Text)
+    services_selected = db.Column(db.Text)                  # Dịch vụ chi tiết nếu cần
 
     start_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
 
-    notes = db.Column(db.Text)
+    notes = db.Column(db.Text)                              # Ghi chú từ form
 
-    deposit_amount = db.Column(db.Integer, default=200000)  # Lưu số tiền người dùng nhập
+    deposit_amount = db.Column(db.Integer, default=200000)  # Số tiền cọc
     deposit_checked = db.Column(db.Boolean, default=False)
 
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+class Advisory(db.Model):
+    __tablename__ = "advisory"
+
+    id = db.Column(db.Integer, primary_key=True)
+    mother_name = db.Column(db.String(255), nullable=False)
+    phone = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(255))
+    note = db.Column(db.Text)
+    service = db.Column(db.String(100))
+    date = db.Column(db.Date)
+    time = db.Column(db.String(10))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<Advisory {self.id} - {self.mother_name}>"
