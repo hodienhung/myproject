@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đặt lịch Tư vấn - MomCare</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee7c2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                        "card-dark": "#2c2016",
+                        "text-dark": "#eaddd5",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Hide scrollbar for clean horizontal scroll if needed */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#181411] dark:text-[#f4f2f0] antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-[#1a1410] border-b border-[#f4f2f0] dark:border-[#3a2d25]">
+<div class="max-w-7xl mx-auto px-4 lg:px-8">
+<div class="flex items-center justify-between h-16 md:h-20">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<div class="size-8 md:size-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">spa</span>
+</div>
+<h2 class="text-xl md:text-2xl font-bold tracking-tight text-[#181411] dark:text-white">MomCare</h2>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Trang chủ</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors text-primary" href="#">Dịch vụ</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Chuyên gia</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Góc chia sẻ</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden md:flex h-10 px-5 items-center justify-center rounded-xl bg-primary hover:bg-orange-600 text-white text-sm font-bold transition-colors shadow-sm shadow-orange-200 dark:shadow-none">
+<span>Liên hệ hỗ trợ</span>
+</button>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-[#181411] dark:text-white">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 lg:px-8 py-8 md:py-12">
+<div class="flex flex-col lg:flex-row gap-8 xl:gap-12">
+<!-- Left Column: Booking Form -->
+<div class="flex-1 flex flex-col gap-10">
+<!-- Page Heading -->
+<div class="flex flex-col gap-3">
+<h1 class="text-3xl md:text-4xl lg:text-[40px] font-black leading-tight tracking-tight text-[#181411] dark:text-white">
+                        Đặt lịch Tư vấn Chuyên gia
+                    </h1>
+<p class="text-lg text-[#897261] dark:text-[#a89688]">
+                        Chúng tôi ở đây để lắng nghe và đồng hành cùng mẹ và bé.
+                    </p>
+</div>
+<!-- Step 1: Services -->
+<form method="POST" action="/advisory" class="flex flex-col gap-12">
+<input type="hidden" name="selected_datetime" id="selected_datetime">
+  <!-- Step 1: Services -->
+  <section class="flex flex-col gap-5">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center justify-center size-8 rounded-full bg-primary text-white font-bold text-sm">1</div>
+      <h2 class="text-2xl font-bold text-[#181411] dark:text-white">Chọn chủ đề tư vấn</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Card 1 -->
+      <label class="cursor-pointer block">
+        <input class="peer sr-only" type="radio" name="service" value="Dinh dưỡng thai kỳ"/>
+        <div class="flex flex-col gap-4 rounded-xl border border-[#e6e0db] dark:border-[#3a2d25]
+          bg-white dark:bg-card-dark p-5 transition-all duration-200
+          peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/10 peer-checked:shadow-md
+          hover:border-primary/50 hover:shadow-md">
+          <div class="flex items-center justify-between">
+            <div class="size-12 rounded-full bg-[#f4f2f0] dark:bg-[#3a2d25] flex items-center justify-center text-[#181411] dark:text-white">
+              <span class="material-symbols-outlined text-2xl">nutrition</span>
+            </div>
+            <span class="material-symbols-outlined text-primary text-2xl opacity-0 transition-opacity peer-checked:opacity-100">
+              check_circle
+            </span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h3 class="font-bold text-lg dark:text-white">Dinh dưỡng thai kỳ</h3>
+            <p class="text-sm text-[#897261] dark:text-[#a89688]">Tư vấn chế độ ăn uống lành mạnh</p>
+          </div>
+        </div>
+      </label>
+
+      <!-- Card 2 -->
+      <label class="cursor-pointer block">
+        <input class="peer sr-only" type="radio" name="service" value="Chăm sóc trẻ sơ sinh"/>
+        <div class="flex flex-col gap-4 rounded-xl border border-[#e6e0db] dark:border-[#3a2d25]
+          bg-white dark:bg-card-dark p-5 transition-all duration-200
+          peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/10 peer-checked:shadow-md
+          hover:border-primary/50 hover:shadow-md">
+          <div class="flex items-center justify-between">
+            <div class="size-12 rounded-full bg-[#f4f2f0] dark:bg-[#3a2d25] flex items-center justify-center text-[#181411] dark:text-white">
+              <span class="material-symbols-outlined text-2xl">child_care</span>
+            </div>
+            <span class="material-symbols-outlined text-primary text-2xl opacity-0 transition-opacity peer-checked:opacity-100">
+              check_circle
+            </span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h3 class="font-bold text-lg dark:text-white">Chăm sóc trẻ sơ sinh</h3>
+            <p class="text-sm text-[#897261] dark:text-[#a89688]">Hướng dẫn tắm bé, massage</p>
+          </div>
+        </div>
+      </label>
+
+      <!-- Card 3 -->
+      <label class="cursor-pointer block">
+        <input class="peer sr-only" type="radio" name="service" value="Tâm lý sau sinh"/>
+        <div class="flex flex-col gap-4 rounded-xl border border-[#e6e0db] dark:border-[#3a2d25]
+          bg-white dark:bg-card-dark p-5 transition-all duration-200
+          peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/10 peer-checked:shadow-md
+          hover:border-primary/50 hover:shadow-md">
+          <div class="flex items-center justify-between">
+            <div class="size-12 rounded-full bg-[#f4f2f0] dark:bg-[#3a2d25] flex items-center justify-center text-[#181411] dark:text-white">
+              <span class="material-symbols-outlined text-2xl">psychology</span>
+            </div>
+            <span class="material-symbols-outlined text-primary text-2xl opacity-0 transition-opacity peer-checked:opacity-100">
+              check_circle
+            </span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h3 class="font-bold text-lg dark:text-white">Tâm lý sau sinh</h3>
+            <p class="text-sm text-[#897261] dark:text-[#a89688]">Hỗ trợ cân bằng cảm xúc</p>
+          </div>
+        </div>
+      </label>
+    </div>
+  </section>
+
+  <!-- Step 2: Time selection -->
+  <section class="flex flex-col gap-5">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center justify-center size-8 rounded-full bg-primary text-white font-bold text-sm">2</div>
+      <h2 class="text-2xl font-bold text-[#181411] dark:text-white">Chọn thời gian</h2>
+    </div>
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Calendar -->
+      <div class="flex-1 rounded-2xl border border-[#e6e0db] dark:border-[#3a2d25] bg-white dark:bg-card-dark p-6 shadow-sm">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+          <button type="button" id="prev-month"
+            class="size-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#3a2d25]">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <p id="calendar-title" class="text-lg font-bold text-[#181411] dark:text-white"></p>
+          <button type="button" id="next-month"
+            class="size-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#3a2d25]">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+        <!-- Week -->
+        <div class="grid grid-cols-7 mb-2">
+          <span class="text-center text-xs font-bold text-[#897261] py-2">CN</span>
+          <span class="text-center text-xs font-bold text-[#897261] py-2">T2</span>
+          <span class="text-center text-xs font-bold text-[#897261] py-2">T3</span>
+          <span class="text-center text-xs font-bold text-[#897261] py-2">T4</span>
+          <span class="text-center text-xs font-bold text-[#897261] py-2">T5</span>
+          <span class="text-center text-xs font-bold text-[#897261] py-2">T6</span>
+          <span class="text-center text-xs font-bold text-[#897261] py-2">T7</span>
+        </div>
+        <!-- Days (JS render) -->
+        <div id="calendar-days" class="grid grid-cols-7 gap-2"></div>
+      </div>
+
+      <!-- Time slots -->
+      <div class="flex-1 flex flex-col gap-4">
+        <h3 id="selected-date" class="font-bold px-1 text-[#181411] dark:text-white">
+          Giờ trống ngày --
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <label class="cursor-pointer">
+            <input class="peer sr-only" type="radio" name="time" value="06:30">
+            <div class="py-3 rounded-lg text-center border transition-all
+              hover:border-primary
+              peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+              06:30
+            </div>
+          </label>
+                  <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time">
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            07:00
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time">
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            07:30
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time">
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            08:00
+          </div>
+        </label>
+
+        <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time" checked>
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            09:30
+          </div>
+        </label>
+
+        <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time">
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            10:30
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time">
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            11:00
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time">
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            11:30
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input class="peer sr-only" type="radio" name="time">
+          <div class="py-3 rounded-lg text-center border transition-all
+            hover:border-primary
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:border-primary peer-checked:shadow-md">
+            12:00
+          </div>
+        </label>
+        </div>
+        <div class="mt-2 p-4 bg-orange-50 rounded-lg flex gap-3 items-start border border-orange-100">
+          <span class="material-symbols-outlined text-primary">info</span>
+          <p class="text-sm text-[#897261]">
+            Thời gian tư vấn kéo dài 45 phút. Vui lòng đến trước 10 phút để chuẩn bị.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 3: Contact Info -->
+  <section class="flex flex-col gap-5">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center justify-center size-8 rounded-full bg-primary text-white font-bold text-sm">3</div>
+      <h2 class="text-2xl font-bold text-[#181411] dark:text-white">Thông tin của mẹ</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-2xl bg-white dark:bg-card-dark border border-[#e6e0db] dark:border-[#3a2d25] shadow-sm">
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-bold">Họ và tên</label>
+        <input name="mother_name" required class="w-full h-12 rounded-xl border px-4" placeholder="Nhập tên của mẹ" type="text">
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-bold">Số điện thoại</label>
+        <input name="phone" required class="w-full h-12 rounded-xl border px-4" placeholder="Nhập số điện thoại" type="tel">
+      </div>
+      <div class="flex flex-col gap-2 md:col-span-2">
+        <label class="text-sm font-bold">Email (Tùy chọn)</label>
+        <input name="email" class="w-full h-12 rounded-xl border px-4" placeholder="Nhập email" type="email">
+      </div>
+      <div class="flex flex-col gap-2 md:col-span-2">
+        <label class="text-sm font-bold">Ghi chú cho chuyên gia</label>
+        <textarea name="note" class="w-full min-h-[100px] rounded-xl border p-4 resize-none" placeholder="Mẹ có câu hỏi gì trước buổi tư vấn không?"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <button type="submit" class="mt-6 w-full h-12 bg-primary text-white rounded-xl font-bold">
+    Xác nhận đặt lịch
+  </button>
+
+</form>
+
+
+</div>
+<!-- Right Column: Sidebar & Summary -->
+<div class="lg:w-[360px] flex flex-col gap-6">
+<!-- Visual Card -->
+<div class="relative overflow-hidden rounded-3xl h-64 md:h-80 lg:h-64 shadow-lg group">
+<img alt="Mother holding newborn baby gently in warm sunlight" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A gentle, warm-toned photograph of a mother holding her newborn baby, conveying trust and care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlqh2grXel98W2yh0xX5Bg2jCvRbXn1PsN8vVOT_LNw8Hdyv9nQQdddamkBjVue6eZFwrkctbuxP-ZjybKAuVGTE79K8fA2PDhA-Z2_WVe3uIZgeOR8cklMbv5w3uzcNdDgGiAS8igKQqi0wycAvEAh0j-uH0HJlpvYaFySLqQpd9G23DWyUdRidyZBwl5y9yoxi5WFTDnAy-TElqSYnM6DKGssFXVh3L40LAY1IfKD53E-hDoJrKKaHAweY-WYO2F1_lBSLTS_aY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<p class="text-white font-bold text-lg leading-tight">"Hạnh phúc của mẹ là niềm vui của chúng tôi"</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="flex -space-x-2">
+<img alt="User avatar" class="size-6 rounded-full border border-white" data-alt="Avatar of a happy mom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnR-4FrSzZfJiLrMNcejsgfxPiQVbCRFM_ImDAwpSYYSiRKtEa4wR4xcFpd2Q7xkaKhQQZs3NbwcVIbKcJdB9Mx-3KawBcylmtsnfmrG_Ze7s65BEqoDkaf17aEFAfDE0KR9sup9ymvpblz7nrBnJf94NuK_dL4umQB4L_fwoG7XzDk3jMx8ZNqwEoMa5lFfC9iGf0ezouTAvdjteJ3Z9STXrZzTczBd1TzqMC2PzXxZKeWKZtCk6Jr0MD_nKbnfDvlVe5vH-a2Eo"/>
+<img alt="User avatar" class="size-6 rounded-full border border-white" data-alt="Avatar of a happy mom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQSCFVTbPtOORDTikldA5BhDGcEQ2bsZqeiFNBmRUY_nELu6JmWEBXosuBFIhgTR2QHu2EoTpJV334qkchHnIFofDxhuQyGzpM_kqeG39g-Vc5fBYfGlT0X_oNqqP1HsZ96cSJm8_LccEeHLUYFLPDKJjeMLsOU_c-EO4_VVf03ybK9WOOgpiYCjbn0IG7DvZHYbCnr4R6cgnGngIIsF-tMwdjFq55fU7Vh9Ic4ErvVkGTnFVuWGekPNLDrp3LRoVXpcOvoNM8K18"/>
+<img alt="User avatar" class="size-6 rounded-full border border-white" data-alt="Avatar of a happy mom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBmA020nbJ7h96Dr8EF8oga02jARZ6NvgHpHA0RPuvb3hKdAtwSovPMkHDH58SakaHlblUAGxzCF87jCpFvgPm04mkgevPM6ZvUhCCvl-7odO5A4H0mJXr_mlDhSLsOGHfnXMPp-HuYcLocYM0Ayt8NXy_9OXjnlwUwD5GtOVnwxUX-AyoDxKDxII2rxrBLze0j0V2uySHzjKHJDD855g1FAed4eVXwprmCKuzIow4LNzbTbmHnTxQ5S3wWHdrjIS4LBA-vK2ZJo8"/>
+</div>
+<span class="text-white/90 text-xs font-medium">+1k mẹ tin dùng</span>
+</div>
+</div>
+</div>
+<!-- Booking Summary Sticky -->
+<div class="sticky top-24 bg-white dark:bg-card-dark rounded-2xl border border-[#e6e0db] dark:border-[#3a2d25] p-6 shadow-xl shadow-orange-900/5">
+<h3 class="text-xl font-black text-[#181411] dark:text-white mb-4">Thông tin đặt lịch</h3>
+<div class="flex flex-col gap-4 mb-6">
+<div class="flex items-start gap-3">
+<div class="size-8 rounded-lg bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-lg">nutrition</span>
+</div>
+<div>
+<p class="text-xs text-[#897261] dark:text-[#a89688] font-semibold uppercase tracking-wide">Dịch vụ</p>
+<p class="text-[#181411] dark:text-white font-bold">Dinh dưỡng thai kỳ</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="size-8 rounded-lg bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-lg">calendar_month</span>
+</div>
+<div>
+<p class="text-xs text-[#897261] dark:text-[#a89688] font-semibold uppercase tracking-wide">Thời gian</p>
+<p class="text-[#181411] dark:text-white font-bold">09:30 - Thứ 5, 05/10/2023</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="size-8 rounded-lg bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-lg">stethoscope</span>
+</div>
+<div>
+<p class="text-xs text-[#897261] dark:text-[#a89688] font-semibold uppercase tracking-wide">Chuyên gia</p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="Expert Avatar" class="size-6 rounded-full object-cover" data-alt="Portrait of Doctor Sarah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBnmwgMX2rW_xXzNA23ZH8jgsIrS3MTxbZHNqkxnT2aMHo0ugxe4_srmNoRinH2ih41wBDA5iAMMXx7N7-n7ZdWT5Qdh6Rh1jHvg-bk9Zm0lvcJQAQviEwd8BTxBJnEVWJNokTMTC1BMtGHao68LL_h_ScuCkQj2OMdXDNNofQOSvctNFXOAu_hJdzQ9CChXgU2uiHVeIoNz7LtctL1TlWKounR8SinuZ8ZtvwrRQ4RpTjLPrH25UCSaFNxoh51BypyD-ukI9DlFM"/>
+<p class="text-[#181411] dark:text-white font-bold text-sm">BS. Nguyễn Thị Lan</p>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-[#f4f2f0] dark:border-[#3a2d25] my-4"></div>
+<div class="flex justify-between items-center mb-6">
+<span class="text-[#897261] dark:text-[#a89688]">Phí tư vấn</span>
+<span class="text-xl font-black text-primary">500.000đ</span>
+</div>
+<button class="w-full h-12 flex items-center justify-center rounded-xl bg-primary hover:bg-orange-600 text-white font-bold text-base transition-all shadow-lg shadow-orange-200 dark:shadow-none transform active:scale-[0.98]">
+                        Xác nhận đặt lịch
+                    </button>
+<p class="text-center text-xs text-[#897261] dark:text-[#a89688] mt-3">
+                        Bạn sẽ nhận được email xác nhận ngay lập tức.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-[#1a1410] border-t border-[#f4f2f0] dark:border-[#3a2d25] py-12">
+<div class="max-w-7xl mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">spa</span>
+</div>
+<span class="text-xl font-bold text-[#181411] dark:text-white">MomCare</span>
+</div>
+<div class="flex gap-6">
+<a class="text-[#897261] hover:text-primary transition-colors" href="#">Điều khoản</a>
+<a class="text-[#897261] hover:text-primary transition-colors" href="#">Chính sách bảo mật</a>
+<a class="text-[#897261] hover:text-primary transition-colors" href="#">Trợ giúp</a>
+</div>
+<p class="text-sm text-[#897261]">© 2023 MomCare. All rights reserved.</p>
+</div>
+</footer>
+<script>
+  const calendarDays = document.getElementById("calendar-days");
+  const title = document.getElementById("selected-date");
+  const calendarTitle = document.getElementById("calendar-title");
+
+  let today = new Date();
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
+
+  function renderCalendar(month, year) {
+    calendarDays.innerHTML = "";
+    calendarTitle.textContent = `Tháng ${month + 1} ${year}`;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Blank days
+    for (let i = 0; i < firstDay; i++) {
+      calendarDays.innerHTML += `<span></span>`;
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateObj = new Date(year, month, day);
+      const isPast =
+        dateObj < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+      const fullDate = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+      calendarDays.innerHTML += `
+        <label class="flex justify-center ${isPast ? "opacity-30 pointer-events-none" : "cursor-pointer"}">
+          <input type="radio" name="date" class="peer sr-only" value="${fullDate}">
+          <div class="size-10 flex items-center justify-center rounded-full text-sm font-medium
+            transition-all
+            hover:bg-gray-100 dark:hover:bg-[#3a2d25]
+            peer-checked:bg-primary peer-checked:text-white peer-checked:font-bold peer-checked:shadow-md">
+            ${day}
+          </div>
+        </label>
+      `;
+    }
+
+    document.querySelectorAll('input[name="date"]').forEach(input => {
+  input.addEventListener("change", () => {
+    const d = new Date(input.value);
+    title.textContent =
+      `Giờ trống ngày ${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+    updateSelectedDatetime(); // Cập nhật hidden input
+  });
+});
+
+  }
+
+  document.getElementById("prev-month").onclick = () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar(currentMonth, currentYear);
+  };
+
+  document.getElementById("next-month").onclick = () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar(currentMonth, currentYear);
+  };
+
+  renderCalendar(currentMonth, currentYear);
+  function updateSelectedDatetime() {
+  const dateInput = document.querySelector('input[name="date"]:checked');
+  const timeInput = document.querySelector('input[name="time"]:checked');
+  if (dateInput && timeInput) {
+    const datetimeStr = dateInput.value + " " + timeInput.value;
+    document.getElementById("selected_datetime").value = datetimeStr;
+  }
+}
+
+// Khi user chọn date
+document.querySelectorAll('input[name="date"]').forEach(input => {
+  input.addEventListener("change", updateSelectedDatetime);
+});
+
+// Khi user chọn time
+document.querySelectorAll('input[name="time"]').forEach(input => {
+  input.addEventListener("change", updateSelectedDatetime);
+});
+
+</script>
+
+
+</body></html>
