@@ -9,13 +9,6 @@ import time
 
 routes = Blueprint('routes', __name__)
 
-# ==========================
-# TRANG CHỦ
-# ==========================
-@routes.route('/')
-def index():
-    return render_template('index.html')
-
 
 # ==========================
 # HÀM PARSE DATE/DATETIME
@@ -188,6 +181,9 @@ def advisory():
 # ==========================
 # ROUTE TRANG GET
 # ==========================
+@routes.route('/')
+def index():
+    return render_template('index.html')
 @routes.route('/booking', methods=['GET'])
 def booking_page():
     return render_template('booking.html')
@@ -201,3 +197,15 @@ def contact_page():
 @routes.route('/advisory', methods=['GET'])
 def advisory_page():
     return render_template('advisory.html')
+
+@routes.route('/learnes', methods=['GET'])
+def learnes_page():
+    return render_template('learnes.html')
+
+@routes.route('/services', methods=['GET'])
+def services_page():
+    return render_template('services.html')
+
+@routes.route('/register-course', methods=['GET'])
+def register_course_page():
+    return render_template('register-course.html')

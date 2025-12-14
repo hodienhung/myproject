@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MomCare - Đăng ký Khóa học</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee7c2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-white font-display min-h-screen flex flex-col">
+<div class="w-full px-4 md:px-10 lg:px-40 pt-8 pb-4">
+<div class="max-w-[1000px] mx-auto w-full">
+<a class="inline-flex items-center gap-2 text-[#897261] hover:text-primary transition-colors font-medium" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+ <a href="{{ url_for('routes.services_page')}}"><span>Quay lại danh sách khóa học</span></a>
+</a>
+</div>
+</div>
+<div class="flex-1 w-full px-4 md:px-10 lg:px-40 pb-20">
+<div class="max-w-[1000px] mx-auto bg-white dark:bg-[#2c241b] rounded-3xl shadow-lg border border-[#f4f2f0] dark:border-[#3a2e26] overflow-hidden flex flex-col lg:flex-row">
+<div class="w-full lg:w-3/5 p-8 md:p-12">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">edit_document</span>
+</div>
+<h1 class="text-3xl font-bold text-[#181411] dark:text-white">Đăng ký khóa học</h1>
+</div>
+<form class="space-y-6">
+<div class="space-y-4">
+<h3 class="text-lg font-bold text-[#181411] dark:text-white border-b border-[#f4f2f0] dark:border-[#3a2e26] pb-2">Thông tin cá nhân</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#181411] dark:text-[#d0d0d0]">Họ và tên <span class="text-red-500">*</span></label>
+<input class="w-full rounded-xl border border-[#e6e0db] dark:border-[#3a2e26] bg-[#f8f7f6] dark:bg-[#1a120b] px-4 py-3 text-sm focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Nhập họ tên của bạn" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#181411] dark:text-[#d0d0d0]">Số điện thoại <span class="text-red-500">*</span></label>
+<input class="w-full rounded-xl border border-[#e6e0db] dark:border-[#3a2e26] bg-[#f8f7f6] dark:bg-[#1a120b] px-4 py-3 text-sm focus:ring-primary focus:border-primary outline-none transition-all" placeholder="09xxxxxxxx" type="tel"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#181411] dark:text-[#d0d0d0]">Email <span class="text-red-500">*</span></label>
+<input class="w-full rounded-xl border border-[#e6e0db] dark:border-[#3a2e26] bg-[#f8f7f6] dark:bg-[#1a120b] px-4 py-3 text-sm focus:ring-primary focus:border-primary outline-none transition-all" placeholder="example@email.com" type="email"/>
+</div>
+</div>
+<div class="space-y-4 pt-4">
+<h3 class="text-lg font-bold text-[#181411] dark:text-white border-b border-[#f4f2f0] dark:border-[#3a2e26] pb-2">Thông tin khóa học</h3>
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#181411] dark:text-[#d0d0d0]">Chọn khóa học</label>
+<select class="w-full rounded-xl border border-[#e6e0db] dark:border-[#3a2e26] bg-[#f8f7f6] dark:bg-[#1a120b] px-4 py-3 text-sm focus:ring-primary focus:border-primary outline-none transition-all">
+<option disabled="" selected="" value="">Vui lòng chọn khóa học</option>
+<option value="yoga">Yoga bầu: Khỏe mạnh suốt thai kỳ (Online)</option>
+<option value="massage">Workshop: Massage cho bé yêu (Offline)</option>
+<option value="nutrition">Dinh dưỡng thai kỳ chuẩn khoa học (Online)</option>
+<option value="breastfeeding">Kích sữa và nuôi con sữa mẹ (Online)</option>
+<option value="thaigiao">Thai giáo âm nhạc &amp; cảm xúc (Online)</option>
+<option value="weaning">Thực hành ăn dặm BLW (Offline)</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#181411] dark:text-[#d0d0d0]">Ghi chú thêm</label>
+<textarea class="w-full rounded-xl border border-[#e6e0db] dark:border-[#3a2e26] bg-[#f8f7f6] dark:bg-[#1a120b] px-4 py-3 text-sm focus:ring-primary focus:border-primary outline-none transition-all resize-none" placeholder="Bạn có yêu cầu đặc biệt gì không?" rows="3"></textarea>
+</div>
+</div>
+<div class="space-y-4 pt-4">
+<h3 class="text-lg font-bold text-[#181411] dark:text-white border-b border-[#f4f2f0] dark:border-[#3a2e26] pb-2">Phương thức thanh toán</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="payment" type="radio"/>
+<div class="flex items-center gap-3 p-4 rounded-xl border border-[#e6e0db] dark:border-[#3a2e26] bg-white dark:bg-[#1a120b] peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#181411] dark:text-white">Chuyển khoản</span>
+<span class="text-xs text-[#897261]">Internet Banking/QR Code</span>
+</div>
+</div>
+<div class="absolute top-4 right-4 hidden peer-checked:block text-primary">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="payment" type="radio"/>
+<div class="flex items-center gap-3 p-4 rounded-xl border border-[#e6e0db] dark:border-[#3a2e26] bg-white dark:bg-[#1a120b] peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#181411] dark:text-white">Thẻ tín dụng</span>
+<span class="text-xs text-[#897261]">Visa/Mastercard/JCB</span>
+</div>
+</div>
+<div class="absolute top-4 right-4 hidden peer-checked:block text-primary">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+</label>
+</div>
+</div>
+<div class="pt-6">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/30 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2" type="button">
+<span>Xác nhận đăng ký</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-[#897261] mt-4">
+                        Bằng việc đăng ký, bạn đồng ý với <a class="text-primary hover:underline" href="#">Điều khoản sử dụng</a> và <a class="text-primary hover:underline" href="#">Chính sách bảo mật</a> của chúng tôi.
+                    </p>
+</div>
+</form>
+</div>
+<div class="w-full lg:w-2/5 bg-[#fff8f3] dark:bg-[#1a120b] border-l border-[#f4f2f0] dark:border-[#3a2e26] p-8 md:p-12 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
+<div class="relative z-10">
+<h3 class="text-xl font-bold text-[#181411] dark:text-white mb-6">Tại sao chọn MomCare?</h3>
+<ul class="space-y-5">
+<li class="flex gap-4 items-start">
+<div class="min-w-8 h-8 rounded-full bg-white dark:bg-[#2c241b] flex items-center justify-center text-primary shadow-sm border border-primary/10 mt-1">
+<span class="material-symbols-outlined text-lg">school</span>
+</div>
+<div>
+<h4 class="font-bold text-[#181411] dark:text-white text-sm">Chuyên gia hàng đầu</h4>
+<p class="text-sm text-[#897261] mt-1">Đội ngũ bác sĩ, chuyên gia dinh dưỡng và giáo viên yoga giàu kinh nghiệm.</p>
+</div>
+</li>
+<li class="flex gap-4 items-start">
+<div class="min-w-8 h-8 rounded-full bg-white dark:bg-[#2c241b] flex items-center justify-center text-primary shadow-sm border border-primary/10 mt-1">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+</div>
+<div>
+<h4 class="font-bold text-[#181411] dark:text-white text-sm">Kiến thức chuẩn khoa học</h4>
+<p class="text-sm text-[#897261] mt-1">Nội dung được biên soạn kỹ lưỡng, cập nhật theo các khuyến cáo y khoa mới nhất.</p>
+</div>
+</li>
+<li class="flex gap-4 items-start">
+<div class="min-w-8 h-8 rounded-full bg-white dark:bg-[#2c241b] flex items-center justify-center text-primary shadow-sm border border-primary/10 mt-1">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+</div>
+<div>
+<h4 class="font-bold text-[#181411] dark:text-white text-sm">Hỗ trợ 24/7</h4>
+<p class="text-sm text-[#897261] mt-1">Đội ngũ tư vấn viên luôn sẵn sàng giải đáp mọi thắc mắc của mẹ.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="relative z-10 mt-10">
+<div class="bg-white dark:bg-[#2c241b] p-4 rounded-2xl shadow-sm border border-[#f4f2f0] dark:border-[#3a2e26]">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-[#f4f2f0] dark:bg-[#3a2e26] flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXaoem3NI7wrnJ8ouk9Doon2WH_nZLyk1BZ-0qCSuxaFdAC4BvLHhWwiTTiNz16SUMOC2P3a7z2AA_m402ys1XKUDA2ulEriJbEjDx092ixfU0MTIepKT0acs5kUCj6Knnlx2qFXV9vlyb9QGThYPg5jWHotITtGGRd-CJgTJPFKNbaZ80aToX2julV12OJg-pgMOXkn0EHcaB4R0i7ykSbEJkB5IBjxW-6aYS5RMnQbVMfvw_6ar6BrwPUfmm5tFZaoQGywBeJ3g"/>
+</div>
+<div>
+<p class="text-xs text-[#897261]">Học viên</p>
+<p class="text-sm font-bold text-[#181411] dark:text-white">Minh Anh</p>
+</div>
+<div class="ml-auto flex text-yellow-400 text-xs">
+<span class="material-symbols-outlined text-base fill-current">star</span>
+<span class="material-symbols-outlined text-base fill-current">star</span>
+<span class="material-symbols-outlined text-base fill-current">star</span>
+<span class="material-symbols-outlined text-base fill-current">star</span>
+<span class="material-symbols-outlined text-base fill-current">star</span>
+</div>
+</div>
+<p class="text-sm text-[#897261] italic">"Khóa học thực sự bổ ích! Mình đã tự tin hơn rất nhiều trong việc chăm sóc bé nhờ những kiến thức từ MomCare."</p>
+</div>
+</div>
+<div class="mt-8 rounded-2xl overflow-hidden h-48 relative">
+<img alt="Mom and baby illustration" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPRiV4MctXZ8et-F29BzluhXkn6Bo9rwhaJkylZm-h41WIJxo91rFCMdKAOS-mBieLF62lEZKGdoCgiAiftv0UOn0sCNkIayNGp3SZrYlaV6Iel3cX0NkwWazQMfoZSO7zdHbHNVasOY4kUSbtV4OAFG0vgzyPOoonN9j6JfHvhJ_F1TiPzKbTusxq66FIbWtYAamTtNzZWrWLwL1SLkaDYgLMIKWWZgJY1vOXaznh8k_QqDn9p6zSl57liMmXhMHZcfFFXiJi3QE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-4">
+<p class="text-white font-medium text-sm">Hành trình làm mẹ hạnh phúc hơn</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

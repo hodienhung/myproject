@@ -41,3 +41,17 @@ class Advisory(db.Model):
 
     def __repr__(self):
         return f"<Advisory {self.id} - {self.mother_name}>"
+class CourseRegistration(db.Model):
+    __tablename__ = "course_registration"
+
+    id = db.Column(db.Integer, primary_key=True)
+    fullname = db.Column(db.String(255), nullable=False)
+    phone = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(255))
+    note = db.Column(db.Text)
+    course = db.Column(db.String(255))  # sửa 'coures' -> 'course'
+    payment_method = db.Column(db.String(50))  # sửa 'comlum' -> 'Column' và 'Text' -> 'String(50)'
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<CourseRegistration {self.fullname} - {self.course}>"

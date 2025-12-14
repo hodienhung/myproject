@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MomCare - Khóa học</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee7c2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-white font-display">
+<!-- Navbar -->
+<div class="relative flex w-full flex-col bg-white dark:bg-[#1a120b] border-b border-[#f4f2f0] dark:border-[#3a2e26]">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-0">
+<div class="layout-content-container flex flex-col w-full max-w-[1440px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#181411] dark:text-white">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">child_care</span>
+</div>
+<h2 class="text-[#181411] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">MomCare</h2>
+</div>
+<div class="hidden lg:flex items-center gap-8">
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.index') }}">Trang chủ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.services_page')}}">Dịch vụ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.contact_page') }}">Liên hệ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#why-us">Về chúng tôi</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#testimonials">Đánh giá</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.learnes_page') }}">Khóa học</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#897261] flex border-none bg-[#f4f2f0] dark:bg-[#3a2e26] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181411] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f4f2f0] dark:bg-[#3a2e26] focus:border-none h-full placeholder:text-[#897261] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Tìm kiếm khóa học..." value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Đăng nhập</span>
+</button>
+<button class="lg:hidden text-[#181411] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Section -->
+<div class="relative flex w-full flex-col overflow-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[1440px] flex-1">
+<div class="@container">
+<div class="@[480px]:p-4 p-0">
+<div class="flex min-h-[400px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-start justify-center px-6 py-10 md:px-16 md:py-16 relative overflow-hidden" data-alt="Happy pregnant mother holding belly in sunlight garden" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPRiV4MctXZ8et-F29BzluhXkn6Bo9rwhaJkylZm-h41WIJxo91rFCMdKAOS-mBieLF62lEZKGdoCgiAiftv0UOn0sCNkIayNGp3SZrYlaV6Iel3cX0NkwWazQMfoZSO7zdHbHNVasOY4kUSbtV4OAFG0vgzyPOoonN9j6JfHvhJ_F1TiPzKbTusxq66FIbWtYAamTtNzZWrWLwL1SLkaDYgLMIKWWZgJY1vOXaznh8k_QqDn9p6zSl57liMmXhMHZcfFFXiJi3QE");'>
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent rounded-xl"></div>
+<div class="relative z-10 flex flex-col gap-4 text-left max-w-[600px]">
+<h1 class="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                                        Hành trang kiến thức cho<br/>Mẹ và Bé yêu
+                                    </h1>
+<h2 class="text-white/90 text-base md:text-lg font-medium leading-relaxed max-w-[480px]">
+                                        Khám phá các khóa học chuyên sâu từ thai giáo đến chăm sóc trẻ sơ sinh, đồng hành cùng bạn trên hành trình làm mẹ hạnh phúc.
+                                    </h2>
+<div class="flex gap-4 mt-2">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary hover:bg-primary/90 text-white text-base font-bold leading-normal tracking-[0.015em] transition-all transform hover:scale-105">
+ <a href="{{ url_for('routes.register_course_page')}}"><span class="truncate">Đăng ký ngay</span></a>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/40 text-base font-bold leading-normal tracking-[0.015em] transition-all">
+<span class="truncate">Tìm hiểu thêm</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="w-full px-4 md:px-10 lg:px-40 pb-20">
+<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filter -->
+<aside class="w-full lg:w-[280px] shrink-0 space-y-8 pt-6">
+<!-- Search Mobile Only -->
+<div class="md:hidden">
+<div class="flex w-full items-stretch rounded-xl h-12 bg-white dark:bg-[#2c241b] border border-[#e6e0db] dark:border-[#3a2e26]">
+<div class="text-[#897261] flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex w-full bg-transparent border-none focus:ring-0 px-4 text-[#181411] dark:text-white placeholder:text-[#897261]" placeholder="Tìm kiếm..."/>
+</div>
+</div>
+<!-- Course Type -->
+<div class="flex flex-col gap-4">
+<h3 class="text-lg font-bold text-[#181411] dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+                        Loại khóa học
+                    </h3>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white dark:hover:bg-[#2c241b] cursor-pointer transition-colors group">
+<input checked="" class="h-5 w-5 text-primary border-gray-300 focus:ring-primary bg-transparent" name="course_type" type="radio"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] font-medium">Tất cả</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white dark:hover:bg-[#2c241b] cursor-pointer transition-colors group">
+<input class="h-5 w-5 text-primary border-gray-300 focus:ring-primary bg-transparent" name="course_type" type="radio"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] font-medium">Khóa học Online</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-white dark:hover:bg-[#2c241b] cursor-pointer transition-colors group">
+<input class="h-5 w-5 text-primary border-gray-300 focus:ring-primary bg-transparent" name="course_type" type="radio"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] font-medium">Workshop Offline</span>
+</label>
+</div>
+</div>
+<!-- Topics -->
+<div class="flex flex-col gap-4 border-t border-[#e6e0db] dark:border-[#3a2e26] pt-6">
+<h3 class="text-lg font-bold text-[#181411] dark:text-white">Chủ đề</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3">
+<input class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] text-sm">Thai giáo (12)</span>
+</label>
+<label class="flex items-center gap-3">
+<input class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] text-sm">Dinh dưỡng (8)</span>
+</label>
+<label class="flex items-center gap-3">
+<input class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] text-sm">Yoga &amp; Vận động (15)</span>
+</label>
+<label class="flex items-center gap-3">
+<input class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] text-sm">Chăm sóc trẻ sơ sinh (20)</span>
+</label>
+<label class="flex items-center gap-3">
+<input class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-[#181411] dark:text-[#d0d0d0] text-sm">Tâm lý sau sinh (5)</span>
+</label>
+</div>
+</div>
+<!-- Price Range -->
+<div class="flex flex-col gap-4 border-t border-[#e6e0db] dark:border-[#3a2e26] pt-6">
+<h3 class="text-lg font-bold text-[#181411] dark:text-white">Khoảng giá</h3>
+<div class="px-2">
+<input class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary" max="5000000" min="0" type="range"/>
+<div class="flex justify-between mt-2 text-sm text-[#897261]">
+<span>0đ</span>
+<span>5.000.000đ+</span>
+</div>
+</div>
+</div>
+<!-- Banner Ad (Sidebar) -->
+<div class="hidden lg:flex flex-col items-center justify-center p-6 bg-primary/10 rounded-2xl border border-primary/20 text-center gap-4 mt-8">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-3xl">redeem</span>
+</div>
+<div>
+<h4 class="font-bold text-[#181411] dark:text-white text-lg">Gói Combo Tiết Kiệm</h4>
+<p class="text-sm text-[#897261] mt-1">Đăng ký combo 3 khóa học để nhận ưu đãi 20%.</p>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">Xem chi tiết</button>
+</div>
+</aside>
+<!-- Main Listing -->
+<div class="flex-1 flex flex-col pt-6">
+<!-- Header & Sorting -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+<h2 class="text-2xl font-bold text-[#181411] dark:text-white">Danh sách khóa học nổi bật</h2>
+<div class="flex items-center gap-3">
+<span class="text-sm text-[#897261] whitespace-nowrap">Sắp xếp theo:</span>
+<select class="form-select bg-white dark:bg-[#2c241b] border-[#e6e0db] dark:border-[#3a2e26] text-[#181411] dark:text-white text-sm rounded-lg py-2 pl-3 pr-8 focus:ring-primary focus:border-primary">
+<option>Phổ biến nhất</option>
+<option>Mới nhất</option>
+<option>Giá thấp đến cao</option>
+<option>Giá cao đến thấp</option>
+</select>
+</div>
+</div>
+<!-- Chips (Mobile only horizontal scroll) -->
+<div class="lg:hidden flex gap-3 overflow-x-auto no-scrollbar mb-6 pb-2">
+<button class="flex shrink-0 items-center justify-center px-4 py-2 rounded-full bg-primary text-white text-sm font-medium">
+                        Tất cả
+                    </button>
+<button class="flex shrink-0 items-center justify-center px-4 py-2 rounded-full bg-white dark:bg-[#2c241b] border border-[#e6e0db] dark:border-[#3a2e26] text-[#181411] dark:text-white text-sm font-medium">
+                        Thai giáo
+                    </button>
+<button class="flex shrink-0 items-center justify-center px-4 py-2 rounded-full bg-white dark:bg-[#2c241b] border border-[#e6e0db] dark:border-[#3a2e26] text-[#181411] dark:text-white text-sm font-medium">
+                        Dinh dưỡng
+                    </button>
+<button class="flex shrink-0 items-center justify-center px-4 py-2 rounded-full bg-white dark:bg-[#2c241b] border border-[#e6e0db] dark:border-[#3a2e26] text-[#181411] dark:text-white text-sm font-medium">
+                        Yoga
+                    </button>
+</div>
+<!-- Course Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group flex flex-col bg-white dark:bg-[#2c241b] rounded-2xl overflow-hidden border border-[#f4f2f0] dark:border-[#3a2e26] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute top-3 left-3 z-10 flex gap-2">
+<span class="bg-primary/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Online</span>
+</div>
+<img alt="Pregnant woman doing yoga pose" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Pregnant woman doing yoga pose" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTVmBr2D0-SSB2hzMdRQ8uWUqi823tNG_3iKG_8SihftgGPyUx2Vx9r_p0QE6JwpuE4eKP4fr6lD8oB5A1U-rLv9pNFEhIjsJUMDyLCiIuyBm8olrzRS7a5e2AJcIPgrCTRS2ZytWonX7uhlOXf7IBqq4a6MDT1GwgTiAvFfRhFOCrSCrNFQxS8HJSJf9qr3z_ZeLZhvVmiVW4-MZiLZ9YBsMcWtuJO-2HCsB1XEpUdt2g_XRp9UaY8-yuQlgE_JPMlgmd1tjDaVk"/>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex items-center gap-2 text-xs font-medium text-[#897261]">
+<span class="material-symbols-outlined text-sm">self_improvement</span>
+<span>Yoga &amp; Vận động</span>
+</div>
+<h3 class="text-lg font-bold text-[#181411] dark:text-white leading-snug group-hover:text-primary transition-colors">Yoga bầu: Khỏe mạnh suốt thai kỳ</h3>
+<p class="text-sm text-[#897261] line-clamp-2">Bài tập nhẹ nhàng giúp mẹ giảm đau lưng, ngủ ngon và chuẩn bị sức khỏe tốt nhất cho việc sinh nở.</p>
+<div class="mt-auto pt-4 border-t border-[#f4f2f0] dark:border-[#3a2e26] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-[#897261] line-through">800.000đ</span>
+<span class="text-lg font-bold text-primary">499.000đ</span>
+</div>
+<button class="h-9 px-4 rounded-lg bg-primary/10 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-all flex items-center gap-1">
+                                    Đăng ký
+                                </button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col bg-white dark:bg-[#2c241b] rounded-2xl overflow-hidden border border-[#f4f2f0] dark:border-[#3a2e26] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute top-3 left-3 z-10 flex gap-2">
+<span class="bg-blue-500/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Offline</span>
+</div>
+<img alt="Baby massage workshop hands on" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Baby massage workshop hands on" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHRGOO5RMa8RaJ5RBvyvTvmKzl_pKPb_TMSKNNRdRMDauAhKOhsXFsWYmqGx9IobS-Gp4mHJ0L0URM1KzpfAtGToGcMKn7pfDTtxGD6FhsNFCHuXsZeTxqbKkhQ7zgO1C4ayxx8iZniHVn9JZ4nvLdyJ35YlEQh_18Q2h_fP73ZB1xCujlGvunXTEHXmfaEK3L19TD3mRj1UK-SjOYGvw8snHBPIdpqPZbWR5Ba56GpHDfw1VyuF8aDAYngNt0rOaHMpoD_JIM6kw"/>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex items-center gap-2 text-xs font-medium text-[#897261]">
+<span class="material-symbols-outlined text-sm">spa</span>
+<span>Chăm sóc bé</span>
+</div>
+<h3 class="text-lg font-bold text-[#181411] dark:text-white leading-snug group-hover:text-primary transition-colors">Workshop: Massage cho bé yêu</h3>
+<p class="text-sm text-[#897261] line-clamp-2">Học cách massage đúng cách giúp bé thư giãn, tiêu hóa tốt và tăng cường kết nối mẹ con.</p>
+<div class="mt-auto pt-4 border-t border-[#f4f2f0] dark:border-[#3a2e26] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-primary">1.200.000đ</span>
+</div>
+<button class="h-9 px-4 rounded-lg bg-primary/10 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-all flex items-center gap-1">
+                                    Đăng ký
+                                </button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col bg-white dark:bg-[#2c241b] rounded-2xl overflow-hidden border border-[#f4f2f0] dark:border-[#3a2e26] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute top-3 left-3 z-10 flex gap-2">
+<span class="bg-primary/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Online</span>
+</div>
+<img alt="Healthy food bowl for nutrition" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Healthy food bowl for nutrition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMwaLJc-U4mkvY6Bl_tBQEA8ZBDQ5wsFCPOtM_agVApSWG1im8iOOXgqqvgFfac96ttxeYzcBX8sqozuWjpF0vORzjH3Vs7_X1LA84l4N_t8YoBL9CmO1UbxXtnniT9MbCPUw10XLco40MRXPXGHhf4AnWI57T-YXfFD1gUv2OdMQkMmd8BVOyOAMvaC8fepSAXfFV_5rEw49FQ6iaRsvth1lk6G7Cw9NZa6qiXIR8kN64cI5jEHGsvULvi2SyaVVjRArVqWAuGQA"/>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex items-center gap-2 text-xs font-medium text-[#897261]">
+<span class="material-symbols-outlined text-sm">restaurant</span>
+<span>Dinh dưỡng</span>
+</div>
+<h3 class="text-lg font-bold text-[#181411] dark:text-white leading-snug group-hover:text-primary transition-colors">Dinh dưỡng thai kỳ chuẩn khoa học</h3>
+<p class="text-sm text-[#897261] line-clamp-2">Thực đơn chi tiết từng tuần thai, giúp mẹ kiểm soát cân nặng và bé phát triển tối ưu.</p>
+<div class="mt-auto pt-4 border-t border-[#f4f2f0] dark:border-[#3a2e26] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-[#897261] line-through">650.000đ</span>
+<span class="text-lg font-bold text-primary">399.000đ</span>
+</div>
+<button class="h-9 px-4 rounded-lg bg-primary/10 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-all flex items-center gap-1">
+                                    Đăng ký
+                                </button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col bg-white dark:bg-[#2c241b] rounded-2xl overflow-hidden border border-[#f4f2f0] dark:border-[#3a2e26] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute top-3 left-3 z-10 flex gap-2">
+<span class="bg-primary/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Online</span>
+</div>
+<img alt="Mother breastfeeding baby" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Mother breastfeeding baby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXaoem3NI7wrnJ8ouk9Doon2WH_nZLyk1BZ-0qCSuxaFdAC4BvLHhWwiTTiNz16SUMOC2P3a7z2AA_m402ys1XKUDA2ulEriJbEjDx092ixfU0MTIepKT0acs5kUCj6Knnlx2qFXV9vlyb9QGThYPg5jWHotITtGGRd-CJgTJPFKNbaZ80aToX2julV12OJg-pgMOXkn0EHcaB4R0i7ykSbEJkB5IBjxW-6aYS5RMnQbVMfvw_6ar6BrwPUfmm5tFZaoQGywBeJ3g"/>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex items-center gap-2 text-xs font-medium text-[#897261]">
+<span class="material-symbols-outlined text-sm">water_drop</span>
+<span>Nuôi con sữa mẹ</span>
+</div>
+<h3 class="text-lg font-bold text-[#181411] dark:text-white leading-snug group-hover:text-primary transition-colors">Kích sữa và nuôi con sữa mẹ</h3>
+<p class="text-sm text-[#897261] line-clamp-2">Bí quyết gọi sữa về, xử lý tắc tia sữa và duy trì nguồn sữa mẹ dồi dào lâu dài.</p>
+<div class="mt-auto pt-4 border-t border-[#f4f2f0] dark:border-[#3a2e26] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-primary">550.000đ</span>
+</div>
+<button class="h-9 px-4 rounded-lg bg-primary/10 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-all flex items-center gap-1">
+                                    Đăng ký
+                                </button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group flex flex-col bg-white dark:bg-[#2c241b] rounded-2xl overflow-hidden border border-[#f4f2f0] dark:border-[#3a2e26] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute top-3 left-3 z-10 flex gap-2">
+<span class="bg-primary/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Online</span>
+</div>
+<img alt="Headphones and notebook for thai giao" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Headphones and notebook for thai giao" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwwS96u9evoppva7DzLNmmp-NiRjLWpY2OGhQUuwDJCz0aU74nMdqbedC-VcU7IMtp1ltgcmf1V3JOmYSNdeehUe2YBQxjS5StyhdSzxBPfbV1zBduLiqiUV6PqBfBSu8WPGx2FIe-cSneBXS9dy9QR5dELB7_dDguzmNKekuO34lvjlg2L83QkeEDZ79Bwcd0LdESs2miA7gLxHgDI1beIq8Yrobcfgdd_oAgPmsJByE9vgZ1iEyPxVwLebb5lfp--hVBuZ6QR5U"/>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex items-center gap-2 text-xs font-medium text-[#897261]">
+<span class="material-symbols-outlined text-sm">music_note</span>
+<span>Thai giáo</span>
+</div>
+<h3 class="text-lg font-bold text-[#181411] dark:text-white leading-snug group-hover:text-primary transition-colors">Thai giáo âm nhạc &amp; cảm xúc</h3>
+<p class="text-sm text-[#897261] line-clamp-2">Kết nối với bé yêu ngay từ trong bụng mẹ thông qua âm nhạc và các bài tập thực hành cảm xúc.</p>
+<div class="mt-auto pt-4 border-t border-[#f4f2f0] dark:border-[#3a2e26] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs text-[#897261] line-through">1.000.000đ</span>
+<span class="text-lg font-bold text-primary">790.000đ</span>
+</div>
+<button class="h-9 px-4 rounded-lg bg-primary/10 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-all flex items-center gap-1">
+                                    Đăng ký
+                                </button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group flex flex-col bg-white dark:bg-[#2c241b] rounded-2xl overflow-hidden border border-[#f4f2f0] dark:border-[#3a2e26] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute top-3 left-3 z-10 flex gap-2">
+<span class="bg-blue-500/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Offline</span>
+</div>
+<img alt="Baby weaning food plate" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Baby weaning food plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5cpEPQwuKw8oThNN8GB4HyY4Cd8felrNJG5jHACpFS325vvNj_VRbcZAQ-RxdPMjgcYfXdr7yjod8yxV_nx6m866dTrrNo-ZFVsofv99vnMnF2UJgVDMmbjtvgvd17giTgLJtKjZP8j5fAB4rGgdWJO3y6J6lNTAxALjDtzPo7P9RIGxBcrTADjSKh1kz1-RUee1qX7wlLcvMxs5K-W5OruWiTfVJzDLwTl9BhmnqAC5bdzDrJtphZQn8g8SXv1NzKHyhX6LuJqo"/>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex items-center gap-2 text-xs font-medium text-[#897261]">
+<span class="material-symbols-outlined text-sm">restaurant_menu</span>
+<span>Ăn dặm</span>
+</div>
+<h3 class="text-lg font-bold text-[#181411] dark:text-white leading-snug group-hover:text-primary transition-colors">Thực hành ăn dặm BLW</h3>
+<p class="text-sm text-[#897261] line-clamp-2">Lớp học trực tiếp hướng dẫn chế biến và thực hành cho bé ăn dặm tự chỉ huy an toàn.</p>
+<div class="mt-auto pt-4 border-t border-[#f4f2f0] dark:border-[#3a2e26] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-lg font-bold text-primary">850.000đ</span>
+</div>
+<button class="h-9 px-4 rounded-lg bg-primary/10 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-all flex items-center gap-1">
+                                    Đăng ký
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center pt-12 pb-6 gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e6e0db] dark:border-[#3a2e26] bg-white dark:bg-[#2c241b] text-[#897261] hover:bg-gray-50 dark:hover:bg-[#3a2e26] disabled:opacity-50">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-sm shadow-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e6e0db] dark:border-[#3a2e26] bg-white dark:bg-[#2c241b] text-[#181411] dark:text-white font-medium text-sm hover:bg-gray-50 dark:hover:bg-[#3a2e26]">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e6e0db] dark:border-[#3a2e26] bg-white dark:bg-[#2c241b] text-[#181411] dark:text-white font-medium text-sm hover:bg-gray-50 dark:hover:bg-[#3a2e26]">3</button>
+<span class="text-[#897261] px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e6e0db] dark:border-[#3a2e26] bg-white dark:bg-[#2c241b] text-[#897261] hover:bg-gray-50 dark:hover:bg-[#3a2e26]">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Simple Footer -->
+<footer class="bg-white dark:bg-[#1a120b] border-t border-[#f4f2f0] dark:border-[#3a2e26] py-12">
+<div class="px-4 md:px-10 lg:px-40 flex justify-center">
+<div class="max-w-[1440px] w-full flex flex-col md:flex-row justify-between gap-10">
+<div class="flex flex-col gap-4 max-w-sm">
+<div class="flex items-center gap-4 text-[#181411] dark:text-white">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">child_care</span>
+</div>
+<h2 class="text-[#181411] dark:text-white text-2xl font-bold">MomCare</h2>
+</div>
+<p class="text-sm text-[#897261] leading-relaxed">
+                        Đồng hành cùng mẹ và bé trên hành trình yêu thương. Chúng tôi cung cấp những kiến thức chuẩn khoa học và các khóa học thiết thực nhất.
+                    </p>
+</div>
+<div class="flex gap-16 flex-wrap">
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-[#181411] dark:text-white">Về chúng tôi</h4>
+<a class="text-sm text-[#897261] hover:text-primary" href="#">Câu chuyện thương hiệu</a>
+<a class="text-sm text-[#897261] hover:text-primary" href="#">Đội ngũ chuyên gia</a>
+<a class="text-sm text-[#897261] hover:text-primary" href="#">Tuyển dụng</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-[#181411] dark:text-white">Hỗ trợ</h4>
+<a class="text-sm text-[#897261] hover:text-primary" href="#">Trung tâm trợ giúp</a>
+<a class="text-sm text-[#897261] hover:text-primary" href="#">Chính sách bảo mật</a>
+<a class="text-sm text-[#897261] hover:text-primary" href="#">Điều khoản sử dụng</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
