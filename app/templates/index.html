@@ -54,11 +54,12 @@
 <h2 class="text-[#181411] text-xl font-bold leading-tight tracking-[-0.015em]">MomCare</h2>
 </div>
 <div class="hidden lg:flex items-center gap-8">
-<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#">Trang chủ</a>
-<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="allllll.html">Dịch vụ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.index') }}">Trang chủ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.services_page')}}">Dịch vụ</a>
 <a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.contact_page') }}">Liên hệ</a>
 <a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#why-us">Về chúng tôi</a>
 <a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#testimonials">Đánh giá</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.learnes_page') }}">Khóa học</a>
 </div>
 <div class="flex items-center gap-4">
 <button class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all">

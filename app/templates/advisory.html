@@ -69,8 +69,8 @@
 </div>
 <!-- Desktop Nav -->
 <nav class="hidden md:flex items-center gap-8">
-<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Trang chủ</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors text-primary" href="#">Dịch vụ</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="{{ url_for('routes.index')}}">Trang chủ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.services_page')}}">Dịch vụ</a>
 <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Chuyên gia</a>
 <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Góc chia sẻ</a>
 </nav>

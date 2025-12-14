@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trang Dịch vụ chăm sóc mẹ và bé</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee7c2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d241d",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-gray-100 font-display transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f4f2f0] dark:border-gray-800 bg-surface-light dark:bg-surface-dark px-4 py-3 md:px-10 lg:px-40 shadow-sm">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">spa</span>
+</div>
+<h2 class="text-[#181411] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Mom &amp; Baby Care</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="hidden lg:flex items-center gap-8">
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.index') }}">Trang chủ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.services_page')}}">Dịch vụ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.contact_page') }}">Liên hệ</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#why-us">Về chúng tôi</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="#testimonials">Đánh giá</a>
+<a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.learnes_page') }}">Khóa học</a>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary hover:bg-orange-600 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Đặt lịch hẹn</span>
+</button>
+</div>
+<div class="md:hidden text-[#181411] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="@container">
+<div class="@[480px]:p-4">
+<div class="relative flex min-h-[420px] flex-col gap-6 overflow-hidden bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 text-center group" data-alt="Happy mother holding her newborn baby with gentle lighting" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCb7Jtj-u8SBN-YTFUAaEETdi3m006exziFpngv-XZZsgRbwxND06swT0amcVNsVB8hSWMZc7cGrwRRV-SxwGNVgk06_wM696H_YOpbfZbiA3EXH1jMui7FGg0XcnB5wU87uTvn14_9_zUiwHpR8iXimhbEPBc43yKgbhp0K298upEseujVo8-qjRC-hk4qwXoEF7nuzuxyPwuqC4yBgUJe3rz4dUeX55rsOMp6YHGBAbjaPUQsVQmvKXSL3CUp5kA3JIk5oPtaAfE");'>
+<div class="flex flex-col gap-2 max-w-2xl z-10">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl drop-shadow-md">
+                                    Chăm sóc toàn diện cho Mẹ &amp; Bé
+                                </h1>
+<h2 class="text-gray-100 text-sm font-medium leading-relaxed @[480px]:text-lg max-w-lg mx-auto drop-shadow-sm">
+                                    Đồng hành cùng gia đình bạn trên hành trình đón chào thành viên mới với sự tận tâm, yêu thương và chuyên nghiệp.
+                                </h2>
+</div>
+<div class="flex gap-4 z-10">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary hover:bg-orange-600 text-white text-base font-bold leading-normal tracking-[0.015em] transition-all shadow-lg hover:shadow-orange-500/30">
+<a href="{{ url_for('routes.advisory_page')}}"><span class="truncate">Tư vấn miễn phí</span></a>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white/90 hover:bg-white text-primary text-base font-bold leading-normal tracking-[0.015em] transition-all backdrop-blur-sm">
+<span class="truncate">Xem bảng giá</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 md:px-40 flex flex-1 justify-center pb-2">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4">
+<h2 class="text-[#181411] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Danh mục dịch vụ</h2>
+<div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary text-white cursor-pointer px-4 shadow-sm hover:shadow-md transition-all">
+<p class="text-sm font-bold leading-normal">Tất cả</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-surface-dark border border-[#f4f2f0] dark:border-gray-700 cursor-pointer px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-[#181411] dark:text-gray-300 text-sm font-medium leading-normal">Dịch vụ cho Bé</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-surface-dark border border-[#f4f2f0] dark:border-gray-700 cursor-pointer px-4 hover:border-primary hover:text-primary transition-all">
+<p class="text-[#181411] dark:text-gray-300 text-sm font-medium leading-normal">Dịch vụ cho Mẹ</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 md:px-40 flex flex-1 justify-center pb-10">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex flex-col gap-4 p-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="h-8 w-1 bg-primary rounded-full"></div>
+<h3 class="text-[#181411] dark:text-white text-xl font-bold leading-tight">Dịch vụ cho Bé</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Newborn baby being gently bathed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOubvinD3R_PlU9diV_YxSMpIf2xmaCvpRaYQk_v755tpx1nBR998k4fxN8_zfyugzT7NyG3CtW3by9zXhb5fq22uPM-0jguNHFhpk1LK59ixeV9bzM2MdcOAaxGxLYhPQgOjwDKwhw5YeMkpLiPTCOgd5ftnC77T5KJ_zUJLEFvPzeNrxaKbtVJOh1PycscAlS1vNHinBPgU6E3vWjl3pycJBP29Gcmhbk_XufHheL2DgjCp-3SYFhAxqAWgtbCVJNmPhNgNC7os");'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Bé</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Tắm bé sơ sinh</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Quy trình chuẩn y khoa, massage thư giãn giúp bé ngủ ngon, phát triển tốt.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">150.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Baby hygiene care" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOubvinD3R_PlU9diV_YxSMpIf2xmaCvpRaYQk_v755tpx1nBR998k4fxN8_zfyugzT7NyG3CtW3by9zXhb5fq22uPM-0jguNHFhpk1LK59ixeV9bzM2MdcOAaxGxLYhPQgOjwDKwhw5YeMkpLiPTCOgd5ftnC77T5KJ_zUJLEFvPzeNrxaKbtVJOh1PycscAlS1vNHinBPgU6E3vWjl3pycJBP29Gcmhbk_XufHheL2DgjCp-3SYFhAxqAWgtbCVJNmPhNgNC7os"); background-position: center bottom;'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Bé</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Vệ sinh rốn – mắt – mũi – họng</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Làm sạch sâu, ngăn ngừa nhiễm khuẩn và các bệnh về đường hô hấp cho trẻ.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">100.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Baby respiratory therapy" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCb7Jtj-u8SBN-YTFUAaEETdi3m006exziFpngv-XZZsgRbwxND06swT0amcVNsVB8hSWMZc7cGrwRRV-SxwGNVgk06_wM696H_YOpbfZbiA3EXH1jMui7FGg0XcnB5wU87uTvn14_9_zUiwHpR8iXimhbEPBc43yKgbhp0K298upEseujVo8-qjRC-hk4qwXoEF7nuzuxyPwuqC4yBgUJe3rz4dUeX55rsOMp6YHGBAbjaPUQsVQmvKXSL3CUp5kA3JIk5oPtaAfE"); background-position: center top;'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Bé</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Vỗ rung long đờm</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Hỗ trợ hô hấp, giúp bé thông thoáng đường thở, giảm khò khè hiệu quả.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">200.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-4 mt-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="h-8 w-1 bg-primary rounded-full"></div>
+<h3 class="text-[#181411] dark:text-white text-xl font-bold leading-tight">Dịch vụ cho Mẹ</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Postpartum mother care" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfwDufT1A7hEb8wU7dJ3gY3S-3jsUJ3AfLMD1cMRA32cbPJqEHL7kIBKf2q3uIMmiAMV99WTlbgJErCEj4r_27KQZQuMrsM7XmGE78FiDUvpXh2YibobdImgXgE5dWubtbuv_he5i7h3hFff0rhRxddc2BpBHMySU7CcZGybN1FjRb0Ix3gaiE1ZGHqK1okps2CsZ0lrxzbTUXaRKq5iBs8uiNYM4XupJhyZZUVE9jEtEYUimlBZPyQsYBFhs1hh7DmV-XULXnfHI");'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Mẹ</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Chăm sóc mẹ sau sinh</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Liệu trình phục hồi sức khỏe, xông hơi, massage toàn thân đẩy sản dịch.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">450.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Lactation support" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCS-los8-8lTkFZLU6QFrxrvSIUqL_S1_U38QsPsVDX26DhzS_9RQsaPM1iESe67sPowTuMo6B7T150w8Ttu6YjvTl6Q5J-GNuCjMNAJ78ZvLmD5lY69uDK3O8FdMGkjSoelHcMOQIHdmjaN6LtwlGzZQmRIKl5ZHhLHp-OJlPviZB_GDIuC2zCbywUSRBWULmGbRagb9rcxBJixUGQvTVTn7GCi8ymvlu5u7CV9SO-xNrfHuc-iRqknkjORk61f7vYLnOLwsHeuNA");'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Mẹ</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Gọi sữa về</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Kích thích tuyến sữa hoạt động mạnh mẽ, giúp mẹ có đủ sữa cho bé ngay sau sinh.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">350.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Milk duct unclogging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCS-los8-8lTkFZLU6QFrxrvSIUqL_S1_U38QsPsVDX26DhzS_9RQsaPM1iESe67sPowTuMo6B7T150w8Ttu6YjvTl6Q5J-GNuCjMNAJ78ZvLmD5lY69uDK3O8FdMGkjSoelHcMOQIHdmjaN6LtwlGzZQmRIKl5ZHhLHp-OJlPviZB_GDIuC2zCbywUSRBWULmGbRagb9rcxBJixUGQvTVTn7GCi8ymvlu5u7CV9SO-xNrfHuc-iRqknkjORk61f7vYLnOLwsHeuNA"); background-position: right center;'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Mẹ</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Thông tắc tia sữa</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Điều trị tắc tia sữa bằng máy siêu âm đa tần, không đau, hiệu quả tức thì.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">350.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Prenatal massage" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBi40Y_4U8MBvtGl4J2GaSsA-USlUHb0v1bxxXJw0M3OsOKcp6aVJa_LIUtiYuROsiUsjO3e5lF4GdRU-hllHh30b5r-pNb8y2KXfHFCU9RQ7taO018k5PyhT1ax5o9QC5CQY_jXrkPMkKaYu_lkTkXcGbaIjZY0ukzdIQiKuAjPqt_vskCnIAVFhLdMZpIL1JUATbWuj9Hy11jG1Y49ILVVLeSS-gYQF4W-WK2eLFrBgMW5bIuZsCx3v-cTh2q4tbhEPhJSpGxDqw");'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Mẹ</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Massage bầu</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Giảm đau lưng hông, chuột rút, phù nề, giúp mẹ bầu thư giãn tối đa.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">350.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Head and shoulder massage" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBi40Y_4U8MBvtGl4J2GaSsA-USlUHb0v1bxxXJw0M3OsOKcp6aVJa_LIUtiYuROsiUsjO3e5lF4GdRU-hllHh30b5r-pNb8y2KXfHFCU9RQ7taO018k5PyhT1ax5o9QC5CQY_jXrkPMkKaYu_lkTkXcGbaIjZY0ukzdIQiKuAjPqt_vskCnIAVFhLdMZpIL1JUATbWuj9Hy11jG1Y49ILVVLeSS-gYQF4W-WK2eLFrBgMW5bIuZsCx3v-cTh2q4tbhEPhJSpGxDqw"); background-position: center bottom;'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Mẹ</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Massage đau vai gáy – đầu</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Trị liệu chuyên sâu giúp giải tỏa căng thẳng, giảm đau nhức vùng cổ vai gáy.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">250.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20 group">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover rounded-xl overflow-hidden" data-alt="Postpartum fitness" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALi1l965UCODrxms3Mm8KCjJqvDBN59YmyJq0u-sxIFU7HD6pEX-x9JQPO6BMXZOTQIiOYGwkVQTVM1F-chea4Xf8kxIwSoFx-XvmHFpMbrjCSVWBGk0A6EE0iPEpJbVNyEYUdPqPByKPXgzJZiimF8kD_TfiuQWWdUv77Wo8xwN29GnzFnhdMirzyS7kGnrnPFmjPNH9jHobk9MHhAGlp4vN7ZObDIlEycul5bwTcZiaeKI4U1vUqP3T-rhusezLNXDicvPzRybs");'>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/60 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold text-primary">Cho Mẹ</div>
+</div>
+<div class="px-2 pb-2 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#181411] dark:text-white text-lg font-bold leading-normal group-hover:text-primary transition-colors">Giảm eo – tan mỡ sau sinh</p>
+</div>
+<p class="text-[#897261] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2 mb-4">Lấy lại vóc dáng thon gọn nhanh chóng với phương pháp massage và quấn nóng thảo dược.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[#181411] dark:text-white font-bold text-sm">400.000đ<span class="text-xs font-normal text-gray-500">/buổi</span></span>
+<button class="text-primary text-sm font-bold hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">Chi tiết <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-6">
+<button class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-[#f4f2f0] dark:border-gray-700 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-bold text-[#181411] dark:text-white transition-all">
+                        Xem tất cả dịch vụ <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-4 md:px-40 flex flex-1 justify-center py-12 bg-white dark:bg-surface-dark">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="text-center mb-10">
+<h2 class="text-3xl font-bold text-[#181411] dark:text-white mb-3">Tại sao chọn chúng tôi?</h2>
+<p class="text-gray-500 dark:text-gray-400">Mang đến sự an tâm tuyệt đối cho mẹ và bé yêu</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col items-center text-center gap-4 p-4">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-4xl">medical_services</span>
+</div>
+<h3 class="text-xl font-bold text-[#181411] dark:text-white">Đội ngũ Y Khoa</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">100% điều dưỡng viên, nữ hộ sinh có chứng chỉ hành nghề và kinh nghiệm làm việc tại các bệnh viện lớn.</p>
+</div>
+<div class="flex flex-col items-center text-center gap-4 p-4">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-4xl">eco</span>
+</div>
+<h3 class="text-xl font-bold text-[#181411] dark:text-white">Sản phẩm hữu cơ</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Sử dụng 100% tinh dầu và thảo dược thiên nhiên, an toàn tuyệt đối cho làn da nhạy cảm của mẹ và bé.</p>
+</div>
+<div class="flex flex-col items-center text-center gap-4 p-4">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-4xl">schedule</span>
+</div>
+<h3 class="text-xl font-bold text-[#181411] dark:text-white">Lịch trình linh hoạt</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Dễ dàng đặt lịch hẹn theo khung giờ phù hợp với gia đình. Phục vụ tất cả các ngày trong tuần.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 md:px-40 flex flex-1 justify-center py-12">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<h2 class="text-2xl font-bold text-[#181411] dark:text-white mb-8 pl-4 border-l-4 border-primary">Mẹ bầu nói gì về chúng tôi</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+</div>
+<p class="text-[#181411] dark:text-gray-300 italic mb-6">"Các cô tắm bé rất nhẹ nhàng và chuyên nghiệp. Bé nhà mình trộm vía rất hợp tác, tắm xong ngủ ngon lành. Cảm ơn trung tâm rất nhiều!"</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc7FnkA8nR1DLwDOOANKAHqNo9_FpEvqgxJEdpBd8dZv6xMb1gBvpXUClKy8ia0kXCaKPaF1Z0qfmLIiep3tj8srCD-GgJtwFxHOimxCR15ibEv8-XL0mrQjED3WrTtv69ne1r0uGH_SlgNPfj_LgLMJDT4ZaBlN-T3zlLXx2rysMJXgYlNJrrXYlEgopj5Shcjgg0xqZB4zWrndAEZqP5hGwHaidTvVSHI86z9k_sI11YWwg3douiUHkBTB5aN4edBI3oxG4iswQ"/>
+</div>
+<div>
+<p class="text-sm font-bold text-[#181411] dark:text-white">Chị Minh Anh</p>
+<p class="text-xs text-gray-500">Mẹ bé Sóc - Hà Nội</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+</div>
+<p class="text-[#181411] dark:text-gray-300 italic mb-6">"Dịch vụ massage bầu thực sự cứu cánh cho mình những tháng cuối thai kỳ. Nhân viên nhiệt tình, không gian thư giãn tuyệt vời."</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9p0ff6MEb0v5FMKg2C_Zw-hFNyY-gI3ieoM4PWylDW4T_TvxjILvodylP9JfV26PTU10cih7n0Ch_uMo-w9Nju7A9wqApcXnCbt0zbbj6jaTUX3_EbdgZ6YtyeZCHDP1LtEM2HK5yTGMApcg2OtrkD7sbi6ujXbmOhVSSXg54yXPvw0bbTJakVpVebVSLgZ5kCS1H--Q2079_Y-vYjb1TL-HirlpvWadOp3--eR8gMSHgLxWRCPDlF50CiorOlx07-cz2SooQFMQ"/>
+</div>
+<div>
+<p class="text-sm font-bold text-[#181411] dark:text-white">Chị Thu Thảo</p>
+<p class="text-xs text-gray-500">Mẹ bé Bơ - TP.HCM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="bg-white dark:bg-surface-dark border-t border-[#f4f2f0] dark:border-gray-800 pt-16 pb-8 px-4 md:px-40">
+<div class="max-w-[960px] mx-auto flex flex-col gap-10">
+<div class="flex flex-col md:flex-row justify-between gap-10">
+<div class="flex flex-col gap-4 max-w-xs">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">spa</span>
+<span class="text-xl font-bold text-[#181411] dark:text-white">Mom &amp; Baby Care</span>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400">Hệ thống chăm sóc sức khỏe mẹ và bé hàng đầu, mang đến sự an tâm trọn vẹn cho gia đình Việt.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-[#181411] dark:text-white mb-1">Dịch vụ</h4>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Chăm sóc mẹ bầu</a>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Chăm sóc sau sinh</a>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Tắm bé sơ sinh</a>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Bơi thủy liệu</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-[#181411] dark:text-white mb-1">Hỗ trợ</h4>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Bảng giá</a>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Đặt lịch hẹn</a>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Câu hỏi thường gặp</a>
+<a class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Chính sách bảo mật</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-[#181411] dark:text-white mb-1">Liên hệ</h4>
+<div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base">call</span>
+                            1900 1234
+                        </div>
+<div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base">mail</span>
+                            support@mombaby.vn
+                        </div>
+<div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base">location_on</span>
+                            Hà Nội &amp; TP. Hồ Chí Minh
+                        </div>
+</div>
+</div>
+<div class="border-t border-[#f4f2f0] dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-400">© 2023 Mom &amp; Baby Care. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.373c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+
+</body></html>
