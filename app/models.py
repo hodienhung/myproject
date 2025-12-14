@@ -49,9 +49,18 @@ class CourseRegistration(db.Model):
     phone = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(255))
     note = db.Column(db.Text)
-    course = db.Column(db.String(255))  # sửa 'coures' -> 'course'
-    payment_method = db.Column(db.String(50))  # sửa 'comlum' -> 'Column' và 'Text' -> 'String(50)'
+    course = db.Column(db.String(255))  
+    payment_method = db.Column(db.String(50))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return f"<CourseRegistration {self.fullname} - {self.course}>"
+class Testimonial(db.Model):
+    __tablename__ = "testimonials"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    rating = db.Column(db.Integer, default=5)
+    image = db.Column(db.String(255))  # tên file ảnh
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)

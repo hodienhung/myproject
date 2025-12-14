@@ -1,12 +1,15 @@
+import os
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for, current_app
-from .models import db, Booking, Advisory
+from .models import Testimonial, db, Booking, Advisory
 from datetime import datetime
 from .vnpay import vnpay
 from .telegram import send_telegram_message
 from zoneinfo import ZoneInfo
 from sqlalchemy import text
 import time
+from werkzeug.utils import secure_filename
 
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
 routes = Blueprint('routes', __name__)
 
 
@@ -176,6 +179,132 @@ def advisory():
         return jsonify({"error": str(e)}), 500
 
     return redirect("/")
+# ==========================
+# FORM ĐĂNG KÝ KHÓA HỌC
+# ==========================
+
+@routes.route("/register_course", methods=["POST"])
+def register_course():
+    fullname = request.form.get("fullname")
+    phone = request.form.get("phone")
+    email = request.form.get("email")
+    course = request.form.get("course")
+    note = request.form.get("note")
+    payment_method = request.form.get("payment_method")
+
+    try:
+        sql = text("""
+    INSERT INTO course_registration 
+    (fullname, phone, email, course, note, payment_method)
+    VALUES 
+    (:fullname, :phone, :email, :course, :note, :payment_method)
+""")
+
+        db.session.execute(sql, {
+            'fullname': fullname,
+            'phone': phone,
+            'email': email,
+            'course': course,
+            'note': note,
+            'payment_method': payment_method
+        })
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
+
+    return jsonify({
+    "success": True,
+    "course": course,
+    "email": email,
+    "payment_method": payment_method
+})
+@routes.route("/registration-successful")
+def registration_successful():
+    return render_template(
+        "registration-successful.html",
+        course=request.args.get("course"),
+        email=request.args.get("email"),
+        payment_method=request.args.get("payment_method")
+    )
+# ==========================
+# TESTIMONIALS
+# ==========================
+UPLOAD_FOLDER = "static/uploads/testimonials"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@routes.route("/testimonial", methods=["POST"])
+def add_testimonial():
+    name = request.form.get("name")
+    content = request.form.get("content")
+    rating = int(request.form.get("rating", 5))
+    image_file = request.files.get("image")
+
+    if not name or not content:
+        return jsonify({"success": False, "message": "Thiếu dữ liệu"}), 400
+
+    image_url = None
+    if image_file and allowed_file(image_file.filename):
+
+        # ✅ Tạo đường dẫn tuyệt đối từ root_path
+        save_path = os.path.join(current_app.root_path, UPLOAD_FOLDER)
+        os.makedirs(save_path, exist_ok=True)
+
+        filename = secure_filename(image_file.filename)
+        filename = f"{int(time.time())}_{filename}"
+
+        image_path = os.path.join(save_path, filename)
+        image_file.save(image_path)
+
+        # ✅ URL để frontend load ảnh
+        image_url = f"/{UPLOAD_FOLDER}/{filename}"
+
+    t = Testimonial(
+        name=name,
+        content=content,
+        rating=rating,
+        image=image_url
+    )
+
+    db.session.add(t)
+    db.session.commit()
+
+    return jsonify({"success": True, "testimonial": {
+        "name": t.name,
+        "content": t.content,
+        "rating": t.rating,
+        "image_url": t.image
+    }})
+
+
+    db.session.add(t)
+    db.session.commit()
+
+    return jsonify({"success": True, "testimonial": {
+        "name": t.name,
+        "content": t.content,
+        "rating": t.rating,
+        "image_url": t.image
+    }})
+
+
+@routes.route("/testimonials")
+def get_testimonials():
+    testimonials = Testimonial.query.order_by(Testimonial.created_at.desc()).all()
+
+    return jsonify([
+        {
+            "name": t.name,
+            "content": t.content,
+            "rating": t.rating,
+            "image_url": t.image  # trả về URL để frontend hiển thị
+        } for t in testimonials
+    ])
+
 
 
 # ==========================
@@ -209,3 +338,5 @@ def services_page():
 @routes.route('/register-course', methods=['GET'])
 def register_course_page():
     return render_template('register-course.html')
+
+
