@@ -7,6 +7,7 @@ from .telegram import send_telegram_message
 from zoneinfo import ZoneInfo
 from sqlalchemy import text
 import time
+from flask import session
 from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
@@ -133,7 +134,7 @@ def vnpay_return():
             f"Gmail: {booking.email}\n"
             f"Địa chỉ: {booking.address}\n"
             f"Số tiền: {booking.deposit_amount} VND\n"
-            f"Ngày giờ: {formatted_time}"
+            f"Ngày giờ: {formatted_time}" 
         )
         send_telegram_message(msg)
         result = "Thanh toán thành công"
@@ -304,6 +305,16 @@ def get_testimonials():
             "image_url": t.image  # trả về URL để frontend hiển thị
         } for t in testimonials
     ])
+#Đăng nhập bằng gg
+@routes.route('/authorize')
+def authorize():
+    token = current_app.google.authorize_access_token()
+    resp = current_app.google.get(resp = current_app.google.get('https://www.googleapis.com/oauth2/v2/userinfo')
+)
+    user_info = resp.json()
+    session['user'] = user_info
+    return redirect('/')
+
 
 
 
@@ -338,5 +349,30 @@ def services_page():
 @routes.route('/register-course', methods=['GET'])
 def register_course_page():
     return render_template('register-course.html')
+
+@routes.route('/login', methods=['GET'])
+def login_page():
+    return render_template('login.html')
+
+from flask import current_app, session, redirect, url_for
+
+@routes.route('/login/google')
+def login_google(): 
+    redirect_uri = url_for('routes.authorize_google', _external=True) 
+    return current_app.google.authorize_redirect(redirect_uri)
+@routes.route('/login/google/authorized')
+def authorize_google():
+    token = current_app.google.authorize_access_token()
+    resp = current_app.google.get('https://www.googleapis.com/oauth2/v2/userinfo')
+    user_info = resp.json()
+
+    # Lưu thông tin user vào session để dùng sau
+    session['user'] = user_info
+
+    # Quay lại trang khóa học
+    return redirect(url_for('routes.learnes_page'))
+
+
+
 
 

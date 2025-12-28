@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trang Đăng nhập - MomCare</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee7c2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f4f2f0] dark:border-b-[#3a2e26] bg-white dark:bg-[#1a1614] px-10 py-3 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">child_care</span>
+</div>
+<h2 class="text-[#181411] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">MomCare</h2>
+</div>
+<div class="flex items-center gap-8 max-md:hidden">
+<nav class="flex items-center gap-9">
+<a class="text-[#181411] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Trang chủ</a>
+<a class="text-[#181411] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dịch vụ</a>
+<a class="text-[#181411] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Cộng đồng</a>
+</nav>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined cursor-pointer text-[#181411] dark:text-white">menu</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-1 items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+<div class="w-full max-w-6xl overflow-hidden rounded-3xl bg-white dark:bg-[#2a221c] shadow-xl flex flex-col md:flex-row min-h-[600px]">
+<!-- Left Side: Image -->
+<div class="relative hidden w-full md:block md:w-1/2 bg-cover bg-center" data-alt="Happy mother holding her baby closely and smiling warmly" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqtAvz_RKmnR-TnAkXE_47bLk2q9Bd52FtiCdYpOQDjViwO46mCn6AMoQKMVqY368s_EMFYwsPmJrxaOoMQ4zt31bUGOWp_umALOcght3EopJl3ePhc4SInsYtVTvUd2535Sca-cRR0iXqbI8MsYvFEtpT20UDWuqgvdVBF31TVZa25a9jp5u9rHz4Z8tiITu3WnZND7j6f_2crdb7leLaCj55mAPulgiF8MrNGNXXJcEeE4O9s_0gWOyVXbFItzKj2pPSW_7PI-0");'>
+<div class="absolute inset-0 bg-black/10"></div>
+<div class="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-black/60 to-transparent text-white">
+<h3 class="text-2xl font-bold mb-2">Đồng hành cùng mẹ</h3>
+<p class="text-sm font-light opacity-90">Chia sẻ kiến thức, yêu thương trọn vẹn từng khoảnh khắc.</p>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="w-full md:w-1/2 p-8 lg:p-16 flex flex-col justify-center bg-white dark:bg-[#1e1e1e]">
+<div class="w-full max-w-md mx-auto">
+<!-- Header Text -->
+<div class="mb-8">
+<h1 class="text-[#181411] dark:text-white tracking-tight text-[32px] font-bold leading-tight text-left mb-2">Chào mừng đến với HienPurMon</h1>
+<p class="text-[#897261] dark:text-[#b0a69e] text-base font-normal leading-normal">Đăng nhập để tiếp tục hành trình chăm sóc bé yêu.</p>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-5">
+<!-- Email Input -->
+<label class="flex flex-col">
+<span class="text-[#181411] dark:text-gray-200 text-sm font-medium leading-normal pb-2">Email hoặc Tên đăng nhập</span>
+<div class="relative">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-[#897261]">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="form-input flex w-full min-w-0 resize-none overflow-hidden rounded-xl text-[#181411] dark:text-white focus:outline-0 focus:ring-0 border border-[#e6e0db] dark:border-[#4a4a4a] bg-white dark:bg-[#2d2d2d] focus:border-primary h-14 placeholder:text-[#897261] dark:placeholder:text-[#6b5e55] pl-12 pr-4 text-base font-normal leading-normal transition-all" placeholder="tên đăng nhập" type="email" value=""/>
+</div>
+</label>
+<!-- Password Input -->
+<label class="flex flex-col">
+<div class="flex justify-between items-center pb-2">
+<span class="text-[#181411] dark:text-gray-200 text-sm font-medium leading-normal">Mật khẩu</span>
+<a class="text-primary text-sm font-medium hover:underline" href="#">Quên mật khẩu?</a>
+</div>
+<div class="relative">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-[#897261]">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="form-input flex w-full min-w-0 resize-none overflow-hidden rounded-xl text-[#181411] dark:text-white focus:outline-0 focus:ring-0 border border-[#e6e0db] dark:border-[#4a4a4a] bg-white dark:bg-[#2d2d2d] focus:border-primary h-14 placeholder:text-[#897261] dark:placeholder:text-[#6b5e55] pl-12 pr-12 text-base font-normal leading-normal transition-all" placeholder="••••••••" type="password" value=""/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-[#897261] hover:text-primary transition-colors cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</label>
+<!-- Login Button -->
+<button class="mt-2 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 bg-primary text-[#181411] text-base font-bold leading-normal tracking-[0.015em] hover:bg-[#d66a1f] hover:shadow-lg transition-all active:scale-[0.98]" type="button">
+<span class="truncate">Đăng nhập</span>
+</button>
+<!-- Divider -->
+<div class="relative flex py-2 items-center">
+<div class="flex-grow border-t border-[#e6e0db] dark:border-[#4a4a4a]"></div>
+<span class="flex-shrink-0 mx-4 text-[#897261] text-sm">Hoặc đăng nhập với</span>
+<div class="flex-grow border-t border-[#e6e0db] dark:border-[#4a4a4a]"></div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 rounded-xl border border-[#e6e0db] dark:border-[#4a4a4a] bg-white dark:bg-[#2d2d2d] h-12 text-sm font-medium hover:bg-gray-50 dark:hover:bg-[#363636] transition-colors" type="button">
+<img alt="Google" class="w-5 h-5" data-alt="Google Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe_vom3NJnB4DYu1WWn7JlopCTCTiE0UYzC1G-JCm5DNToWojymYP097sxWJYcULgyzW1HDUg5uSGrz8nnvynwe1nK113xV-KFVch73Wu6uS4126QyomHk1Vn4eVCWDA6ShTaWOtmZPCk5ByF12R5r3jOcjLekPXuH6jr3aZcQOXnjEBuHl_VHShr539uIaW43nsGin1kRv2-Lj0R_ZQ7It1DuBsbJJ62kcCyrbV8oh2KNgm4kJDex1FQulHSpW3ud3s9enteE_QY"/>
+<a href="{{ url_for('routes.login_google') }}"><span class="text-[#181411] dark:text-gray-200">Google</span></a>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-xl border border-[#e6e0db] dark:border-[#4a4a4a] bg-white dark:bg-[#2d2d2d] h-12 text-sm font-medium hover:bg-gray-50 dark:hover:bg-[#363636] transition-colors" type="button">
+<img alt="Facebook" class="w-5 h-5" data-alt="Facebook Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAfv6NftPlk9XFddCfU1iKjMnKMzRLkrMKeDcXoIu80LaFYiPXI953FbOxBs0bFtXikoNyLyd4nuQP82u7DO3w0XCyIXOMru_6jfKfTUqkDqP73oPx_esyempwO_wadfSRTBaSdo7DCDjIFtBuzgEJxr2xz29j4x5CEqFK8x2I3hBE2lEJ-BqQTkC2-GBqImMfYQUngMrqT_6qHr0dYyzMY0IJvdTXIig1O8Viwg0iPdDyxWWWGm1rYNCZlvyKvq7Vc8F7c5SH6mY"/>
+<span class="text-[#181411] dark:text-gray-200">Facebook</span>
+</button>
+</div>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 text-center">
+<p class="text-[#181411] dark:text-gray-300 text-sm">
+                                Bạn chưa có tài khoản? 
+                                <a class="text-primary font-bold hover:underline ml-1" href="#">Đăng ký ngay</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
