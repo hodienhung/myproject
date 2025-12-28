@@ -6,5 +6,7 @@ class Config:
     VNP_TMN_CODE = "NJFA55LY"   # Mã định danh merchant
     VNP_HASH_SECRET = "BN6AYXN4DSTT4ENVLFGUDHD96XV34UIM"  # Chuỗi bí mật tạo checksum
     VNP_URL = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"  # URL sandbox
-    VNPAY_RETURN_URL = "https://hienpuremom.onrender.com/vnpay_return"
+    VNPAY_RETURN_URL = "http://127.0.0.1:5000/vnpay_return"
   # URL nhận kết quả trả về
+    GOOGLE_CLIENT_ID = "344318275752-tc2jja25alnab8q2pkos0f6ur4i9216m.apps.googleusercontent.com"
+    GOOGLE_CLIENT_SECRET = "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"
