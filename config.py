@@ -1,3 +1,6 @@
+import os
+
+
 class Config:
     SECRET_KEY = 'your-secret-key'
     SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://kidcare_user:RM6eDLHspfhCNWrl8n4IwGeeLMSICD4U@dpg-d4t4h5chg0os73clbqb0-a.oregon-postgres.render.com:5432/kidcare"
@@ -8,5 +11,5 @@ class Config:
     VNP_URL = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"  # URL sandbox
     VNPAY_RETURN_URL = "http://127.0.0.1:5000/vnpay_return"
   # URL nhận kết quả trả về
-    GOOGLE_CLIENT_ID = "344318275752-tc2jja25alnab8q2pkos0f6ur4i9216m.apps.googleusercontent.com"
-    GOOGLE_CLIENT_SECRET = "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"
+    GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+    GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
