@@ -55,7 +55,7 @@ def booking():
             end_date=dt.date(),
             deposit_amount=int(data.get("deposit_amount", 200000)),
         )
-
+        print("DEBUG booking.address:", booking.address)
         db.session.add(booking)
         db.session.commit()
 
@@ -153,9 +153,6 @@ def vnpay_return():
     )
 
 
-# ==========================
-# FORM TƯ VẤN
-# ==========================
 @routes.route("/advisory", methods=["POST"])
 def advisory():
     mother_name = request.form.get("mother_name")
@@ -175,11 +172,25 @@ def advisory():
             'note': note
         })
         db.session.commit()
+
+        # ✅ GỬI TELEGRAM
+        msg = (
+    "📩 ĐƠN TƯ VẤN MỚI\n"
+    f"👩‍👦 Mẹ: {mother_name}\n"
+    f"📞 SĐT: {phone}\n"
+    f"📧 Email: {email}\n"
+    f"📝 Ghi chú: {note}"
+)
+
+        send_telegram_message(msg)
+
+
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
     return redirect("/")
+
 # ==========================
 # FORM ĐĂNG KÝ KHÓA HỌC
 # ==========================

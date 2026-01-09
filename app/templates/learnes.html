@@ -47,10 +47,11 @@
 <header class="flex items-center justify-between whitespace-nowrap py-3">
 <div class="flex items-center gap-8">
 <div class="flex items-center gap-4 text-[#181411] dark:text-white">
-<div class="size-8 text-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-4xl">child_care</span>
+<div class="size-20 text-primary">
+<img src="{{ url_for('static', filename='img/logo_new.png') }}" 
+         alt="Logo" 
+         class="w-20 h-20  object-contain">
 </div>
-<h2 class="text-[#181411] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">MomCare</h2>
 </div>
 <div class="hidden lg:flex items-center gap-8">
 <a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.index') }}">Trang chủ</a>

@@ -53,10 +53,13 @@
 <div class="flex items-center gap-4 text-text-main">
 <div class="size-8 text-primary">
 <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"></path>
 </svg>
 </div>
-<h2 class="text-text-main text-xl font-bold leading-tight tracking-[-0.015em]">Mom &amp; Baby Care</h2>
+<div class="size-20 text-primary">
+<img src="{{ url_for('static', filename='img/logo_new.png') }}" 
+         alt="Logo" 
+         class="w-20 h-20  object-contain">
+</div>
 </div>
 <div class="hidden lg:flex flex-1 justify-end gap-8 items-center">
 <nav class="flex items-center gap-9">
@@ -238,7 +241,6 @@
   <!-- Hidden fields -->
   <input type="hidden" name="selected_datetime" id="selected_datetime">
   <input type="hidden" name="service_type" id="service_type">
-  <input type="hidden" name="address" id="address" value="Chưa có địa chỉ">
 
   <!-- Section 2: Chọn thời gian -->
   <section class="flex flex-col gap-5 mt-6">
@@ -304,6 +306,10 @@
       <div class="flex flex-col gap-2 md:col-span-2">
         <label class="text-sm font-bold">Email (Tùy chọn)</label>
         <input name="email" class="w-full h-12 rounded-xl border px-4" placeholder="Nhập email" type="email">
+      </div>
+            <div class="flex flex-col gap-2 md:col-span-2" >
+        <label class="text-sm font-bold">Địa chỉ</label>
+        <input name="address" class="w-full h-12 rounded-xl border px-4" placeholder="Nhập address" type="text" required>
       </div>
       <div class="flex flex-col gap-2 md:col-span-2">
         <label class="text-sm font-bold">Ghi chú cho chuyên gia</label>

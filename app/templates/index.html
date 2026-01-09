@@ -48,10 +48,11 @@
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#f4f2f0]">
 <div class="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1440px] mx-auto">
 <div class="flex items-center gap-2 text-[#181411]">
-<div class="size-8 text-primary">
-<span class="material-symbols-outlined text-3xl">child_care</span>
+<div class="size-20 text-primary">
+<img src="{{ url_for('static', filename='img/logo_new.png') }}" 
+         alt="Logo" 
+         class="w-20 h-20  object-contain">
 </div>
-<h2 class="text-[#181411] text-xl font-bold leading-tight tracking-[-0.015em]">MomCare</h2>
 </div>
 <div class="hidden lg:flex items-center gap-8">
 <a class="text-[#181411] text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('routes.index') }}">Trang chủ</a>

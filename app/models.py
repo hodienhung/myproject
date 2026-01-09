@@ -10,7 +10,7 @@ class Booking(db.Model):
     parent_name = db.Column(db.String(100), nullable=False)  # Tên mẹ/khách hàng
     email = db.Column(db.String(120))                        # Email tùy chọn
     phone = db.Column(db.String(20), nullable=False)
-    address = db.Column(db.String(200))                      # Địa chỉ nếu có
+    address = db.Column(db.String(200), nullable=False)                      # Địa chỉ nếu có
 
     service_type = db.Column(db.String(100), nullable=False)
     services_selected = db.Column(db.Text)                   # Dịch vụ chi tiết nếu cần
