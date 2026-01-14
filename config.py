@@ -13,7 +13,8 @@ class Config:
     VNP_TMN_CODE = os.getenv("VNP_TMN_CODE")
     VNP_HASH_SECRET = os.getenv("VNP_HASH_SECRET")
     VNP_URL = os.getenv("VNP_URL", "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html")
-    VNPAY_RETURN_URL = os.getenv("VNPAY_RETURN_URL", "http://127.0.0.1:5000/vnpay_return")
+    VNPAY_RETURN_URL = os.getenv("VNPAY_RETURN_URL", "https://hienpuremom.onrender.com//vnpay_return")
 
     # Google OAuth
-
+    GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+    GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
